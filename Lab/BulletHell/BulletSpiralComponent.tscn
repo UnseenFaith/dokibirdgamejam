@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c103wmvsbinay"]
+
+[ext_resource type="Script" uid="uid://bdx2s1i8tyblj" path="res://Lab/BulletHell/BulletSpiralComponent.gd" id="1_nbpn1"]
+
+[node name="BulletSpiralComponent" type="Node" groups=["components"]]
+script = ExtResource("1_nbpn1")
+bulletsPerArm = 32
+spiralDelay = 0.05000000000291038
+spiralSpeed = 120.0

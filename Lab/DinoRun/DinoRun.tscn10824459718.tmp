@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=4 uid="uid://coypgt0d6bj26"]
+
+[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="1_5jcsw"]
+[ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
+[ext_resource type="Texture2D" uid="uid://o834wpmisl15" path="res://Lab/BulletHell/Assets/parralax/sky.png" id="2_i4ny8"]
+[ext_resource type="Script" uid="uid://0jeb7rsxfyoj" path="res://Lab/DinoRun/Map.gd" id="3_pxs12"]
+[ext_resource type="Script" uid="uid://ckkky773yk38a" path="res://Lab/DinoRun/TileMapLayer.gd" id="5_rv68b"]
+[ext_resource type="PackedScene" uid="uid://bmssbkevfv3ft" path="res://Game/Scenes/PlayerEntityTemplate-PlatformerDup.tscn" id="6_rv68b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqvxc"]
+resource_name = "Level1"
+texture = ExtResource("1_5jcsw")
+margins = Vector2i(0, 16)
+texture_region_size = Vector2i(32, 32)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 0.63726425, -16, 0.31863022, 16, -16, 16)
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:4/0/custom_data_0 = true
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:4/0/custom_data_0 = true
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:4/0/custom_data_0 = true
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:4/0/custom_data_0 = true
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mpekv"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+navigation_layer_0/layers = 1
+navigation_layer_1/layers = 16
+custom_data_layer_0/name = "isWalkable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "isBlocked"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "isDestructible"
+custom_data_layer_2/type = 1
+custom_data_layer_3/name = "nextTileOnDamage"
+custom_data_layer_3/type = 1
+sources/0 = SubResource("TileSetAtlasSource_tqvxc")
+
+[node name="DinoRun" type="Node2D"]
+script = ExtResource("1_tqvxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("2_i4ny8")
+metadata/_edit_lock_ = true
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("3_pxs12")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AAAAAAoAAAADAAUAADABAAoAAAADAAUAADACAAoAAAADAAUAADADAAoAAAADAAUAADAEAAoAAAADAAUAADAFAAoAAAADAAUAADAGAAoAAAADAAUAADAHAAoAAAADAAUAADAIAAoAAAADAAUAADAJAAoAAAADAAUAADAKAAoAAAADAAUAADALAAoAAAADAAUAADAMAAoAAAADAAUAADANAAoAAAADAAUAADAOAAoAAAADAAUAADAAAAgAAAAAAAQAAAABAAgAAAABAAQAAAACAAgAAAACAAQAAAADAAgAAAADAAQAAAAAAAkAAAAAAAUAAAABAAkAAAABAAUAAAACAAkAAAACAAUAAAADAAkAAAADAAUAAAAEAAgAAAAAAAQAAAAFAAgAAAABAAQAAAAGAAgAAAACAAQAAAAHAAgAAAADAAQAAAAEAAkAAAAAAAUAAAAFAAkAAAABAAUAAAAGAAkAAAACAAUAAAAHAAkAAAADAAUAAAAIAAgAAAAAAAQAAAAJAAgAAAABAAQAAAAKAAgAAAACAAQAAAAIAAkAAAAAAAUAAAAJAAkAAAABAAUAAAAKAAkAAAACAAUAAAALAAgAAAADAAQAAAAMAAgAAAAAAAQAAAANAAgAAAABAAQAAAALAAkAAAADAAUAAAAMAAkAAAAAAAUAAAANAAkAAAABAAUAAAAOAAgAAAACAAQAAAAOAAkAAAACAAUAAAAPAAgAAAADAAQAAAAPAAkAAAADAAUAAAAPAAoAAAADAAUAADAFAAcAAAACAAIAAAAGAAcAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_mpekv")
+script = ExtResource("5_rv68b")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Map/TileMapLayer"]
+position = Vector2(517, 99)
+enable_node_path = NodePath("../..")
+
+[node name="Player-Platformer" parent="." instance=ExtResource("6_rv68b")]
+position = Vector2(24, 248)
+
+[connection signal="screen_entered" from="Map/TileMapLayer/VisibleOnScreenEnabler2D" to="Map/TileMapLayer" method="onVisibleOnScreenEnabler2d_screenEntered"]
+[connection signal="screen_exited" from="Map/TileMapLayer/VisibleOnScreenEnabler2D" to="Map/TileMapLayer" method="onVisibleOnScreenEnabler2d_screenExited"]

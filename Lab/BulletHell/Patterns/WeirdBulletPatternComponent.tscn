@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbm7asxwlnfti"]
+
+[ext_resource type="Script" uid="uid://bgsek1pjbphuu" path="res://Lab/BulletHell/Patterns/WeirdBulletPatternComponent.gd" id="1_bo46t"]
+
+[node name="WeirdBulletPatternComponent" type="Node" groups=["components"]]
+script = ExtResource("1_bo46t")

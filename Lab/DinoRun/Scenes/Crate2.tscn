@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckp1frn2gtka3"]
+
+[ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Crate2.gd" id="1_6qq7w"]
+[ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="2_6qq7w"]
+[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="2_55fgk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55fgk"]
+resource_local_to_scene = true
+size = Vector2(21, 20)
+
+[node name="Crate" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_6qq7w")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://b3tgnb1y0hgk1"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_55fgk")
+region_enabled = true
+region_rect = Rect2(64, 120, 24, 24)
+
+[node name="DamageComponent" parent="." instance=ExtResource("2_6qq7w")]
+collision_layer = 8
+collision_mask = 6
+
+[node name="DamageCollisionShape" parent="DamageComponent" index="0"]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_55fgk")
+
+[connection signal="area_entered" from="DamageComponent" to="DamageComponent" method="onAreaEntered"]
+[connection signal="area_exited" from="DamageComponent" to="DamageComponent" method="onAreaExited"]
+
+[editable path="DamageComponent"]

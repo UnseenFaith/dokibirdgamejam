@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b45278717lkir"]
+
+[ext_resource type="PackedScene" uid="uid://dfeqql42vl720" path="res://Components/Physics/AreaContactComponent.tscn" id="1_obhsm"]
+[ext_resource type="Script" uid="uid://qsba7xfvs0y8" path="res://Game/Components/BounceComponent.gd" id="1_utvk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t01ct"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="BounceComponent" instance=ExtResource("1_obhsm")]
+collision_mask = 516
+script = ExtResource("1_utvk2")
+bounceForce = 750.0
+groupToInclude = &""
+
+[node name="AreaDetectorShape" parent="." index="0"]
+shape = SubResource("RectangleShape2D_t01ct")
+one_way_collision_margin = 0.0

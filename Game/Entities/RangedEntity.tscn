@@ -1,0 +1,87 @@
+[gd_scene load_steps=20 format=3 uid="uid://daaohahakdmlk"]
+
+[ext_resource type="Script" uid="uid://b3tgnb1y0hgk1" path="res://Entities/Entity.gd" id="1_53o0q"]
+[ext_resource type="Texture2D" uid="uid://clox863hbl6dx" path="res://Assets/Tiles/Kenney1Bit-Monochrome-Transparent.png" id="2_nqldy"]
+[ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="3_g5aoq"]
+[ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="4_ujj3s"]
+[ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="5_8nqa5"]
+[ext_resource type="PackedScene" uid="uid://bk57ophh04lxw" path="res://Game/Entities/BulletEnemyEntity.tscn" id="5_q5b17"]
+[ext_resource type="PackedScene" uid="uid://b0rq0wkce5o6l" path="res://Components/Visual/NodeFacingComponent.tscn" id="5_qufpe"]
+[ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="6_jh7y0"]
+[ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_lqxfr"]
+[ext_resource type="Script" uid="uid://uq1yciinhsc0" path="res://Components/Combat/DamageReceivingComponent.gd" id="7_x2a1q"]
+[ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="9_2v5ja"]
+[ext_resource type="Script" uid="uid://bljllrf6ri2me" path="res://Components/Combat/HealthComponent.gd" id="10_md4up"]
+[ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="11_2fulq"]
+[ext_resource type="PackedScene" uid="uid://b1bqp8r4wjcg3" path="res://Components/Visual/DamageVisualComponent.tscn" id="12_cnroi"]
+[ext_resource type="Script" uid="uid://dqnlvy80u7w5s" path="res://Components/Visual/DamageVisualComponent.gd" id="13_beqju"]
+[ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="14_g2pig"]
+[ext_resource type="Script" uid="uid://doyxkvop6ofxd" path="res://Components/Visual/HealthVisualComponent.gd" id="15_31jnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuf5"]
+size = Vector2(14, 14)
+
+[sub_resource type="Resource" id="Resource_4qcyh"]
+resource_local_to_scene = true
+resource_name = "health"
+script = ExtResource("11_2fulq")
+value = 10
+name = &"health"
+displayName = "Health"
+
+[node name="RangedEntity" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 126
+script = ExtResource("1_53o0q")
+isLoggingEnabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("2_nqldy")
+region_enabled = true
+region_rect = Rect2(64, 32, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8iuf5")
+
+[node name="FactionComponent" parent="." instance=ExtResource("3_g5aoq")]
+factions = 8
+
+[node name="GunComponent" parent="." instance=ExtResource("4_ujj3s")]
+autoFire = true
+bulletEntity = ExtResource("5_q5b17")
+cooldown = 1.0
+
+[node name="DamageReceivingComponent" type="Area2D" parent="." groups=["components"] instance=ExtResource("6_lqxfr")]
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("7_x2a1q")
+metadata/_edit_group_ = true
+
+[node name="DamageComponent" parent="." instance=ExtResource("5_8nqa5")]
+friendlyFire = true
+
+[node name="HealthComponent" type="Node" parent="." groups=["components"] instance=ExtResource("9_2v5ja")]
+script = ExtResource("10_md4up")
+health = SubResource("Resource_4qcyh")
+shouldRemoveEntityOnZero = true
+
+[node name="DamageVisualComponent" type="Node2D" parent="." groups=["components"] instance=ExtResource("12_cnroi")]
+script = ExtResource("13_beqju")
+shouldShowRemainingHealth = true
+metadata/_edit_group_ = true
+
+[node name="HealthVisualComponent" type="Node2D" parent="." groups=["components"] instance=ExtResource("14_g2pig")]
+script = ExtResource("15_31jnc")
+shouldEmitBubble = false
+
+[node name="NodeFacingComponent" parent="." node_paths=PackedStringArray("nodeToRotate") instance=ExtResource("5_qufpe")]
+nodeToRotate = NodePath("../GunComponent")
+
+[node name="InputComponent" parent="." instance=ExtResource("6_jh7y0")]
+isPlayerControlled = false
+
+[connection signal="area_entered" from="DamageReceivingComponent" to="DamageReceivingComponent" method="onAreaEntered"]
+[connection signal="area_exited" from="DamageReceivingComponent" to="DamageReceivingComponent" method="onAreaExited"]
+
+[editable path="GunComponent"]

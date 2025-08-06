@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnks07opch10x"]
+
+[ext_resource type="Script" uid="uid://cjlrlvlj7r4ow" path="res://Lab/DinoRun/Scenes/Crate.gd" id="1_1nw0l"]
+[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="1_6ew2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nw0l"]
+size = Vector2(21, 20)
+
+[node name="Crate" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_1nw0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ew2y")
+region_enabled = true
+region_rect = Rect2(64, 120, 24, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_1nw0l")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, 2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="onVisibleOnScreenNotifier2d_screenExited"]

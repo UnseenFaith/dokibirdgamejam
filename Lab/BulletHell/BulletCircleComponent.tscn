@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bim6gwckth50r"]
+
+[ext_resource type="Script" uid="uid://c8nctjrn8alne" path="res://Lab/BulletHell/BulletCircleComponent.gd" id="1_1rg8t"]
+
+[node name="BulletCircleComponent" type="Node" groups=["components"]]
+script = ExtResource("1_1rg8t")

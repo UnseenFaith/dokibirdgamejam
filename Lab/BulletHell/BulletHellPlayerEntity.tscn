@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://uhpryrs6kicb"]
+
+[ext_resource type="PackedScene" uid="uid://b6c5d68ty35va" path="res://Templates/Entities/PlayerEntityTemplate-Overhead.tscn" id="1_rja4v"]
+[ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="2_82ebn"]
+[ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="3_2u5kn"]
+[ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="4_h6ywj"]
+[ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="5_kwqpf"]
+[ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_qpgeg"]
+[ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="7_chq7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peug6"]
+resource_local_to_scene = true
+size = Vector2(15, 15)
+
+[sub_resource type="Resource" id="Resource_1id7j"]
+resource_local_to_scene = true
+resource_name = "playerHealth"
+script = ExtResource("4_h6ywj")
+value = 10
+name = &"playerHealth"
+displayName = "HP"
+metadata/_custom_type_script = "uid://dif3dj8k5ixfw"
+
+[sub_resource type="Resource" id="Resource_qdfo0"]
+resource_name = "ammo"
+script = ExtResource("4_h6ywj")
+max = 100
+value = 100
+name = &"ammo"
+
+[node name="Player-OverheadCombat" instance=ExtResource("1_rja4v")]
+editor_description = "A template for the player character in an \"overhead\" or \"top-down\" view game with combat functionality."
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_peug6")
+
+[node name="FactionComponent" parent="." index="2" instance=ExtResource("2_82ebn")]
+factions = 2
+
+[node name="HealthComponent" parent="." index="3" instance=ExtResource("3_2u5kn")]
+health = SubResource("Resource_1id7j")
+
+[node name="HealthVisualComponent" parent="." index="4" instance=ExtResource("5_kwqpf")]
+
+[node name="DamageReceivingComponent" parent="." index="5" instance=ExtResource("6_qpgeg")]
+collision_layer = 1028
+collision_mask = 1064
+
+[node name="GunComponent" parent="." index="6" instance=ExtResource("7_chq7u")]
+ammo = SubResource("Resource_qdfo0")
+cooldown = 0.16000000000000003
+
+[node name="CameraComponent" parent="." index="7"]
+enabled = false
+editor_draw_screen = false
+
+[editable path="GunComponent"]

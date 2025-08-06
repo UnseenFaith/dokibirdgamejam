@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd7r4s6v0ispy"]
+
+[ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="1_kk7hp"]
+[ext_resource type="Script" uid="uid://bkppos0tbhjbh" path="res://Game/Components/DirectionalShieldDamageReceivingComponent.gd" id="1_ngmeb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w6t5"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="DamageReceivingComponent" instance=ExtResource("1_kk7hp")]
+script = ExtResource("1_ngmeb")
+frontDirection = 0.0
+frontAngleRange = 90.0
+shouldBlockCompletely = true
+damageReductionPercent = 75
+shouldEmitBlockSignal = true
+
+[node name="ReceivingCollisionShape" parent="." index="0"]
+shape = SubResource("RectangleShape2D_3w6t5")

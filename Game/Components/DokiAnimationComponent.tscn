@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b672vnmenyvb3"]
+
+[ext_resource type="Script" uid="uid://da3wo35u4amxi" path="res://Game/Components/DokiAnimationComponent.gd" id="1_24y2d"]
+
+[node name="DokiAnimationComponent" type="Node" groups=["components"]]
+script = ExtResource("1_24y2d")

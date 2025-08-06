@@ -4,5 +4,3 @@
 # Exclude clutter when downloading from GitHub or the Goddot Asset Library.
 /.github	export-ignore
 /.github/**	export-ignore
-/Lab		export-ignore
-/Lab/**		export-ignore

@@ -1,0 +1,38 @@
+[gd_scene load_steps=12 format=3 uid="uid://cc8hbsx477lab"]
+
+[ext_resource type="Script" uid="uid://bisowd0k143yp" path="res://Entities/Characters/PlayerEntity.gd" id="1_bfhge"]
+[ext_resource type="PackedScene" uid="uid://bck0vjn8mg1aw" path="res://Components/Control/JumpComponent.tscn" id="2_mxtol"]
+[ext_resource type="Script" uid="uid://cqa36ingwv4sx" path="res://Components/Control/JumpComponent.gd" id="3_lb1x4"]
+[ext_resource type="PackedScene" uid="uid://bv4nl55gi16vx" path="res://Components/Physics/PlatformerPhysicsComponent.tscn" id="4_21rwl"]
+[ext_resource type="Script" uid="uid://bx4dv58bmkyd8" path="res://Components/Physics/PlatformerPhysicsComponent.gd" id="5_nu1b8"]
+[ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="6_yo7aq"]
+[ext_resource type="Script" uid="uid://db1pbxqde88s" path="res://Components/Physics/CharacterBodyComponent.gd" id="7_y4e8y"]
+[ext_resource type="PackedScene" uid="uid://bwxjqdxf2dqcr" path="res://Components/Visual/PlatformerAnimationComponent.tscn" id="8_bik43"]
+[ext_resource type="Script" uid="uid://crdu3x1h4pwph" path="res://Components/Visual/PlatformerAnimationComponent.gd" id="9_6a0i6"]
+[ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="10_gwfgb"]
+[ext_resource type="Script" uid="uid://bth4n26ur8bvh" path="res://Components/Control/InputComponent.gd" id="11_583gy"]
+
+[node name="RunnerEntity" type="Node2D"]
+script = ExtResource("1_bfhge")
+metadata/_custom_type_script = "uid://bisowd0k143yp"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="JumpComponent" type="Node" parent="." groups=["components"] instance=ExtResource("2_mxtol")]
+script = ExtResource("3_lb1x4")
+
+[node name="PlatformerPhysicsComponent" type="Node" parent="." groups=["components"] instance=ExtResource("4_21rwl")]
+script = ExtResource("5_nu1b8")
+
+[node name="CharacterBodyComponent" type="Node" parent="." groups=["components"] instance=ExtResource("6_yo7aq")]
+script = ExtResource("7_y4e8y")
+
+[node name="PlatformerAnimationComponent" type="Node" parent="." groups=["components"] instance=ExtResource("8_bik43")]
+script = ExtResource("9_6a0i6")
+
+[node name="InputComponent" type="Node" parent="." groups=["components"] instance=ExtResource("10_gwfgb")]
+script = ExtResource("11_583gy")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://5e1ouov2noei"]
+
+[ext_resource type="Script" uid="uid://cb6pqggnml5e3" path="res://Game/MovingPlatform2.gd" id="1_yvv7g"]
+[ext_resource type="Texture2D" uid="uid://u7227vs57eyx" path="res://Assets/Tiles/Kenney1Bit-Monochrome.png" id="2_yvv7g"]
+
+[sub_resource type="Curve2D" id="Curve2D_m5vut"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40gm8"]
+size = Vector2(49, 6)
+
+[node name="MovingPlatform" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_m5vut")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+loop = false
+script = ExtResource("1_yvv7g")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+remote_path = NodePath("../../AnimatedBody")
+
+[node name="AnimatedBody" type="AnimatableBody2D" parent="Path2D"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/AnimatedBody"]
+texture = ExtResource("2_yvv7g")
+region_enabled = true
+region_rect = Rect2(336, 96, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatedBody"]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_40gm8")
+one_way_collision = true

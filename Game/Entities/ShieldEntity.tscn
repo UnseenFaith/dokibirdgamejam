@@ -1,0 +1,86 @@
+[gd_scene load_steps=18 format=3 uid="uid://cw1afg54tuh36"]
+
+[ext_resource type="Script" uid="uid://b3tgnb1y0hgk1" path="res://Entities/Entity.gd" id="1_33dpw"]
+[ext_resource type="Texture2D" uid="uid://df44adli4m2c5" path="res://Game/Assets/Human_Soldier_Sword_Shield-Sheet.png" id="2_htw2t"]
+[ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="3_h0hyb"]
+[ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="4_25vi6"]
+[ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="5_ep1lg"]
+[ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="6_07v07"]
+[ext_resource type="PackedScene" uid="uid://cd7r4s6v0ispy" path="res://Game/Components/DirectionalShieldDamageReceivingComponent.tscn" id="7_34mw2"]
+[ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="8_pk7y8"]
+[ext_resource type="PackedScene" uid="uid://ylultcpjxp6" path="res://Components/Physics/CornerCollisionComponent.tscn" id="9_o3g2f"]
+[ext_resource type="PackedScene" uid="uid://cwposw6wqg1mi" path="res://Components/Movement/PlatformerPatrolComponent.tscn" id="10_8x47v"]
+[ext_resource type="PackedScene" uid="uid://bv4nl55gi16vx" path="res://Components/Physics/PlatformerPhysicsComponent.tscn" id="11_q8s5w"]
+[ext_resource type="Script" uid="uid://cki34kcp6p026" path="res://Resources/Parameters/PlatformerMovementParameters.gd" id="12_b8wq7"]
+[ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="13_k5hdy"]
+[ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="14_f22b0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpspd"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_tj7yr"]
+resource_local_to_scene = true
+resource_name = "monsterHealth"
+script = ExtResource("4_25vi6")
+max = 5
+value = 5
+name = &"monsterHealth"
+displayName = "Monster HP"
+metadata/_custom_type_script = "uid://dif3dj8k5ixfw"
+
+[sub_resource type="Resource" id="Resource_i2112"]
+script = ExtResource("12_b8wq7")
+metadata/_custom_type_script = "uid://cki34kcp6p026"
+
+[node name="MonsterEntity" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "body")]
+editor_description = "A template for a monster in a platformer game."
+collision_layer = 10
+collision_mask = 126
+floor_constant_speed = true
+platform_on_leave = 2
+script = ExtResource("1_33dpw")
+sprite = NodePath("Sprite2D")
+body = NodePath(".")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_htw2t")
+region_enabled = true
+region_rect = Rect2(34, 135, 21, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dpspd")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_h0hyb")]
+health = SubResource("Resource_tj7yr")
+
+[node name="HealthVisualComponent" parent="." instance=ExtResource("5_ep1lg")]
+shouldShowRemainingHealth = true
+
+[node name="FactionComponent" parent="." instance=ExtResource("6_07v07")]
+factions = 8
+
+[node name="DirectionalDamageReceivingComponent" parent="." instance=ExtResource("7_34mw2")]
+
+[node name="DamageComponent" parent="." instance=ExtResource("8_pk7y8")]
+collision_layer = 1032
+collision_mask = 1028
+damagePerSecond = 1.0
+
+[node name="CornerCollisionComponent" parent="." instance=ExtResource("9_o3g2f")]
+
+[node name="PlatformerPatrolComponent" parent="." instance=ExtResource("10_8x47v")]
+detectionGap = 2.0
+randomizeInitialDirection = true
+
+[node name="PlatformerPhysicsComponent" parent="." instance=ExtResource("11_q8s5w")]
+parameters = SubResource("Resource_i2112")
+
+[node name="CharacterBodyComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("13_k5hdy")]
+body = NodePath("..")
+
+[node name="InputComponent" parent="." instance=ExtResource("14_f22b0")]
+isPlayerControlled = false
+
+[connection signal="didTurn" from="PlatformerPatrolComponent" to="DirectionalDamageReceivingComponent" method="onPlatformerPatrolComponent_didTurn"]
