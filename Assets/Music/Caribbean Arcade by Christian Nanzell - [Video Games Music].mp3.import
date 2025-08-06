@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://evkhb244d3nq"
+path="res://.godot/imported/Caribbean Arcade by Christian Nanzell - [Video Games Music].mp3-3f5d0e2e45c9add782e2960037d13dc8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Caribbean Arcade by Christian Nanzell - [Video Games Music].mp3"
+dest_files=["res://.godot/imported/Caribbean Arcade by Christian Nanzell - [Video Games Music].mp3-3f5d0e2e45c9add782e2960037d13dc8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
