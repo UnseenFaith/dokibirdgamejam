@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://casptss7c38ns"]
+
+[ext_resource type="Script" uid="uid://bmot00nlyg1lm" path="res://Lab/BulletHell/BossAttacks/HomingMissile.gd" id="1_1ljvn"]
+[ext_resource type="Texture2D" uid="uid://dlgr48hfwadef" path="res://Assets/Tiles/Kenney1Bit-Colored.png" id="1_cfkin"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfkin"]
+size = Vector2(16, 16)
+
+[node name="HomingMissile" type="Area2D"]
+script = ExtResource("1_1ljvn")
+speed = 50.0
+max_speed = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cfkin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cfkin")
+region_enabled = true
+region_rect = Rect2(544, 256, 16, 16)
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="onLifetimeTimer_timeout"]

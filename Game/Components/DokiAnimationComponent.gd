@@ -69,6 +69,7 @@ func onInputComponent_didChangeHorizontalDirection() -> void:
 	# Even if we don't have an AnimatedSprite2D we can flip a normal Sprite2D
 	#(animatedSprite if self.animatedSprite else parentEntity.sprite).flip_h = true if signf(inputComponent.horizontalInput) < 0 else false # NOTE: Check the CURRENT/most recent input, NOT the `previousMovementDirection` because that would be the opposite!
 
+var jumpFinished = true
 
 func _process(_delta: float) -> void:
 	# INFO: Animations are checked in order of priority: "walk" overrides "idle"
@@ -97,13 +98,18 @@ func _process(_delta: float) -> void:
 
 	if not characterBodyComponent.isOnFloor:
 		var verticalDirection: float = signf(body.velocity.y)
-
 		if not jumpAnimation.is_empty() \
 		and verticalDirection < 0.0:
 			animationToPlay = jumpAnimation
-		elif not fallAnimation.is_empty() \
-		and verticalDirection > 0.0:
-			animationToPlay = fallAnimation
 
 	# Play the chosen animation
-	animatedSprite.play(animationToPlay)
+	if animationToPlay == "jump" && jumpFinished == true:
+		jumpFinished = false
+		$"../AnimatedSprite2D/AnimationPlayer".play("jump")
+	elif jumpFinished:
+		animatedSprite.play(animationToPlay)
+
+
+func onAnimationPlayer_animationFinished(anim_name: StringName) -> void:
+	if anim_name == "jump":
+		jumpFinished = true

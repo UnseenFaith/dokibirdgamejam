@@ -149,11 +149,19 @@ func updateStateBeforeMove() -> void:
 
 #region Platformer Physics
 
-func processGravity(delta: float) -> void:
+func  processGravity(delta: float) -> void:
 	if not isGravityEnabled: return
-	# Vertical Slowdown
-	if not body.is_on_floor(): # ATTENTION: Cache [isOnFloor] AFTER processing gravity.
+	
+	if body.velocity.y <= 0:
+		body.velocity.y += (gravity * parameters.jumpGravityScale * self.gravityScaleOverride) * delta
+	elif body.velocity.y > 0:
 		body.velocity.y += (gravity * parameters.gravityScale * self.gravityScaleOverride) * delta
+		
+	# Vertical Slowdown
+	#if not body.is_on_floor(): # ATTENTION: Cache [isOnFloor] AFTER processing gravity.
+	#	body.velocity.y += (gravity * parameters.gravityScale * self.gravityScaleOverride) * delta
+	#else:
+	#	body.velocity.y += (gravity * parameters.jumpGravityScale * self.gravityScaleOverride) * delta
 
 	if debugMode and not body.velocity.is_equal_approx(characterBodyComponent.previousVelocity): printDebug(str("body.velocity after processGravity(): ", characterBodyComponent.previousVelocity, " → ", body.velocity))
 

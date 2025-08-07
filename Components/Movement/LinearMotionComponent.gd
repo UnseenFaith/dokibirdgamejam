@@ -64,6 +64,7 @@ func _physics_process(delta: float) -> void: # TBD: _physics_process() instead o
 
 	# Get the current direction
 	var direction: Vector2 = Vector2.RIGHT.rotated(parentEntity.rotation)
+	print(direction)
 
 	# Acceleration or Friction
 	if shouldApplyModifier:

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs13blxp8viw2"]
+
+[ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_gtoou"]
+[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="2_38l5w"]
+[ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="3_pr5ka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvtwa"]
+resource_local_to_scene = true
+size = Vector2(47, 32)
+
+[node name="DoubleTallCactus" type="Node2D"]
+script = ExtResource("1_gtoou")
+
+[node name="Double" type="Sprite2D" parent="."]
+texture = ExtResource("2_38l5w")
+region_enabled = true
+region_rect = Rect2(64, 80, 32, 32)
+
+[node name="Single" type="Sprite2D" parent="."]
+position = Vector2(24, 0)
+texture = ExtResource("2_38l5w")
+region_enabled = true
+region_rect = Rect2(0, 112, 16, 32)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_pr5ka")]
+collision_layer = 1032
+collision_mask = 1030
+
+[node name="DamageCollisionShape" parent="DamageComponent" index="0"]
+position = Vector2(8.5, 0)
+shape = SubResource("RectangleShape2D_kvtwa")
+
+[editable path="DamageComponent"]

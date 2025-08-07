@@ -1,10 +1,10 @@
-[gd_scene load_steps=74 format=3 uid="uid://bmssbkevfv3ft"]
+[gd_scene load_steps=76 format=3 uid="uid://bmssbkevfv3ft"]
 
 [ext_resource type="Script" uid="uid://bisowd0k143yp" path="res://Entities/Characters/PlayerEntity.gd" id="1_mgt6d"]
-[ext_resource type="Texture2D" uid="uid://br4se5e7k32fs" path="res://Game/Doki_Jump.png" id="2_q1k2l"]
 [ext_resource type="PackedScene" uid="uid://dekgkos84sljm" path="res://Components/Visual/CameraComponent.tscn" id="3_24xqn"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="3_fggwt"]
 [ext_resource type="PackedScene" uid="uid://d06m60dgdv8ui" path="res://Components/Data/StatsComponent.tscn" id="4_fj8vo"]
+[ext_resource type="Texture2D" uid="uid://gw643va87flg" path="res://Lab/Assets/Doki_side_jump-Sheet.png" id="4_gcuor"]
 [ext_resource type="Texture2D" uid="uid://mg5idc1adtml" path="res://Game/vagabond-run-end.png" id="4_q1k2l"]
 [ext_resource type="Texture2D" uid="uid://5o31svvaggch" path="res://Game/doki_run.png" id="5_j2a3c"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="5_j4p8p"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="7_wrtr6"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="8_phup2"]
 [ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="9_ekhhf"]
-[ext_resource type="Script" uid="uid://doyxkvop6ofxd" path="res://Components/Visual/HealthVisualComponent.gd" id="11_gcuor"]
 [ext_resource type="PackedScene" uid="uid://bck0vjn8mg1aw" path="res://Components/Control/JumpComponent.tscn" id="15_qe8an"]
 [ext_resource type="PackedScene" uid="uid://bv4nl55gi16vx" path="res://Components/Physics/PlatformerPhysicsComponent.tscn" id="16_mv5hs"]
 [ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="17_t5a6r"]
@@ -21,37 +20,29 @@
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="19_wto0t"]
 [ext_resource type="PackedScene" uid="uid://b672vnmenyvb3" path="res://Game/Components/DokiAnimationComponent.tscn" id="24_q1k2l"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hakja"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcuor"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(224, 0, 32, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_usvbk"]
-atlas = ExtResource("2_q1k2l")
+atlas = ExtResource("4_gcuor")
 region = Rect2(256, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfsr0"]
-atlas = ExtResource("2_q1k2l")
+atlas = ExtResource("4_gcuor")
 region = Rect2(288, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kuw2f"]
-atlas = ExtResource("2_q1k2l")
+atlas = ExtResource("4_gcuor")
 region = Rect2(320, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ag1uf"]
-atlas = ExtResource("2_q1k2l")
+atlas = ExtResource("4_gcuor")
 region = Rect2(352, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnnc2"]
-atlas = ExtResource("2_q1k2l")
-region = Rect2(384, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyvv6"]
-atlas = ExtResource("2_q1k2l")
-region = Rect2(416, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q66n7"]
-atlas = ExtResource("2_q1k2l")
-region = Rect2(448, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2eelw"]
-atlas = ExtResource("2_q1k2l")
-region = Rect2(480, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhs00"]
 atlas = ExtResource("3_fggwt")
@@ -113,37 +104,53 @@ region = Rect2(416, 0, 32, 48)
 atlas = ExtResource("3_fggwt")
 region = Rect2(448, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ob5ug"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5402"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(0, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xr52n"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_td0hg"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(32, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gj06o"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fggwt"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(64, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_plve6"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnnc2"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(96, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5efa"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyvv6"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(128, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yig5q"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q66n7"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(160, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnngv"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eelw"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(192, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndpxu"]
-atlas = ExtResource("2_q1k2l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob5ug"]
+atlas = ExtResource("4_gcuor")
 region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr52n"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj06o"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plve6"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5efa"]
+atlas = ExtResource("4_gcuor")
+region = Rect2(352, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4av6"]
 atlas = ExtResource("4_q1k2l")
@@ -197,6 +204,12 @@ region = Rect2(224, 0, 32, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hakja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcuor")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_usvbk")
 }, {
 "duration": 1.0,
@@ -207,18 +220,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ag1uf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mnnc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uyvv6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q66n7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2eelw")
 }],
 "loop": false,
 "name": &"fall",
@@ -276,6 +277,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w5402")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td0hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fggwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnnc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyvv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q66n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eelw")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ob5ug")
 }, {
 "duration": 1.0,
@@ -289,15 +311,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n5efa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yig5q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rnngv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ndpxu")
 }],
 "loop": false,
 "name": &"jump",
@@ -377,6 +390,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_gjyar"]
 resource_name = "blink"
@@ -407,10 +444,40 @@ tracks/1/keys = {
 "values": [Color(100, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hakja"]
+resource_name = "jump"
+length = 0.7833
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"jump", &"fall"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1119, 0.2238, 0.28536835, 0.4476, 0.6182202, 0.6714, 0.7833),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 8, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2co05"]
 _data = {
 &"RESET": SubResource("Animation_oq27a"),
-&"invulnerabilityOnHit": SubResource("Animation_gjyar")
+&"invulnerabilityOnHit": SubResource("Animation_gjyar"),
+&"jump": SubResource("Animation_hakja")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxoqp"]
@@ -420,7 +487,8 @@ size = Vector2(12, 12)
 [sub_resource type="Resource" id="Resource_cei4g"]
 resource_name = "health"
 script = ExtResource("5_j4p8p")
-value = 10
+max = 100
+value = 100
 name = &"playerHealth"
 
 [sub_resource type="Resource" id="Resource_puhqw"]
@@ -447,7 +515,8 @@ metadata/_custom_type_script = "uid://bqtlb3ebf2ocg"
 
 [sub_resource type="Resource" id="Resource_q1k2l"]
 script = ExtResource("19_fggwt")
-gravityScale = 0.8000000000000007
+gravityScale = 1.200000000000001
+jumpGravityScale = 0.8000000000000007
 shouldApplyFrictionInAir = false
 metadata/_custom_type_script = "uid://cki34kcp6p026"
 
@@ -469,9 +538,7 @@ metadata/_edit_group_ = true
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_rxoqp")
-animation = &"fall"
-frame = 7
-frame_progress = 1.0
+animation = &"walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
@@ -481,6 +548,7 @@ libraries = {
 autoplay = "RESET"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_rxoqp")
 
 [node name="CameraComponent" parent="." instance=ExtResource("3_24xqn")]
@@ -498,8 +566,7 @@ stats = Array[ExtResource("5_j4p8p")]([SubResource("Resource_cei4g"), SubResourc
 [node name="HealthComponent" parent="." instance=ExtResource("6_ocou1")]
 health = SubResource("Resource_cei4g")
 
-[node name="HealthVisualComponent" type="Node2D" parent="." groups=["components"] instance=ExtResource("7_wrtr6")]
-script = ExtResource("11_gcuor")
+[node name="HealthVisualComponent" parent="." instance=ExtResource("7_wrtr6")]
 
 [node name="FactionComponent" parent="." instance=ExtResource("8_phup2")]
 factions = 2
@@ -526,5 +593,7 @@ body = NodePath("..")
 idleAnimation = &"walk"
 
 [node name="InputComponent" parent="." instance=ExtResource("19_wto0t")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="DokiAnimationComponent" method="onAnimationPlayer_animationFinished"]
 
 [editable path="DamageReceivingComponent"]

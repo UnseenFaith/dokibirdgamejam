@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://uhpryrs6kicb"]
+[gd_scene load_steps=12 format=3 uid="uid://uhpryrs6kicb"]
 
 [ext_resource type="PackedScene" uid="uid://b6c5d68ty35va" path="res://Templates/Entities/PlayerEntityTemplate-Overhead.tscn" id="1_rja4v"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="2_82ebn"]
+[ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="2_142k4"]
 [ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="3_2u5kn"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="4_h6ywj"]
 [ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="5_kwqpf"]
@@ -31,6 +32,11 @@ name = &"ammo"
 [node name="Player-OverheadCombat" instance=ExtResource("1_rja4v")]
 editor_description = "A template for the player character in an \"overhead\" or \"top-down\" view game with combat functionality."
 
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_142k4")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 48)
+
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_peug6")
 
@@ -51,7 +57,9 @@ ammo = SubResource("Resource_qdfo0")
 cooldown = 0.16000000000000003
 
 [node name="CameraComponent" parent="." index="7"]
+offset = Vector2(195, -40)
 enabled = false
+zoom = Vector2(1.5, 1.5)
 editor_draw_screen = false
 
 [editable path="GunComponent"]

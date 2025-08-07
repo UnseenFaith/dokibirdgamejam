@@ -28,6 +28,8 @@ extends Resource
 ## 1.0 is normal gravity as defined in Project Settings/Physics/2D
 @export_range(-10, 10, 0.05) var gravityScale:		float = 1
 
+@export_range(-10, 10, 0.05) var jumpGravityScale: float = 1
+
 ## Allow changes in the horizontal velocity while in air?
 @export var shouldAllowMovementInputInAir:			bool  = true
 

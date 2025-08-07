@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://upaqt2ru1iig"]
+
+[ext_resource type="Script" uid="uid://bef8uw627jqn5" path="res://Lab/BulletHell/BossAttacks/ExplodingBullet.gd" id="1_6ba1a"]
+[ext_resource type="Texture2D" uid="uid://dlgr48hfwadef" path="res://Assets/Tiles/Kenney1Bit-Colored.png" id="2_cb5de"]
+
+[node name="ExplodingBullet" type="Node2D"]
+script = ExtResource("1_6ba1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cb5de")
+region_enabled = true
+region_rect = Rect2(544, 304, 16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_onTimer_timeout"]

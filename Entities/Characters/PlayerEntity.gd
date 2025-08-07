@@ -46,3 +46,25 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	super._exit_tree()
 	GameState.removePlayer(self)
+
+var up_time = 0.0
+var jump_time = 0.0
+var down_time = 0.0
+
+
+func _physics_process(delta: float) -> void:
+	if body.is_on_floor():
+		print(jump_time)
+		print(up_time)
+		print(down_time)
+		jump_time = 0.0
+		up_time = 0.0
+		down_time = 0.0
+	
+	if not body.is_on_floor():
+		jump_time += delta
+		if body.velocity.y < 0:
+			up_time += delta
+		elif body.velocity.y > 0:
+			down_time += delta
+		
