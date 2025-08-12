@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdpipvd8uhw5"]
 
 [ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_vswjd"]
-[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="2_dfmh0"]
+[ext_resource type="Texture2D" uid="uid://bqp1n081oohpr" path="res://Lab/DinoRun/Assets/barrel.png" id="2_vswjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vswjd"]
 
-[node name="Barrel" type="StaticBody2D"]
+[node name="Barrel" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_vswjd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dfmh0")
+texture = ExtResource("2_vswjd")
 region_enabled = true
-region_rect = Rect2(32, 120, 24, 24)
+region_rect = Rect2(0, 8, 24, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vswjd")

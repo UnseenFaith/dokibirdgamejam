@@ -6,8 +6,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position.x -= delta * speed
-	print(position.x)
 
 func _process(delta: float) -> void:
 	position.x -= delta * speed
-	print(position.x)

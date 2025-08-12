@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmeuf3uvumn5g"]
+[gd_scene load_steps=6 format=3 uid="uid://dmeuf3uvumn5g"]
 
 [ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="1_scejb"]
+[ext_resource type="Texture2D" uid="uid://cx1hkpxwonpfo" path="res://Lab/DinoRun/Assets/fences.png" id="2_aob10"]
+[ext_resource type="Texture2D" uid="uid://dwj1bs8uv5jo1" path="res://Lab/DinoRun/Assets/sand.png" id="2_tqgnc"]
+[ext_resource type="PackedScene" uid="uid://c36nkkxnfqak8" path="res://Lab/DinoRun/Scenes/Tumbleweed.tscn" id="4_3j7bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scejb"]
 size = Vector2(640, 64)
@@ -10,75 +13,151 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
 position = Vector2(320, 288)
 shape = SubResource("RectangleShape2D_scejb")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Dirt" type="Parallax2D" parent="."]
 repeat_size = Vector2(640, 0)
-autoscroll = Vector2(-100, 0)
 repeat_times = 3
 
-[node name="Floor1" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor1" type="Sprite2D" parent="Dirt"]
 position = Vector2(64, 288)
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 144, 128, 64)
 
-[node name="Floor2" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor2" type="Sprite2D" parent="Dirt"]
 position = Vector2(192, 288)
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 144, 128, 64)
 
-[node name="Floor3" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor3" type="Sprite2D" parent="Dirt"]
 position = Vector2(320, 288)
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 144, 128, 64)
 
-[node name="Floor4" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor4" type="Sprite2D" parent="Dirt"]
 position = Vector2(448, 288)
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 144, 128, 64)
 
-[node name="Floor5" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor5" type="Sprite2D" parent="Dirt"]
 position = Vector2(576, 288)
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 144, 128, 64)
 
-[node name="Floor6" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor6" type="Sprite2D" parent="Dirt"]
 position = Vector2(64, 336)
 rotation = 3.1415927
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 176, 128, 32)
 
-[node name="Floor7" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor7" type="Sprite2D" parent="Dirt"]
 position = Vector2(192, 336)
 rotation = 3.1415927
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 176, 128, 32)
 
-[node name="Floor8" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor8" type="Sprite2D" parent="Dirt"]
 position = Vector2(320, 336)
 rotation = 3.1415927
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 176, 128, 32)
 
-[node name="Floor9" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor9" type="Sprite2D" parent="Dirt"]
 position = Vector2(448, 336)
 rotation = 3.1415927
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 176, 128, 32)
 
-[node name="Floor10" type="Sprite2D" parent="Parallax2D"]
+[node name="Floor10" type="Sprite2D" parent="Dirt"]
 position = Vector2(576, 336)
 rotation = 3.1415927
 texture = ExtResource("1_scejb")
 region_enabled = true
 region_rect = Rect2(0, 176, 128, 32)
+
+[node name="Bones" type="Sprite2D" parent="Dirt"]
+position = Vector2(56, 288)
+texture = ExtResource("1_scejb")
+region_enabled = true
+region_rect = Rect2(48, 24, 40, 24)
+
+[node name="Bones3" type="Sprite2D" parent="Dirt"]
+position = Vector2(216, 304)
+texture = ExtResource("1_scejb")
+region_enabled = true
+region_rect = Rect2(0, 24, 40, 24)
+
+[node name="Bones2" type="Sprite2D" parent="Dirt"]
+position = Vector2(368, 296)
+texture = ExtResource("1_scejb")
+region_enabled = true
+region_rect = Rect2(0, 56, 40, 24)
+
+[node name="Bones4" type="Sprite2D" parent="Dirt"]
+position = Vector2(520, 288)
+texture = ExtResource("1_scejb")
+region_enabled = true
+region_rect = Rect2(48, 56, 40, 24)
+
+[node name="NewFloor1" type="Sprite2D" parent="Dirt"]
+z_index = 1
+position = Vector2(64, 268)
+texture = ExtResource("2_tqgnc")
+
+[node name="NewFloor2" type="Sprite2D" parent="Dirt"]
+z_index = 1
+position = Vector2(192, 268)
+texture = ExtResource("2_tqgnc")
+
+[node name="NewFloor3" type="Sprite2D" parent="Dirt"]
+z_index = 1
+position = Vector2(320, 268)
+texture = ExtResource("2_tqgnc")
+
+[node name="NewFloor4" type="Sprite2D" parent="Dirt"]
+z_index = 1
+position = Vector2(448, 268)
+texture = ExtResource("2_tqgnc")
+
+[node name="NewFloor5" type="Sprite2D" parent="Dirt"]
+z_index = 1
+position = Vector2(576, 268)
+texture = ExtResource("2_tqgnc")
+
+[node name="Fence4" type="Sprite2D" parent="Dirt"]
+position = Vector2(515, 234)
+texture = ExtResource("2_aob10")
+region_enabled = true
+region_rect = Rect2(0, 8, 56, 24)
+
+[node name="Fence2" type="Sprite2D" parent="Dirt"]
+position = Vector2(196, 234)
+texture = ExtResource("2_aob10")
+region_enabled = true
+region_rect = Rect2(64, 40, 32, 24)
+
+[node name="Fence3" type="Sprite2D" parent="Dirt"]
+position = Vector2(364, 234)
+texture = ExtResource("2_aob10")
+region_enabled = true
+region_rect = Rect2(64, 8, 56, 24)
+
+[node name="Tumble" type="Parallax2D" parent="."]
+scroll_offset = Vector2(29, -5)
+repeat_size = Vector2(800, 0)
+repeat_times = 3
+
+[node name="Tumbleweed" parent="Tumble" instance=ExtResource("4_3j7bv")]
+z_index = 1
+position = Vector2(584, 251)

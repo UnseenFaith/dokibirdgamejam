@@ -37,7 +37,6 @@ collision_mask = 126
 script = ExtResource("1_bhu65")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
 texture = ExtResource("13_qvynj")
 region_enabled = true
 region_rect = Rect2(64, 32, 16, 16)
@@ -63,7 +62,8 @@ friendlyFire = true
 health = SubResource("Resource_4qcyh")
 
 [node name="DamageVisualComponent" parent="." instance=ExtResource("10_nprmx")]
-shouldShowRemainingHealth = true
+shouldTint = true
+shouldEmitBubble = false
 
 [node name="HealthVisualComponent" parent="." instance=ExtResource("8_uclee")]
 shouldEmitBubble = false
@@ -74,7 +74,7 @@ shouldEmitBubble = false
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("15_suqsr")
-blackboard = NodePath("@Node@22425")
+blackboard = NodePath("@Node@22394")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bag6otltdtnve"
 

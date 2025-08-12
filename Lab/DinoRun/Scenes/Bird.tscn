@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj0ddd8j8utjo"]
+
+[ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_11rt2"]
+[ext_resource type="Texture2D" uid="uid://crjum6b526vfm" path="res://Lab/Assets/bird.png" id="2_7qhb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf110"]
+atlas = ExtResource("2_7qhb4")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtlfb"]
+atlas = ExtResource("2_7qhb4")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67wqa"]
+atlas = ExtResource("2_7qhb4")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbive"]
+atlas = ExtResource("2_7qhb4")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0t7v8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf110")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtlfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67wqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbive")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qhb4"]
+size = Vector2(55, 22)
+
+[node name="Bird" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_11rt2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0t7v8")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -2)
+shape = SubResource("RectangleShape2D_7qhb4")

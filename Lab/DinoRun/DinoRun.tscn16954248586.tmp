@@ -1,0 +1,362 @@
+[gd_scene load_steps=21 format=3 uid="uid://coypgt0d6bj26"]
+
+[ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
+[ext_resource type="Texture2D" uid="uid://dcccd425g3fq7" path="res://Lab/DinoRun/Assets/Lvl 1 background 1.png" id="4_i4ny8"]
+[ext_resource type="Texture2D" uid="uid://k7d4a50qqesu" path="res://Lab/DinoRun/Assets/Lvl 1 background 2.png" id="5_qa2xo"]
+[ext_resource type="Texture2D" uid="uid://dtuox116ll0i" path="res://Lab/DinoRun/Assets/Lvl 1 background 3.png" id="6_atp7r"]
+[ext_resource type="PackedScene" uid="uid://bmssbkevfv3ft" path="res://Game/Scenes/PlayerEntityTemplate-PlatformerDup.tscn" id="6_rv68b"]
+[ext_resource type="Texture2D" uid="uid://w6eg2v15hdi" path="res://Lab/DinoRun/Assets/Lvl 1 background 4.png" id="7_20i0w"]
+[ext_resource type="PackedScene" uid="uid://dmeuf3uvumn5g" path="res://Lab/DinoRun/Scenes/Floor.tscn" id="7_lkn3h"]
+[ext_resource type="Texture2D" uid="uid://cvymq85dc48js" path="res://Lab/DinoRun/Assets/Lvl 1 background 5.png" id="8_omlr4"]
+[ext_resource type="Texture2D" uid="uid://b7uw4tl34xj2o" path="res://Lab/DinoRun/Assets/Lvl 1 background 6.png" id="9_4gmof"]
+[ext_resource type="PackedScene" uid="uid://d3gr5jms2ycia" path="res://Lab/DinoRun/Entities/Enemy.tscn" id="10_atp7r"]
+[ext_resource type="Script" uid="uid://bdi3om1yfn0fq" path="res://Lab/DinoRun/GameOver.gd" id="11_20i0w"]
+[ext_resource type="PackedScene" uid="uid://cbhnnirun0in7" path="res://Lab/DinoRun/Scenes/Tracker.tscn" id="11_omlr4"]
+
+[sub_resource type="Animation" id="Animation_4gmof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player-Platformer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, 249)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player-Platformer/DokiAnimationComponent:isEnabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Enemy:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 212)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player-Platformer/AnimatedSprite2D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_omlr4"]
+resource_name = "cutscene"
+length = 3.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player-Platformer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-15, 248), Vector2(195, 248)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player-Platformer/AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"walk", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player-Platformer/DokiAnimationComponent:isEnabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_start_Dialogic"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oag7t"]
+resource_name = "cutscene_2"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"generate_obstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player-Platformer/JumpComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.93333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"cutsceneJump"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ijs8h"]
+resource_name = "cutscene_3"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-108, 212), Vector2(0, 212)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player-Platformer/AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oag7t"]
+_data = {
+&"RESET": SubResource("Animation_4gmof"),
+&"cutscene": SubResource("Animation_omlr4"),
+&"cutscene_2": SubResource("Animation_oag7t"),
+&"cutscene_3": SubResource("Animation_ijs8h")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gmof"]
+resource_local_to_scene = true
+size = Vector2(12, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omlr4"]
+resource_local_to_scene = true
+size = Vector2(12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_20i0w"]
+stacked_outline_count = 1
+stacked_outline_0/size = 20
+
+[node name="DinoRun" type="Node2D"]
+script = ExtResource("1_tqvxc")
+mainGameScenePath = null
+initialGlobalData = null
+gameStateNodes = null
+musicFolder = null
+musicFileToPlayOnStart = null
+shouldPlayRandomMusicIndex = null
+musicIndexToPlayOnStart = null
+showDebugBackground = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oag7t")
+}
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(24, 248)
+offset = Vector2(195, -40)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Obstacles" type="Node" parent="." groups=["obstacles"]]
+
+[node name="Background" type="Node2D" parent="."]
+process_mode = 4
+position = Vector2(237, 222)
+scale = Vector2(0.75, 0.75)
+
+[node name="1" type="Sprite2D" parent="Background"]
+position = Vector2(0, -11.999756)
+texture = ExtResource("4_i4ny8")
+
+[node name="2" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-15, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/2"]
+texture = ExtResource("5_qa2xo")
+
+[node name="3" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, 80.000015)
+repeat_size = Vector2(850, 0)
+autoscroll = Vector2(-25, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/3"]
+texture = ExtResource("6_atp7r")
+
+[node name="4" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, -11.999817)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-50, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/4"]
+texture = ExtResource("7_20i0w")
+
+[node name="5" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, -13.33313)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-75, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/5"]
+texture = ExtResource("8_omlr4")
+
+[node name="6" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, -22.666199)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/6"]
+texture = ExtResource("9_4gmof")
+
+[node name="Floor" parent="." instance=ExtResource("7_lkn3h")]
+
+[node name="Obstacle" type="Marker2D" parent="."]
+position = Vector2(448, 256)
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Player-Platformer" parent="." instance=ExtResource("6_rv68b")]
+process_mode = 3
+position = Vector2(-15, 249)
+
+[node name="AnimatedSprite2D" parent="Player-Platformer" index="0"]
+autoplay = "idle"
+
+[node name="CollisionShape2D" parent="Player-Platformer" index="1"]
+shape = SubResource("RectangleShape2D_4gmof")
+
+[node name="CameraComponent" parent="Player-Platformer" index="2"]
+enabled = false
+editor_draw_screen = false
+
+[node name="ReceivingCollisionShape" parent="Player-Platformer/DamageReceivingComponent" index="0"]
+shape = SubResource("RectangleShape2D_omlr4")
+
+[node name="Enemy" parent="." instance=ExtResource("10_atp7r")]
+z_index = 2
+position = Vector2(-93, 212)
+collision_layer = 16
+monitoring = false
+monitorable = false
+
+[node name="Midpoint" type="Marker2D" parent="."]
+position = Vector2(195, 249)
+
+[node name="Tracker" parent="." instance=ExtResource("11_omlr4")]
+visible = false
+position = Vector2(162, 306)
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+script = ExtResource("11_20i0w")
+
+[node name="Label" type="Label" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 78.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "Game Over :3"
+label_settings = SubResource("LabelSettings_20i0w")
+
+[node name="Button" type="Button" parent="GameOver"]
+anchors_preset = -1
+offset_left = 280.0
+offset_top = 21.0
+offset_right = 351.0
+offset_bottom = 37.0
+text = "Restart :3"
+
+[connection signal="timeout" from="ObstacleTimer" to="." method="onObstacleTimer_timeout"]
+[connection signal="button_down" from="GameOver/Button" to="GameOver" method="onButton_buttonDown"]
+
+[editable path="Player-Platformer"]
+[editable path="Player-Platformer/DamageReceivingComponent"]

@@ -1,11 +1,12 @@
 class_name AttackSelector
 extends ActionLeaf
 
-@export var attack_cooldown: float = 5.0
+@export var attack_cooldown: float = 0.2
 var time_since_last_attack: float = 0.0
 var available_attacks: Array
 
-var all_attacks = ["laser", "missile", "spread", "explode"]
+#var all_attacks := ["laser", "missile", "spread", "explode", "rain"]
+var all_attacks := ["ring"]
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	# Check if cooldown has elapsed
@@ -37,6 +38,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			actor.spread_shot_attack()
 		"explode":
 			actor.ring()
+		"ring":
+			actor.ring_attack()
 			#actor.screen_covering_attack()
 	
 	return SUCCESS

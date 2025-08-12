@@ -12,7 +12,7 @@ corner_detail = 1
 [node name="HUDTemplate" type="CanvasLayer"]
 
 [node name="TopPanelMarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_bottom = 25.0
 grow_horizontal = 2

@@ -8,29 +8,64 @@ var obstacle_types := [
 	"res://Lab/DinoRun/Scenes/SingleTallCactus.tscn",
 	"res://Lab/DinoRun/Scenes/DoubleTallCactus.tscn",
 	"res://Lab/DinoRun/Scenes/TripleTallCactus.tscn",
-	"res://Lab/DinoRun/Scenes/Barrel.tscn"
+	"res://Lab/DinoRun/Scenes/Barrel.tscn",
+	"res://Lab/DinoRun/Scenes/Staircase.tscn",
+	"res://Lab/DinoRun/Scenes/Bird.tscn",
 ]
 var obstacles: Array
-var ground_height: int
-var screen_size: Vector2i
-
+@onready var player := $"Player-Platformer"
+@onready var screen_size := get_window().size
+@onready var ground_height = $Floor.get_node("Dirt/Floor1").texture.get_height()
 var last_obstacle
 
-var CURRENT_SPEED = 200
+var CURRENT_SPEED := 200
+
+var cutscenePlayed = Settings.get('firstCutscenePlayed')
 
 func _ready() -> void:
-	screen_size = get_window().size
-	ground_height = $Floor.get_node("Parallax2D/Floor1").texture.get_height()
-	$Floor/Parallax2D.autoscroll.x = -CURRENT_SPEED
+	$"Player-Platformer/InputComponent".isEnabled = false
+	$AnimationPlayer.play("cutscene")
+	Dialogic.connect("signal_event", _dialog_event)
 
-func generate_obstacle() -> void:
-	var obs_type = obstacle_types[randi() % obstacle_types.size()]
-	var obs_x: int = $Obstacle.position.x 
-	var obs_y: int = $Obstacle.position.y - 12
+func _dialog_event(parameter: String) -> void:
+	if (parameter == "start_game"):
+		$AnimationPlayer.stop()
+		_start_game()
+	else:
+		$AnimationPlayer.play(parameter)
+
+func _start_Dialogic() -> void:
+		Dialogic.start("timeline")
+	
+func _start_game() -> void:
+	$Floor/Dirt.autoscroll.x = - CURRENT_SPEED
+	$Floor/Tumble.autoscroll.x = - CURRENT_SPEED
+	$Background.process_mode = Node.PROCESS_MODE_INHERIT
+	$Tracker.visible = true
+	$Tracker.process_mode = Node.PROCESS_MODE_INHERIT
+	$ObstacleTimer.start()
+	$"Player-Platformer/DokiAnimationComponent".isEnabled = true
+	$Enemy.monitoring = true
+	$Enemy.position.x = 0
+	$"Player-Platformer/InputComponent".isEnabled = true
+	GlobalSonic.playMusicFile("res://Assets/Music/CowBoy Theme WIP 2.wav")
+
+func generate_obstacle(obst = null) -> void:
+	var index
+	if obst != null:
+		index = obst
+	else:
+		index = randi() % obstacle_types.size()
+	var obs_type = obstacle_types[index]
+	var obs_x: int = $Obstacle.position.x
+	var obs_y: int = $Obstacle.position.y - 12 if index != 6 else $Obstacle.position.y - 40
 	var obs = SceneManager.loadSceneAndAddInstance(obs_type, self, Vector2(obs_x, obs_y))
 	obs.speed = 200
+	obs.z_index = 1
+	obs.add_to_group("obstacles")
 	last_obstacle = obs
-	print(obs.position)
 
 func onObstacleTimer_timeout() -> void:
 	generate_obstacle()
+	if player.position.x < $Midpoint.position.x && player.bodyComponent.isOnFloor:
+		player.velocity.x += 100

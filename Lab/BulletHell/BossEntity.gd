@@ -62,6 +62,18 @@ func spawn_laser_attack() -> void:
 	attack.position = self.position
 	get_parent().add_child(attack)
 	
+func ring_attack() -> void:
+	var offset = randf_range(0, TAU) # TAU = 2*PI, a full circle in radians
+	for i in range(0, 360, 10):
+		var child_bullet = bullet_enemy.instantiate()
+		var angle = deg_to_rad(i) + offset
+		child_bullet.position = position
+		child_bullet.rotation = angle
+		var lm = child_bullet.find_child("LinearMotionComponent")
+		if lm:
+			lm.initialSpeed = 100
+			lm.maximumSpeed = 100
+		get_parent().add_child(child_bullet)
 
 func homing_missile_attack() -> void:
 	"""Fire a burst of homing missiles at the player"""

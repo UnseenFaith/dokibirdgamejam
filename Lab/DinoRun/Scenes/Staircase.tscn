@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://uuvyjw3iqy1x"]
+
+[ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_srlio"]
+[ext_resource type="PackedScene" uid="uid://ckp1frn2gtka3" path="res://Lab/DinoRun/Scenes/Crate.tscn" id="1_yyetq"]
+
+[node name="Staircase" type="Node2D"]
+script = ExtResource("1_srlio")
+
+[node name="Crate6" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]
+position = Vector2(40, -40)
+
+[node name="Crate5" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]
+position = Vector2(40, -20)
+
+[node name="Crate4" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]
+position = Vector2(20, -20)
+
+[node name="Crate3" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]
+position = Vector2(40, 0)
+
+[node name="Crate2" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]
+position = Vector2(20, 0)
+
+[node name="Crate" parent="." groups=["obstacles"] instance=ExtResource("1_yyetq")]

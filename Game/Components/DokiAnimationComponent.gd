@@ -22,6 +22,8 @@ extends Component
 @export var walkAnimation: StringName = &"walk"
 @export var jumpAnimation: StringName = &"jump"
 @export var fallAnimation: StringName = &"fall"
+@export var slideStartAnimation: StringName = &"slideStart"
+@export var slideEndAnimation: StringName = &"slideEnd"
 
 @export var flipWhenWalkingLeft: bool = true
 
@@ -70,6 +72,8 @@ func onInputComponent_didChangeHorizontalDirection() -> void:
 	#(animatedSprite if self.animatedSprite else parentEntity.sprite).flip_h = true if signf(inputComponent.horizontalInput) < 0 else false # NOTE: Check the CURRENT/most recent input, NOT the `previousMovementDirection` because that would be the opposite!
 
 var jumpFinished = true
+var slideFinished = true
+var sliding = false
 
 func _process(_delta: float) -> void:
 	# INFO: Animations are checked in order of priority: "walk" overrides "idle"
@@ -82,17 +86,37 @@ func _process(_delta: float) -> void:
 	# Check and set animation in order of lowest priority to highest. e.g. walk overrides idle
 
 	# NOTE: BUG: Including `body.velocity.y` in the check for "idle" and "walk" SOMETIMES causes a "walk" animation after [GunComponent] because the Y velocity remains a miniscule amount like -0.000023
-
+	
+	
 	# Are we chilling?
 	if not idleAnimation.is_empty() \
-	and is_zero_approx(body.velocity.x):
+	and is_zero_approx(body.velocity.x) \
+	and not sliding:
 		animationToPlay = idleAnimation
 
 	# Are we walking?
 	if not walkAnimation.is_empty() \
-	and not is_zero_approx(body.velocity.x):
+	and not is_zero_approx(body.velocity.x) \
+	and not sliding:
 		animationToPlay = walkAnimation
 
+	if inputComponent.verticalInput == 1.0  \
+	and not sliding \
+	and jumpFinished:
+		sliding = true
+		slideFinished = false
+		$"../CollisionShape2D".shape.size.y = 16
+		$"../CollisionShape2D".position.y = 0
+		animatedSprite.play(slideStartAnimation)
+		return
+		
+
+	if inputComponent.verticalInput < 1.0 \
+	and sliding \
+	and jumpFinished:
+		sliding = false	
+		animatedSprite.play(slideEndAnimation)
+		return
 	# Are we jumping or falling?
 	# DEBUG: if debugMode: Debug.watchList.onFloor = body.is_on_floor()
 
@@ -104,12 +128,24 @@ func _process(_delta: float) -> void:
 
 	# Play the chosen animation
 	if animationToPlay == "jump" && jumpFinished == true:
+		sliding = false
+		slideFinished = true
 		jumpFinished = false
+		animatedSprite.stop()
+		$"../CollisionShape2D".shape.size.y = 40
+		$"../CollisionShape2D".position.y = -12
 		$"../AnimatedSprite2D/AnimationPlayer".play("jump")
-	elif jumpFinished:
+	elif jumpFinished && slideFinished:
 		animatedSprite.play(animationToPlay)
 
 
 func onAnimationPlayer_animationFinished(anim_name: StringName) -> void:
 	if anim_name == "jump":
 		jumpFinished = true
+
+
+func onAnimatedSprite2d_animationFinished() -> void:
+	if animatedSprite.animation == "slideEnd":
+		$"../CollisionShape2D".shape.size.y = 40
+		$"../CollisionShape2D".position.y = -12
+		slideFinished = true

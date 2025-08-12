@@ -52,7 +52,7 @@ func _ready() -> void:
 		texture_rect = icon
 
 	texture_rect.texture = texture
-
+	
 	hide()
 	visibility_changed.connect(_on_visibility_changed)
 

@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cfxy5wg7ax0jd"]
+
+[ext_resource type="Texture2D" uid="uid://d35xwlbb0i5fa" path="res://Lab/Assets/ui_dialogue_box.png" id="1_26ja1"]
+
+[resource]
+content_margin_left = 15.0
+content_margin_top = 15.0
+texture = ExtResource("1_26ja1")
+region_rect = Rect2(141, 239, 358, 112)

@@ -1,7 +1,12 @@
-join Doki leftmost
-Doki: *flap* *flap* *flap*
-join Doki2 left
-join Doki3 center
-join Doki4 right
-join Doki5 rightmost
-Doki: *flap* *flap* *flap*
+join Crow rightmost [length="0.1" wait="true"]
+Crow: Doki quick, you need to jump over the obstacles!
+[signal arg="cutscene_2"]
+[wait time="3.0"]
+join Doki leftmost [length="0.1" wait="true"]
+Doki: Oh, that wasn't too hard \:3
+Crow: You just had to say that, didn't you?
+[signal arg="cutscene_3"]
+[wait time="3.0"]
+Doki: Uh oh...
+Crow: Run!
+[signal arg="start_game"]

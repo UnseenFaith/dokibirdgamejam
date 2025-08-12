@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckp1frn2gtka3"]
 
 [ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_1nw0l"]
-[ext_resource type="Texture2D" uid="uid://bbg5n8s82irrw" path="res://Lab/DinoRun/Assets/Lvl_1.png" id="2_shxcs"]
+[ext_resource type="Texture2D" uid="uid://bqp1n081oohpr" path="res://Lab/DinoRun/Assets/barrel.png" id="2_1nw0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ifor"]
 
-[node name="Crate" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Crate" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_1nw0l")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_shxcs")
+texture = ExtResource("2_1nw0l")
 region_enabled = true
-region_rect = Rect2(64, 120, 24, 24)
+region_rect = Rect2(32, 8, 24, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

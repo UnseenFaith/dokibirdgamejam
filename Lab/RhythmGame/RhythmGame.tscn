@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn0cc04rm7sio"]
+
+[ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
+[ext_resource type="MidiResource" uid="uid://bv0d8rlurv80v" path="res://Lab/RhythmGame/Assets/RhythmMIDI v1.mid" id="2_bveiw"]
+[ext_resource type="AudioStream" uid="uid://cbse1vak62gor" path="res://Lab/RhythmGame/Assets/Rhythm WIP.wav" id="3_bveiw"]
+[ext_resource type="Texture2D" uid="uid://dfus3p82wj5pw" path="res://Assets/Images/Solid16.png" id="4_7ww33"]
+
+[node name="RhythmGame" type="Node2D"]
+script = ExtResource("1_vd6rt")
+
+[node name="MidiQueue" type="MidiPlayer" parent="."]
+midi = ExtResource("2_bveiw")
+
+[node name="MidiPlayer" type="MidiPlayer" parent="."]
+midi = ExtResource("2_bveiw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bveiw")
+
+[node name="Lane1" type="Sprite2D" parent="."]
+position = Vector2(200, 100)
+texture = ExtResource("4_7ww33")
+
+[node name="Lane2" type="Sprite2D" parent="."]
+position = Vector2(200, 200)
+texture = ExtResource("4_7ww33")
+
+[node name="Lane3" type="Sprite2D" parent="."]
+position = Vector2(200, 300)
+texture = ExtResource("4_7ww33")

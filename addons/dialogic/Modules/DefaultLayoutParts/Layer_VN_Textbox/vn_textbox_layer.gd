@@ -120,24 +120,24 @@ func _apply_export_overrides() -> void:
 		await ready
 
 	## FONT SETTINGS
-	_apply_text_settings()
+	#_apply_text_settings()
 
 
 	## BOX SETTINGS
-	_apply_box_settings()
+	#_apply_box_settings()
 
 	## BOX ANIMATIONS
 	_apply_box_animations_settings()
 
 	## NAME LABEL SETTINGS
-	_apply_name_label_settings()
+	#_apply_name_label_settings()
 
 	## NEXT INDICATOR SETTINGS
 	_apply_indicator_settings()
 
 	## OTHER
-	var progress_bar: ProgressBar = %AutoAdvanceProgressbar
-	progress_bar.set(&'enabled', autoadvance_progressbar)
+	#var progress_bar: ProgressBar = %AutoAdvanceProgressbar
+	#progress_bar.set(&'enabled', autoadvance_progressbar)
 
 	#### SOUNDS
 
@@ -152,10 +152,10 @@ func _apply_box_settings() -> void:
 	if ResourceLoader.exists(box_panel):
 		dialog_text_panel.add_theme_stylebox_override(&'panel', load(box_panel) as StyleBox)
 
-	if box_color_use_global:
-		dialog_text_panel.self_modulate = get_global_setting(&'bg_color', box_color_custom)
-	else:
-		dialog_text_panel.self_modulate = box_color_custom
+	#if box_color_use_global:
+	#	dialog_text_panel.self_modulate = get_global_setting(&'bg_color', box_color_custom)
+	#else:
+	#	dialog_text_panel.self_modulate = box_color_custom
 
 	var sizer: Control = %Sizer
 	sizer.size = box_size
@@ -197,15 +197,15 @@ func _apply_name_label_settings() -> void:
 	else:
 		name_label_panel.add_theme_stylebox_override(&'panel', load(this_folder.path_join("vn_textbox_name_label_panel.tres")) as StyleBox)
 
-	if name_label_box_use_global_color:
-		name_label_panel.self_modulate = get_global_setting(&'bg_color', name_label_box_modulate)
-	else:
-		name_label_panel.self_modulate = name_label_box_modulate
+	#if name_label_box_use_global_color:
+	#	name_label_panel.self_modulate = get_global_setting(&'bg_color', name_label_box_modulate)
+	#else:
+	#	name_label_panel.self_modulate = name_label_box_modulate
 	var dialog_text_panel: PanelContainer = %DialogTextPanel
-	name_label_panel.position = name_label_box_offset+Vector2(0, -40)
-	name_label_panel.position -= Vector2(
-		dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_left,
-		dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_top)
+	#name_label_panel.position = name_label_box_offset+Vector2(0, -40)
+	#name_label_panel.position -= Vector2(
+		#dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_left,
+		#dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_top)
 	name_label_panel.anchor_left = name_label_alignment/2.0
 	name_label_panel.anchor_right = name_label_alignment/2.0
 	name_label_panel.grow_horizontal = [1, 2, 0][name_label_alignment]
@@ -252,7 +252,7 @@ func _apply_indicator_settings() -> void:
 		next_indicator.show_on_questions = next_indicator_show_on_questions
 		next_indicator.show_on_autoadvance = next_indicator_show_on_autoadvance
 		next_indicator.texture_size = next_indicator_size
-
+		next_indicator.self_modulate = Color.BLACK
 
 ## Applies all sound settings to the scene.
 func _apply_sounds_settings() -> void:

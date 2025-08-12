@@ -157,7 +157,6 @@ func getAimAngle() -> float:
 		return rad_to_deg(atan2(direction.y, direction.x))
 	else:
 		# If no player or aiming disabled, use boss's current rotation
-		print(parentEntity.rotation)
 		return rad_to_deg(parentEntity.rotation)
 
 func getRequiredComponents() -> Array[Script]:

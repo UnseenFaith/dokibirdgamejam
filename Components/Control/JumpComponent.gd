@@ -90,6 +90,9 @@ func _ready() -> void:
 	wallJumpTimer.wait_time = parameters.wallJumpTimer
 
 
+func cutsceneJump() -> void:
+	body.velocity.y = parameters.jumpVelocity1stJump * body.up_direction.y
+	characterBodyComponent.shouldMoveThisFrame = true
 #region Update Cycle
 
 func onInputComponent_didProcessInput(event: InputEvent) -> void:

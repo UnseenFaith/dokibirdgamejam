@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dml1yg8xko6f3"]
+
+[ext_resource type="Script" uid="uid://dfvxp2je07kme" path="res://Lab/RhythmGame/Note.gd" id="1_lu8ck"]
+[ext_resource type="Texture2D" uid="uid://dfus3p82wj5pw" path="res://Assets/Images/Solid16.png" id="2_ah6or"]
+
+[node name="Note" type="Node2D"]
+script = ExtResource("1_lu8ck")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.6035344, 1, 0.57329637, 1)
+texture = ExtResource("2_ah6or")
