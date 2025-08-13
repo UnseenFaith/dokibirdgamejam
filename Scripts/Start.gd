@@ -119,15 +119,15 @@ func startComedot() -> void:
 	printLog("[b]_ready()[/b]")
 	Global.hasStartScript = true
 	Debug.performFrameworkChecks() # Update the warning about missing Start script
-	applyGlobalFlags()
+	#applyGlobalFlags()
 
 
 func applyGlobalFlags() -> void:
 	# Debugging
-	Debug.shouldPrintDebugLogs		= self.shouldPrintDebugLogs
-	Debug.debugWindow.visible		= self.showDebugWindow if OS.is_debug_build() else false
-	Debug.showDebugLabels			= self.showDebugLabels
-	Debug.debugBackground.visible	= self.showDebugBackground
+	#Debug.shouldPrintDebugLogs		= self.shouldPrintDebugLogs
+	#Debug.debugWindow.visible		= self.showDebugWindow if OS.is_debug_build() else false
+	#Debug.showDebugLabels			= self.showDebugLabels
+	#Debug.debugBackground.visible	= self.showDebugBackground
 	
 	# Game State handled by setupGameState()
 
@@ -150,3 +150,21 @@ func applyGlobalFlags() -> void:
 
 func printLog(message: String) -> void:
 	Debug.printLog(message, str("[b]", self.get_script().resource_path.get_file(), "[/b] ", self), "WHITE", "WHITE")
+
+
+func onLevel1_pressed() -> void:
+	var level1: PackedScene = load("res://Lab/DinoRun/DinoRun.tscn")
+	SceneManager.transitionToScene(level1)
+	GlobalInput.isPauseShortcutAllowed = true
+
+
+func onLevel2_pressed() -> void:
+	var level2: PackedScene = load("res://Lab/RhythmGame/RhythmGame.tscn")
+	SceneManager.transitionToScene(level2)
+	GlobalInput.isPauseShortcutAllowed = true
+
+
+func onLevel3_pressed() -> void:
+	var level3: PackedScene = load("res://Lab/BulletHell/BulletHell.tscn")
+	SceneManager.transitionToScene(level3)
+	GlobalInput.isPauseShortcutAllowed = true

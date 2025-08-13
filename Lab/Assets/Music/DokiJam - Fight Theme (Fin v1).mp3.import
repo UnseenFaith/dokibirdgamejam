@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsjx3p8cw5yjy"
+path="res://.godot/imported/DokiJam - Fight Theme (Fin v1).mp3-74ce32c144a3eb73e41a6f9dd417b594.mp3str"
+
+[deps]
+
+source_file="res://Lab/Assets/Music/DokiJam - Fight Theme (Fin v1).mp3"
+dest_files=["res://.godot/imported/DokiJam - Fight Theme (Fin v1).mp3-74ce32c144a3eb73e41a6f9dd417b594.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

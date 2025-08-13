@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bdbd6yxoxla4l"
+path="res://.godot/imported/DokiJam - Rhythm (Fin v1).wav-5ac54691a6c0832f4f7a417408a83b3f.sample"
+
+[deps]
+
+source_file="res://Lab/Assets/Music/DokiJam - Rhythm (Fin v1).wav"
+dest_files=["res://.godot/imported/DokiJam - Rhythm (Fin v1).wav-5ac54691a6c0832f4f7a417408a83b3f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

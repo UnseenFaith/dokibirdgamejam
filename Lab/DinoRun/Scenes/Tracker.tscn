@@ -1,29 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbhnnirun0in7"]
+[gd_scene load_steps=5 format=3 uid="uid://cbhnnirun0in7"]
 
 [ext_resource type="Script" uid="uid://cfdkq2dsuup1s" path="res://Lab/DinoRun/Scenes/Tracker.gd" id="1_e5ju3"]
-[ext_resource type="Texture2D" uid="uid://u7227vs57eyx" path="res://Assets/Tiles/Kenney1Bit-Monochrome.png" id="1_rl1rl"]
+[ext_resource type="Texture2D" uid="uid://b47w3s2542kph" path="res://Lab/Assets/progress_bar.png" id="2_ggsve"]
+[ext_resource type="Texture2D" uid="uid://dlrf0ok4jymy6" path="res://Lab/Assets/heads_ui.png" id="3_ggsve"]
 
 [sub_resource type="Curve2D" id="Curve2D_38u21"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 336, 0)
 }
 point_count = 2
 
 [node name="Tracker" type="Node2D"]
+process_mode = 4
 script = ExtResource("1_e5ju3")
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(152, 0)
+texture = ExtResource("2_ggsve")
+region_enabled = true
+region_rect = Rect2(7, 10, 321, 13)
+
+[node name="BarEnd" type="Sprite2D" parent="."]
+position = Vector2(328, 0)
+texture = ExtResource("2_ggsve")
+region_enabled = true
+region_rect = Rect2(400, 10, 32, 13)
+
+[node name="Mint" type="Sprite2D" parent="."]
+position = Vector2(336, 0)
+texture = ExtResource("3_ggsve")
+region_enabled = true
+region_rect = Rect2(48, 3, 34, 27)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_38u21")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+cubic_interp = false
+loop = false
 
 [node name="Doki" type="Sprite2D" parent="Path2D/PathFollow2D"]
-texture = ExtResource("1_rl1rl")
+position = Vector2(0, -5)
+texture = ExtResource("3_ggsve")
 region_enabled = true
-region_rect = Rect2(400, 128, 16, 16)
-
-[node name="Mint" type="Sprite2D" parent="."]
-position = Vector2(123, 0)
-texture = ExtResource("1_rl1rl")
-region_enabled = true
-region_rect = Rect2(496, 128, 16, 16)
+region_rect = Rect2(0, 2, 35, 27)

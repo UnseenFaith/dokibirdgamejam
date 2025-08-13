@@ -1,21 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn0cc04rm7sio"]
+[gd_scene load_steps=7 format=3 uid="uid://cn0cc04rm7sio"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
-[ext_resource type="MidiResource" uid="uid://bv0d8rlurv80v" path="res://Lab/RhythmGame/Assets/RhythmMIDI v1.mid" id="2_bveiw"]
+[ext_resource type="MidiResource" uid="uid://bpn1jctdrqa4j" path="res://Lab/RhythmGame/Assets/RhythmMIDI v1.mid" id="2_qbl1s"]
 [ext_resource type="AudioStream" uid="uid://cbse1vak62gor" path="res://Lab/RhythmGame/Assets/Rhythm WIP.wav" id="3_bveiw"]
 [ext_resource type="Texture2D" uid="uid://dfus3p82wj5pw" path="res://Assets/Images/Solid16.png" id="4_7ww33"]
+[ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbl1s"]
+bg_color = Color(1, 0, 0, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+anti_aliasing = false
 
 [node name="RhythmGame" type="Node2D"]
 script = ExtResource("1_vd6rt")
 
 [node name="MidiQueue" type="MidiPlayer" parent="."]
-midi = ExtResource("2_bveiw")
+midi = ExtResource("2_qbl1s")
 
 [node name="MidiPlayer" type="MidiPlayer" parent="."]
-midi = ExtResource("2_bveiw")
+midi = ExtResource("2_qbl1s")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_bveiw")
+volume_db = -5.0
+bus = &"Music"
 
 [node name="Lane1" type="Sprite2D" parent="."]
 position = Vector2(200, 100)
@@ -28,3 +37,60 @@ texture = ExtResource("4_7ww33")
 [node name="Lane3" type="Sprite2D" parent="."]
 position = Vector2(200, 300)
 texture = ExtResource("4_7ww33")
+
+[node name="Player" parent="." instance=ExtResource("5_qbl1s")]
+position = Vector2(63, 87)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AccuracyLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+offset_right = 72.0
+offset_bottom = 40.0
+text = "Accuracy: "
+
+[node name="Accuracy" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 63.0
+offset_top = 1.0
+offset_right = 115.0
+offset_bottom = 28.0
+text = "100.00"
+
+[node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+offset_top = 9.0
+offset_right = 42.0
+offset_bottom = 49.0
+text = "Combo:"
+
+[node name="Combo" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 63.0
+offset_top = 9.0
+offset_right = 103.0
+offset_bottom = 49.0
+text = "200x"
+
+[node name="LevelTracker" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 174.0
+offset_right = 348.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0.7049909, 0.37744042, 1)
+
+[node name="HealthTracker" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 174.0
+offset_top = 13.0
+offset_right = 348.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_qbl1s")
+max_value = 5.0
+step = 1.0
+value = 5.0
+
+[connection signal="finished" from="MidiQueue" to="." method="onMidiQueue_finished"]
+[connection signal="note" from="MidiQueue" to="." method="my_note_callback"]
+[connection signal="note_hit" from="Player" to="." method="onPlayer_noteHit"]

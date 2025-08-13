@@ -59,17 +59,17 @@ func update_track_data(track: Dictionary, midi: MidiResource):
 		if event["type"] == "note":
 			# check for note on events
 			if event["subtype"] == MIDI_MESSAGE_NOTE_ON:
-				note_map[event["note"]] = event["delta"]
+				note_map[event["note"]] = event["time"]
 				
 			# check for note off events
 			if event["subtype"] == MIDI_MESSAGE_NOTE_OFF or (event["subtype"] == MIDI_MESSAGE_NOTE_ON and event["data"] == 0):
 				# calculate offsets/timing info for display
-				var off_time = event["delta"] * TIME_ZOOM
+				var off_time = event["time"] * TIME_ZOOM
 				var on_time = off_time
 				var horizontal_size = 0
 				if note_map.has(event["note"]):
 					on_time = note_map[event["note"]] * TIME_ZOOM
-					horizontal_size = (event["delta"] - note_map[event["note"]]) * TIME_ZOOM
+					horizontal_size = (event["time"] - note_map[event["note"]]) * TIME_ZOOM
 				var vertical_position = ((127 - event["note"]) * VERTICAL_ZOOM) - min_vertical_pos
 				
 				# instantiate the note scene

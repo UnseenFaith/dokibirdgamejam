@@ -1,5 +1,5 @@
 extends Node2D
 
-func _process(delta: float) -> void:
-	$Path2D/PathFollow2D.progress_ratio += 0.01 * delta
-	
+func _process(_delta: float) -> void:
+	if $Path2D/PathFollow2D.progress_ratio == 1:
+		self.process_mode = Node.PROCESS_MODE_DISABLED

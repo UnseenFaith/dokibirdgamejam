@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e8af6qcdtnd3"
+path="res://.godot/imported/DokiJam - Rhythm (Fin v1).mp3-508d92fc2a5a7bb888938fa2d766fb41.mp3str"
+
+[deps]
+
+source_file="res://Lab/Assets/Music/DokiJam - Rhythm (Fin v1).mp3"
+dest_files=["res://.godot/imported/DokiJam - Rhythm (Fin v1).mp3-508d92fc2a5a7bb888938fa2d766fb41.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

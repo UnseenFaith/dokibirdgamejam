@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmixg6pj45y1"
+path="res://.godot/imported/DokiJam - Desktop Menu.mp3-549f1afa2bef5410be09cea1d7537540.mp3str"
+
+[deps]
+
+source_file="res://Lab/Assets/Music/DokiJam - Desktop Menu.mp3"
+dest_files=["res://.godot/imported/DokiJam - Desktop Menu.mp3-549f1afa2bef5410be09cea1d7537540.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -24,6 +24,8 @@ normal = Vector2(-1, 0)
 [node name="IOLogoScene" type="Node2D"]
 script = ExtResource("1_hl2sk")
 mainGameScenePath = "uid://coypgt0d6bj26"
+musicFolder = ""
+shouldPlayRandomMusicIndex = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_04x4y")

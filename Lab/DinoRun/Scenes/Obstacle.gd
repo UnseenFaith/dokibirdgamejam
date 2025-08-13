@@ -11,7 +11,7 @@ var has_been_hit := false
 var fly_velocity := Vector2.ZERO
 var fly_angular_velocity := 0.0
 
-func fly_off():
+func fly_off() -> void:
 	if has_been_hit:
 		return
 	has_been_hit = true

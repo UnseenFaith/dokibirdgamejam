@@ -8,6 +8,7 @@ mix_rate = 22050.0
 [node name="GlobalSonic" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_cweqa")
+musicFolder = ""
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"

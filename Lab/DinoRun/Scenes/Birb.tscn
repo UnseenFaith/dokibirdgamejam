@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh2r1pqucgfg7"]
+
+[ext_resource type="PackedScene" uid="uid://cj0ddd8j8utjo" path="res://Lab/DinoRun/Scenes/Bird.tscn" id="1_h0x5f"]
+[ext_resource type="Script" uid="uid://cg163wqbop265" path="res://Lab/DinoRun/Scenes/Obstacle.gd" id="1_wprvy"]
+
+[node name="Birb" type="Node2D" groups=["obstacles"]]
+script = ExtResource("1_wprvy")
+
+[node name="Bird" parent="." groups=["obstacles"] instance=ExtResource("1_h0x5f")]
+position = Vector2(0, -69)
+
+[node name="Bird2" parent="." groups=["obstacles"] instance=ExtResource("1_h0x5f")]
+position = Vector2(0, -46)
+
+[node name="Bird3" parent="." groups=["obstacles"] instance=ExtResource("1_h0x5f")]
+position = Vector2(0, -23)
+
+[node name="Bird4" parent="." groups=["obstacles"] instance=ExtResource("1_h0x5f")]

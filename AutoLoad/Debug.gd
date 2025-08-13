@@ -69,17 +69,19 @@ static var testMode:			bool ## Set by [TestMode].gd for use by other scripts, fo
 #region Initialization
 
 func _enter_tree() -> void:
-	displayInitializationMessage()
+	pass
+	#displayInitializationMessage()
 
 
 func _ready() -> void:
-	Debug.printLog("_ready()", self.get_script().resource_path.get_file(), "", "WHITE")
-	initializeLogWindow()
-	initializeDebugWindow()
-	resetLabels()
-	setLabelVisibility()
-	performFrameworkChecks()
-	self.set_process(showDebugLabels) # Apply setter because Godot doesn't on initialization
+	pass
+	#Debug.printLog("_ready()", self.get_script().resource_path.get_file(), "", "WHITE")
+	#initializeLogWindow()
+	#initializeDebugWindow()
+	#resetLabels()
+	#setLabelVisibility()
+	#performFrameworkChecks()
+	#self.set_process(showDebugLabels) # Apply setter because Godot doesn't on initialization
 
 
 func initializeLogWindow() -> void:

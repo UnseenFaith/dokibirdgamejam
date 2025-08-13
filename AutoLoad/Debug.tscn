@@ -13,6 +13,7 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Debug" type="Node"]
+process_mode = 4
 script = ExtResource("1_rd14n")
 
 [node name="Canvas" type="CanvasLayer" parent="."]
@@ -20,6 +21,7 @@ layer = 110
 
 [node name="Labels" type="Node2D" parent="Canvas"]
 unique_name_in_owner = true
+visible = false
 top_level = true
 position = Vector2(8, 8)
 
@@ -58,6 +60,7 @@ oversampling_override = 1.0
 title = "Comedot Debug Info"
 position = Vector2i(100, 100)
 size = Vector2i(720, 800)
+visible = false
 wrap_controls = true
 transient = true
 unfocusable = true
@@ -111,6 +114,7 @@ oversampling_override = 1.0
 title = "Comedot Log"
 position = Vector2i(100, 100)
 size = Vector2i(1000, 400)
+visible = false
 wrap_controls = true
 transient = true
 min_size = Vector2i(80, 80)
@@ -140,6 +144,7 @@ theme_override_constants/separation = 2
 
 [node name="DebugBackground" parent="." instance=ExtResource("4_v5ev8")]
 unique_name_in_owner = true
+visible = false
 
 [connection signal="close_requested" from="DebugWindow" to="DebugWindow" method="hide"]
 [connection signal="close_requested" from="CustomLogWindow" to="CustomLogWindow" method="hide"]

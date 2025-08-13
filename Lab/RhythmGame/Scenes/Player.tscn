@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxp7p2hbajrcq"]
+
+[ext_resource type="Script" uid="uid://dgs8q55bukuoe" path="res://Lab/RhythmGame/Scenes/Player.gd" id="1_s8ctt"]
+[ext_resource type="Texture2D" uid="uid://b2wasjk3c2p77" path="res://Game/Assets/flappybird.png" id="1_sxdg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ctt"]
+size = Vector2(20, 25)
+
+[node name="Player" type="Area2D"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_s8ctt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sxdg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(31, 20.5)
+shape = SubResource("RectangleShape2D_s8ctt")
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]

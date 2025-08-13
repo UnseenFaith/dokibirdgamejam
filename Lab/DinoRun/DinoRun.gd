@@ -10,13 +10,15 @@ var obstacle_types := [
 	"res://Lab/DinoRun/Scenes/TripleTallCactus.tscn",
 	"res://Lab/DinoRun/Scenes/Barrel.tscn",
 	"res://Lab/DinoRun/Scenes/Staircase.tscn",
-	"res://Lab/DinoRun/Scenes/Bird.tscn",
+	"res://Lab/DinoRun/Scenes/Birb.tscn",
 ]
 var obstacles: Array
 @onready var player := $"Player-Platformer"
 @onready var screen_size := get_window().size
 @onready var ground_height = $Floor.get_node("Dirt/Floor1").texture.get_height()
 var last_obstacle
+
+@onready var audio := $AudioStreamPlayer
 
 var CURRENT_SPEED := 200
 
@@ -46,9 +48,23 @@ func _start_game() -> void:
 	$ObstacleTimer.start()
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = true
 	$Enemy.monitoring = true
-	$Enemy.position.x = 0
+	$Enemy.position.x = 20
+	$Enemy/AnimatedSprite2D.play("default")
 	$"Player-Platformer/InputComponent".isEnabled = true
-	GlobalSonic.playMusicFile("res://Assets/Music/CowBoy Theme WIP 2.wav")
+	$AudioStreamPlayer.play()
+
+func _process(delta: float) -> void:
+	if audio.playing:
+		var current_time = audio.get_playback_position()
+		var total_time = audio.stream.get_length()
+		
+		# Avoid division by zero if stream length is unknown
+		if total_time > 0:
+			$Tracker/Path2D/PathFollow2D.progress_ratio = (current_time / total_time)
+		else:
+			$Tracker/Path2D/PathFollow2D.progress_ratio = 0.0
+	else:
+		$Tracker/Path2D/PathFollow2D.progress_ratio = 0.0
 
 func generate_obstacle(obst = null) -> void:
 	var index

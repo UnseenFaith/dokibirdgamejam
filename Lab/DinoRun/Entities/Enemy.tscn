@@ -1,22 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3gr5jms2ycia"]
+[gd_scene load_steps=13 format=3 uid="uid://d3gr5jms2ycia"]
 
 [ext_resource type="Script" uid="uid://fglyrneiemyv" path="res://Lab/DinoRun/Entities/Enemy.gd" id="1_mgmhy"]
-[ext_resource type="Texture2D" uid="uid://b2wasjk3c2p77" path="res://Game/Assets/flappybird.png" id="1_r7b17"]
+[ext_resource type="Texture2D" uid="uid://kh1y227t1s6m" path="res://Lab/Assets/Dragoon_chasing.png" id="2_mgmhy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cwrm"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iot4d"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svtx6"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48wox"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42jrd"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yixqi"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne3l8"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emeyc"]
+atlas = ExtResource("2_mgmhy")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbpnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cwrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iot4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svtx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48wox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42jrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yixqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne3l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emeyc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r7b17"]
-size = Vector2(26, 78)
+size = Vector2(26, 64)
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 0
 collision_mask = 22
 script = ExtResource("1_mgmhy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_r7b17")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vbpnc")
+frame = 1
+frame_progress = 0.7377346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13, 9)
+position = Vector2(13, 2)
 shape = SubResource("RectangleShape2D_r7b17")
 
 [connection signal="body_entered" from="." to="." method="onBodyEntered"]
