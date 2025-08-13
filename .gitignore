@@ -5,7 +5,7 @@
 # *.uid # Required from 4.4 :')
 .import/
 export.cfg
-.addons/godot_midi
+.addons/godot_midi/*
 # Imported translations (automatically generated from CSV files)
 *.translation
 
