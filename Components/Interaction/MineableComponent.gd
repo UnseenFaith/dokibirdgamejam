@@ -1,4 +1,4 @@
-*## A subclass of [InteractionComponent] that contains a [Stat] which is "consumed" with each interaction, limiting the number of interactions. 
+## A subclass of [InteractionComponent] that contains a [Stat] which is "consumed" with each interaction, limiting the number of interactions. 
 ## May be used for objects such as trees or rocks that may be "mined" by the player,
 ## where the [member payload] may be a [NodePayload] that produces another Entity with a [CollectibleStatComponent] for the player to collect game-specific resources.
 
