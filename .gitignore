@@ -1,12 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
+.build/
+.addons/godot_midi
 
 # Godot-specific ignores
 # *.uid # Required from 4.4 :')
 .import/
 export.cfg
 .addons/godot_midi/*
-.build/*
 # Imported translations (automatically generated from CSV files)
 *.translation
 
