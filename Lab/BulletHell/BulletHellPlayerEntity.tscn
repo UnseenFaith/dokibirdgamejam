@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uhpryrs6kicb"]
+[gd_scene load_steps=17 format=3 uid="uid://uhpryrs6kicb"]
 
 [ext_resource type="PackedScene" uid="uid://b6c5d68ty35va" path="res://Templates/Entities/PlayerEntityTemplate-Overhead.tscn" id="1_rja4v"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="2_82ebn"]
@@ -8,6 +8,69 @@
 [ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="5_kwqpf"]
 [ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_qpgeg"]
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="7_chq7u"]
+[ext_resource type="PackedScene" uid="uid://cd7vapsmxp183" path="res://Components/Combat/InvulnerabilityOnHitComponent.tscn" id="7_wh2cs"]
+[ext_resource type="Script" uid="uid://dasb7rs3nfxka" path="res://Components/Combat/InvulnerabilityOnHitComponent.gd" id="8_peug6"]
+
+[sub_resource type="Animation" id="Animation_wh2cs"]
+resource_name = "invulnerabilityOnHit"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(100, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_peug6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_peug6"]
+_data = {
+&"RESET": SubResource("Animation_peug6"),
+&"invulnerabilityOnHit": SubResource("Animation_wh2cs")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_peug6"]
 resource_local_to_scene = true
@@ -33,28 +96,37 @@ name = &"ammo"
 [node name="Player-OverheadCombat" instance=ExtResource("1_rja4v")]
 editor_description = "A template for the player character in an \"overhead\" or \"top-down\" view game with combat functionality."
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_peug6")
+}
+
+[node name="Sprite2D" parent="." index="1"]
 modulate = Color(1, 1, 1, 1)
 texture = ExtResource("2_142k4")
 region_rect = Rect2(0, 0, 32, 48)
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("RectangleShape2D_peug6")
 
-[node name="FactionComponent" parent="." index="2" instance=ExtResource("2_82ebn")]
+[node name="FactionComponent" parent="." index="3" instance=ExtResource("2_82ebn")]
 factions = 2
 
-[node name="HealthComponent" parent="." index="3" instance=ExtResource("3_2u5kn")]
+[node name="HealthComponent" parent="." index="4" instance=ExtResource("3_2u5kn")]
 health = SubResource("Resource_1id7j")
 shouldGameOverOnZero = true
 
-[node name="HealthVisualComponent" parent="." index="4" instance=ExtResource("5_kwqpf")]
+[node name="HealthVisualComponent" parent="." index="5" instance=ExtResource("5_kwqpf")]
 
-[node name="DamageReceivingComponent" parent="." index="5" instance=ExtResource("6_qpgeg")]
+[node name="InvulnerabilityOnHitComponent" type="Node" parent="." index="6" node_paths=PackedStringArray("animationPlayer") groups=["components"] instance=ExtResource("7_wh2cs")]
+script = ExtResource("8_peug6")
+animationPlayer = NodePath("../AnimationPlayer")
+
+[node name="DamageReceivingComponent" parent="." index="7" instance=ExtResource("6_qpgeg")]
 collision_layer = 1028
 collision_mask = 1064
 
-[node name="GunComponent" parent="." index="6" instance=ExtResource("7_chq7u")]
+[node name="GunComponent" parent="." index="8" instance=ExtResource("7_chq7u")]
 ammo = SubResource("Resource_qdfo0")
 cooldown = 0.16000000000000003
 
@@ -64,7 +136,7 @@ visible = false
 [node name="BulletEmitter" parent="GunComponent/GunSprite" index="0"]
 position = Vector2(16, -2)
 
-[node name="CameraComponent" parent="." index="7"]
+[node name="CameraComponent" parent="." index="9"]
 offset = Vector2(195, -40)
 enabled = false
 zoom = Vector2(1.5, 1.5)

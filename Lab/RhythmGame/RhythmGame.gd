@@ -43,6 +43,7 @@ func _process(delta) -> void:
 	$CanvasLayer/LevelTracker.value = (((total_notes - float(notes.size())) / total_notes) * 100)
 	
 	if delta_sum >= lead_time and not asp.playing and not finished:
+		asp.play()
 		pass
 		#midi_player.play()
 		

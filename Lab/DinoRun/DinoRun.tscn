@@ -334,7 +334,7 @@ position = Vector2(195, 249)
 [node name="Tracker" parent="." instance=ExtResource("11_omlr4")]
 visible = false
 z_index = 1
-position = Vector2(55, 107)
+position = Vector2(46.5, 296)
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 script = ExtResource("11_20i0w")

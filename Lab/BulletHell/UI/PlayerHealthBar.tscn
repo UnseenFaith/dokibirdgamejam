@@ -13,31 +13,31 @@ region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Heart" type="Sprite2D" parent="."]
-position = Vector2(16, 16)
+position = Vector2(27, 23)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart2" type="Sprite2D" parent="."]
-position = Vector2(48, 16)
+position = Vector2(59, 23)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart3" type="Sprite2D" parent="."]
-position = Vector2(80, 16)
+position = Vector2(91, 23)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart4" type="Sprite2D" parent="."]
-position = Vector2(112, 16)
+position = Vector2(123, 23)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart5" type="Sprite2D" parent="."]
-position = Vector2(144, 17)
+position = Vector2(155, 24)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)

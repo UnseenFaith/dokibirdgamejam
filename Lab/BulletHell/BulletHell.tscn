@@ -128,7 +128,7 @@ health = SubResource("Resource_4qcyh")
 isPlayerControlled = false
 
 [node name="BeehaveTree" parent="BossEntity" index="11" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@94836")
+blackboard = NodePath("@Node@105162")
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
 position = Vector2(30, 213.00002)
@@ -154,10 +154,10 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("13_2tr6k")]
-
 [node name="BossHealthBar" parent="CanvasLayer" node_paths=PackedStringArray("healthComp") instance=ExtResource("13_q34lf")]
 healthComp = NodePath("../../BossEntity/HealthComponent")
+
+[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("13_2tr6k")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_eaick")
