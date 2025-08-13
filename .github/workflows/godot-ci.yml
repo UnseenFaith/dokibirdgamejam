@@ -11,7 +11,7 @@ env:
 jobs:
   export-windows:
     name: Windows Export
-    runs-on: ubuntu-22.04  # Use 22.04 with godot 4
+    runs-on: ubuntu-22.04 # Use 22.04 with godot 4
     container:
       image: barichello/godot-ci:4.4.1
     steps:
@@ -39,7 +39,7 @@ jobs:
 
   export-linux:
     name: Linux Export
-    runs-on: ubuntu-22.04  # Use 22.04 with godot 4
+    runs-on: ubuntu-22.04 # Use 22.04 with godot 4
     container:
       image: barichello/godot-ci:4.4.1
     steps:
@@ -56,7 +56,7 @@ jobs:
           mkdir -v -p build/linux
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Linux/X11" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
+          godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -65,7 +65,9 @@ jobs:
 
   export-web:
     name: Web Export
-    runs-on: ubuntu-22.04  # Use 22.04 with godot 4
+    runs-on: ubuntu-22.04 # Use 22.04 with godot 4
+    permissions:
+      contents: write
     container:
       image: barichello/godot-ci:4.4.1
     steps:
