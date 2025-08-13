@@ -6,6 +6,7 @@
 .import/
 export.cfg
 .addons/godot_midi/*
+.build/*
 # Imported translations (automatically generated from CSV files)
 *.translation
 
