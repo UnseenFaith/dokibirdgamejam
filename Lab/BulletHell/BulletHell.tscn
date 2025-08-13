@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d2r4a8x46c7pa"]
+[gd_scene load_steps=19 format=4 uid="uid://d2r4a8x46c7pa"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_5pdtg"]
 [ext_resource type="Texture2D" uid="uid://o834wpmisl15" path="res://Lab/BulletHell/Assets/parralax/sky.png" id="1_hjm5k"]
@@ -12,15 +12,32 @@
 [ext_resource type="Texture2D" uid="uid://cmu0qnlsanhoc" path="res://Lab/BulletHell/Assets/parralax/rocks_1.png" id="6_01jtn"]
 [ext_resource type="Texture2D" uid="uid://cqkf5vhb4kd2e" path="res://Lab/BulletHell/Assets/parralax/rocks_3.png" id="6_pn6yh"]
 [ext_resource type="TileSet" uid="uid://6386asadi854" path="res://Assets/Tiles/Kenney1Bit-Monochrome-Transparent-Physics.tres" id="11_pn6yh"]
+[ext_resource type="PackedScene" uid="uid://cohfff8gqb3dc" path="res://Lab/BulletHell/UI/PlayerHealthBar.tscn" id="13_2tr6k"]
 [ext_resource type="PackedScene" uid="uid://bjcrjhth3ieg7" path="res://Lab/BulletHell/UI/BossHealthBar.tscn" id="13_q34lf"]
+[ext_resource type="AudioStream" uid="uid://c02d7gj5c3lsr" path="res://Lab/Assets/Music/DokiJam - Fight Theme (Fin v1).wav" id="14_eaick"]
 
 [sub_resource type="Resource" id="Resource_4qcyh"]
 resource_local_to_scene = true
 resource_name = "health"
 script = ExtResource("2_wlkfx")
-value = 10
+max = 5
+value = 5
 name = &"health"
 displayName = "Health"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tr6k"]
+resource_local_to_scene = true
+size = Vector2(15, 15)
+
+[sub_resource type="Resource" id="Resource_1id7j"]
+resource_local_to_scene = true
+resource_name = "playerHealth"
+script = ExtResource("2_wlkfx")
+max = 5
+value = 5
+name = &"playerHealth"
+displayName = "HP"
+metadata/_custom_type_script = "uid://dif3dj8k5ixfw"
 
 [node name="BulletHell" type="Node2D"]
 script = ExtResource("1_5pdtg")
@@ -111,11 +128,20 @@ health = SubResource("Resource_4qcyh")
 isPlayerControlled = false
 
 [node name="BeehaveTree" parent="BossEntity" index="11" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@55626")
+blackboard = NodePath("@Node@94836")
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
 position = Vector2(30, 213.00002)
 scale = Vector2(1, 0.99999994)
+
+[node name="CollisionShape2D" parent="Player-OverheadCombat" index="1"]
+shape = SubResource("RectangleShape2D_2tr6k")
+
+[node name="HealthComponent" parent="Player-OverheadCombat" index="3"]
+health = SubResource("Resource_1id7j")
+
+[node name="HealthVisualComponent" parent="Player-OverheadCombat" index="4"]
+shouldEmitBubble = false
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -128,8 +154,19 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("13_2tr6k")]
+
 [node name="BossHealthBar" parent="CanvasLayer" node_paths=PackedStringArray("healthComp") instance=ExtResource("13_q34lf")]
 healthComp = NodePath("../../BossEntity/HealthComponent")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_eaick")
+autoplay = true
+bus = &"Music"
+
+[connection signal="healthDidDecrease" from="Player-OverheadCombat/HealthComponent" to="CanvasLayer/PlayerHealthBar" method="onHealthComponent_healthDidDecrease"]
+
 [editable path="BossEntity"]
 [editable path="BossEntity/GunComponent"]
+[editable path="Player-OverheadCombat"]
+[editable path="Player-OverheadCombat/GunComponent"]

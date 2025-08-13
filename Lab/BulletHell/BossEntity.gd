@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void: # NOTE: If you need to process movement or collisions, use `_physics_process()`
-	pass # Placeholder: Perform any per-frame updates.
+	pass # Placeholder: Perform andy per-frame updates.
 	
 
 func laser_attack() -> void:

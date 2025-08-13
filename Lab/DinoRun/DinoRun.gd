@@ -44,6 +44,7 @@ func _start_game() -> void:
 	$Floor/Tumble.autoscroll.x = - CURRENT_SPEED
 	$Background.process_mode = Node.PROCESS_MODE_INHERIT
 	$Tracker.visible = true
+	$Tracker/Path2D/PathFollow2D.progress_ratio = 0.0
 	$Tracker.process_mode = Node.PROCESS_MODE_INHERIT
 	$ObstacleTimer.start()
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = true

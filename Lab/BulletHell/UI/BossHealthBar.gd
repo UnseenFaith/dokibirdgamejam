@@ -9,5 +9,6 @@ func _ready() -> void:
 	healthComp.healthDidDecrease.connect(health_decreased)
 
 func health_decreased(difference: int) -> void:
-	$ProgressBar.value = $ProgressBar.value + difference
+	var tween = create_tween()
+	tween.tween_property($ProgressBar, "value", healthComp.health.value, 1.0)
 	
