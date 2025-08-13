@@ -8,6 +8,7 @@ func tick(actor:Node, blackboard:Blackboard) -> int:
 		var entity = actor as Entity
 		healthComponent = entity.findFirstComponentSubclass(HealthComponent)
 	var percentage = healthComponent.health.percentage
+	print(percentage)
 	if percentage > healthToCheck:
 		return SUCCESS
 	return FAILURE

@@ -4,6 +4,7 @@ extends Control
 
 
 func _ready() -> void:
+	$ProgressBar.value = healthComp.health.value
 	$ProgressBar.max_value = healthComp.health.value
 	
 	healthComp.healthDidDecrease.connect(health_decreased)

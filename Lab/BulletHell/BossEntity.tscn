@@ -1,7 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ciot5i76nld4m"]
+[gd_scene load_steps=29 format=3 uid="uid://ciot5i76nld4m"]
 
 [ext_resource type="Script" uid="uid://cq77ijorbele0" path="res://Lab/BulletHell/BossEntity.gd" id="1_bhu65"]
+[ext_resource type="PackedScene" uid="uid://dl77t36jj4vye" path="res://Lab/BulletHell/BossAttacks/FrontArm.tscn" id="2_7lwut"]
+[ext_resource type="Texture2D" uid="uid://burjp48047jmp" path="res://Lab/Assets/boss_clean.png" id="2_v0t4e"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="3_4faen"]
+[ext_resource type="PackedScene" uid="uid://br446rumyjm88" path="res://Lab/BulletHell/BossAttacks/BackArm.tscn" id="3_lxm5q"]
+[ext_resource type="PackedScene" uid="uid://duw46vl1qh2bk" path="res://Lab/BulletHell/BossAttacks/LaserBeam.tscn" id="5_7lwut"]
 [ext_resource type="PackedScene" uid="uid://bb84q0leewc3" path="res://Lab/BulletHell/BulletEnemyEntity.tscn" id="5_g6b7d"]
 [ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="5_sns8m"]
 [ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_c8x7c"]
@@ -11,17 +15,23 @@
 [ext_resource type="PackedScene" uid="uid://b1bqp8r4wjcg3" path="res://Components/Visual/DamageVisualComponent.tscn" id="10_nprmx"]
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="10_vejfc"]
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="12_5vyxp"]
-[ext_resource type="Texture2D" uid="uid://clox863hbl6dx" path="res://Assets/Tiles/Kenney1Bit-Monochrome-Transparent.png" id="13_qvynj"]
 [ext_resource type="Script" uid="uid://bag6otltdtnve" path="res://addons/beehave/nodes/beehave_tree.gd" id="15_suqsr"]
 [ext_resource type="Script" uid="uid://b8ni3dgybvb3l" path="res://addons/beehave/nodes/composites/selector.gd" id="16_ccbw4"]
 [ext_resource type="Script" uid="uid://20eh3l215hkf" path="res://addons/beehave/nodes/composites/sequence.gd" id="17_bhu65"]
 [ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="17_v0t4e"]
+[ext_resource type="Script" uid="uid://do7mxeknpdjow" path="res://addons/beehave/nodes/composites/selector_random.gd" id="18_0bd57"]
 [ext_resource type="Script" uid="uid://dhkaudqgmrjrr" path="res://Lab/BulletHell/Beehave/HealthCondition.gd" id="18_v0t4e"]
-[ext_resource type="Script" uid="uid://c1he56uteqyib" path="res://Lab/BulletHell/Beehave/AttackSelector.gd" id="19_alspo"]
 [ext_resource type="Script" uid="uid://cevthawppkb0t" path="res://Lab/BulletHell/Beehave/TestAction.gd" id="19_bhu65"]
+[ext_resource type="Script" uid="uid://bt7r4gk5t8drx" path="res://Lab/BulletHell/Beehave/LaserAttack.gd" id="21_lxm5q"]
+[ext_resource type="Script" uid="uid://cirb287gsn13o" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="22_7lwut"]
+[ext_resource type="Script" uid="uid://cnjgphhwqhpwb" path="res://Lab/BulletHell/Beehave/HomingMissileAttack.gd" id="22_u1ua6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuf5"]
-size = Vector2(14, 14)
+size = Vector2(232, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alspo"]
+resource_local_to_scene = true
+size = Vector2(96, 220)
 
 [sub_resource type="Resource" id="Resource_4qcyh"]
 resource_local_to_scene = true
@@ -32,18 +42,44 @@ name = &"health"
 displayName = "Health"
 
 [node name="BossEntity" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 126
 script = ExtResource("1_bhu65")
 
+[node name="Arms" type="Node2D" parent="."]
+
+[node name="FrontArm" parent="Arms" instance=ExtResource("2_7lwut")]
+z_index = 1
+position = Vector2(8, 44)
+
+[node name="DamageComponent" parent="Arms/FrontArm" index="2"]
+visible = false
+
+[node name="GunComponent" parent="Arms/FrontArm" index="3"]
+position = Vector2(20, 24)
+autoFire = true
+
+[node name="BackArm" parent="Arms" instance=ExtResource("3_lxm5q")]
+position = Vector2(-64, 8)
+
+[node name="GunComponent" parent="Arms/BackArm" index="3"]
+position = Vector2(-62, -4)
+autoFire = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("13_qvynj")
+texture = ExtResource("2_v0t4e")
 region_enabled = true
-region_rect = Rect2(64, 32, 16, 16)
+region_rect = Rect2(51, 31, 231, 221)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_8iuf5")
+
+[node name="LaserBeam" parent="." instance=ExtResource("5_7lwut")]
+visible = false
+position = Vector2(0, 44)
 
 [node name="FactionComponent" parent="." instance=ExtResource("3_4faen")]
 factions = 8
@@ -54,6 +90,11 @@ bulletEntity = ExtResource("5_g6b7d")
 cooldown = 0.01
 
 [node name="DamageReceivingComponent" parent="." instance=ExtResource("6_c8x7c")]
+visible = false
+
+[node name="ReceivingCollisionShape" parent="DamageReceivingComponent" index="0"]
+position = Vector2(-48, 0)
+shape = SubResource("RectangleShape2D_alspo")
 
 [node name="DamageComponent" parent="." instance=ExtResource("7_g6b7d")]
 friendlyFire = true
@@ -62,7 +103,6 @@ friendlyFire = true
 health = SubResource("Resource_4qcyh")
 
 [node name="DamageVisualComponent" parent="." instance=ExtResource("10_nprmx")]
-shouldTint = true
 shouldEmitBubble = false
 
 [node name="HealthVisualComponent" parent="." instance=ExtResource("8_uclee")]
@@ -74,7 +114,7 @@ shouldEmitBubble = false
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("15_suqsr")
-blackboard = NodePath("@Node@22394")
+blackboard = NodePath("@Node@236819")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bag6otltdtnve"
 
@@ -82,17 +122,32 @@ metadata/_custom_type_script = "uid://bag6otltdtnve"
 script = ExtResource("16_ccbw4")
 metadata/_custom_type_script = "uid://b8ni3dgybvb3l"
 
-[node name="Phase 1 Sequence" type="Node" parent="BeehaveTree/SelectorComposite"]
-script = ExtResource("17_bhu65")
-metadata/_custom_type_script = "uid://20eh3l215hkf"
+[node name="Phase1 Composite" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("18_0bd57")
+metadata/_custom_type_script = "uid://do7mxeknpdjow"
 
-[node name="HealthCondition" type="Node" parent="BeehaveTree/SelectorComposite/Phase 1 Sequence"]
+[node name="HealthCondition" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite" node_paths=PackedStringArray("healthComponent")]
 script = ExtResource("18_v0t4e")
+healthComponent = NodePath("../../../../HealthComponent")
 metadata/_custom_type_script = "uid://dhkaudqgmrjrr"
 
-[node name="AttackSelector" type="Node" parent="BeehaveTree/SelectorComposite/Phase 1 Sequence"]
-script = ExtResource("19_alspo")
-metadata/_custom_type_script = "uid://c1he56uteqyib"
+[node name="CooldownDecorator2" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite"]
+script = ExtResource("22_7lwut")
+wait_time = 10.0
+metadata/_custom_type_script = "uid://cirb287gsn13o"
+
+[node name="LaserAttack" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite/CooldownDecorator2"]
+script = ExtResource("21_lxm5q")
+metadata/_custom_type_script = "uid://bt7r4gk5t8drx"
+
+[node name="CooldownDecorator" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite"]
+script = ExtResource("22_7lwut")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://cirb287gsn13o"
+
+[node name="HomingMissileAttack" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite/CooldownDecorator"]
+script = ExtResource("22_u1ua6")
+metadata/_custom_type_script = "uid://cnjgphhwqhpwb"
 
 [node name="Phase 2 Sequence" type="Node" parent="BeehaveTree/SelectorComposite"]
 script = ExtResource("17_bhu65")
@@ -107,4 +162,9 @@ metadata/_custom_type_script = "uid://dhkaudqgmrjrr"
 script = ExtResource("19_bhu65")
 metadata/_custom_type_script = "uid://cevthawppkb0t"
 
+[editable path="Arms/FrontArm"]
+[editable path="Arms/FrontArm/GunComponent"]
+[editable path="Arms/BackArm"]
+[editable path="Arms/BackArm/GunComponent"]
 [editable path="GunComponent"]
+[editable path="DamageReceivingComponent"]

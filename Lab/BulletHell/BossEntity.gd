@@ -7,6 +7,10 @@ var laser = preload("res://Lab/BulletHell/BossAttacks/LaserPairs.tscn")
 var homing_missile = preload("res://Lab/BulletHell/BossAttacks/HomingMissile.tscn")
 var exploding_bullet = preload("res://Lab/BulletHell/BossAttacks/ExplodingBullet.tscn")
 var bullet_enemy = preload("res://Lab/BulletHell/BulletEnemyEntity.tscn")
+@onready var laser_beam: Node2D = $LaserBeam
+
+
+@export var isAttacking = false
 
 
 #region Parameters
@@ -40,6 +44,7 @@ func _process(delta: float) -> void: # NOTE: If you need to process movement or 
 	
 
 func laser_attack() -> void:
+	isAttacking = true
 	var returnPosition := self.position
 	spawn_laser_attack()
 	await get_tree().create_timer(1.0).timeout
@@ -56,6 +61,7 @@ func laser_attack() -> void:
 	spawn_laser_attack()
 	await get_tree().create_timer(1.0).timeout
 	self.position = returnPosition
+	isAttacking = false
 
 func spawn_laser_attack() -> void:
 	var attack := laser.instantiate()
@@ -63,6 +69,7 @@ func spawn_laser_attack() -> void:
 	get_parent().add_child(attack)
 	
 func ring_attack() -> void:
+	isAttacking = true
 	var offset = randf_range(0, TAU) # TAU = 2*PI, a full circle in radians
 	for i in range(0, 360, 10):
 		var child_bullet = bullet_enemy.instantiate()
@@ -74,8 +81,10 @@ func ring_attack() -> void:
 			lm.initialSpeed = 100
 			lm.maximumSpeed = 100
 		get_parent().add_child(child_bullet)
+	isAttacking = false
 
 func homing_missile_attack() -> void:
+	isAttacking = true
 	"""Fire a burst of homing missiles at the player"""
 	var missile_count = 3
 	var fire_delay = 0.3
@@ -86,8 +95,10 @@ func homing_missile_attack() -> void:
 			await get_tree().create_timer(fire_delay).timeout
 	
 	await get_tree().create_timer(3.0).timeout
+	isAttacking = false
 
 func spawn_homing_missile() -> void:
+	isAttacking = true
 	var missile := homing_missile.instantiate()
 	missile.position = self.position
 	
@@ -98,9 +109,11 @@ func spawn_homing_missile() -> void:
 		missile.rotation = atan2(direction.y, direction.x)
 	
 	get_parent().add_child(missile)
+	isAttacking = false
 	
 
 func spread_shot_attack() -> void:
+	isAttacking = true
 	var waves = 6
 	var wave_delay = 0.4
 	
@@ -128,6 +141,7 @@ func spawn_wave(wave) -> void:
 	for i in range(bullet_count):
 		var angle = base_angle - (spread_angle / 2) + (i * spread_angle / (bullet_count - 1))
 		spawn_spread_bullet(angle, spawn_position)
+	isAttacking = false
 	
 	
 func spawn_spread_bullet(angle_degrees: float, spawn_pos: Vector2) -> void:
@@ -145,6 +159,7 @@ func spawn_spread_bullet(angle_degrees: float, spawn_pos: Vector2) -> void:
 	
 
 func needle() -> void:
+	isAttacking = true
 	var player = get_tree().get_first_node_in_group("players")
 	var base_angle = (player.position - global_position).angle()
 	for offset_deg in [-10, -5, 0, 5, 10]:
@@ -156,48 +171,25 @@ func needle() -> void:
 			lm.initialSpeed = 180
 			lm.maximumSpeed = 180
 		get_parent().add_child(bullet)
-	
+	isAttacking = false
+
 func ring() -> void:
+	isAttacking = true
 	var bullet = exploding_bullet.instantiate()
 	bullet.position = global_position
 	get_parent().add_child(bullet)
+	isAttacking = false
 
+func rapid_fire() -> void:
+	pass
+	#$AnimationPlayer.play("rapid_fire")
+	#await $AnimationPlayer.animation_finished
 
-func screen_covering_attack() -> void:
-	var viewport = get_viewport()
-	if not viewport:
-		return
-	
-	var screen_size = viewport.get_visible_rect().size
-	var bullet_density = 0.8 # How dense the bullets are (0.0 to 1.0)
-	var bullet_size = 8.0 # Approximate bullet size for spacing
-	
-	# Calculate how many bullets we can fit
-	var max_bullets_x = int(screen_size.x / (bullet_size * 2))
-	var max_bullets_y = int(screen_size.y / (bullet_size * 2))
-	
-	var actual_bullets_x = int(max_bullets_x * bullet_density)
-	var actual_bullets_y = int(max_bullets_y * bullet_density)
-	
-	# Create bullets in a grid pattern
-	for x in range(actual_bullets_x):
-		for y in range(actual_bullets_y):
-			var bullet := bullet_enemy.instantiate()
-			
-			# Position bullets with some randomness
-			var pos_x = (screen_size.x / actual_bullets_x) * x + randf_range(-10, 10)
-			var pos_y = (screen_size.y / actual_bullets_y) * y + randf_range(-10, 10)
-			bullet.position = Vector2(pos_x, pos_y)
-			
-			# All bullets move left slowly
-			bullet.rotation = PI
-			
-			# Slow movement
-			var linear_motion = bullet.find_child("LinearMotionComponent")
-			if linear_motion:
-				linear_motion.initialSpeed = 50.0
-				linear_motion.maximumSpeed = 80.0
-			
-			get_parent().add_child(bullet)
-	
-	await get_tree().create_timer(5.0).timeout
+func start_telegraph():
+	laser_beam.start_telegraph()
+
+func start_attack():
+	laser_beam.start_attack()
+
+func stop_attack():
+	laser_beam.stop_attack()

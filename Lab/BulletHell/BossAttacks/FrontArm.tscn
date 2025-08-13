@@ -1,0 +1,62 @@
+[gd_scene load_steps=13 format=3 uid="uid://dl77t36jj4vye"]
+
+[ext_resource type="Script" uid="uid://b3tgnb1y0hgk1" path="res://Entities/Entity.gd" id="1_fb5x4"]
+[ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="2_cnftl"]
+[ext_resource type="Texture2D" uid="uid://cfuwirgs7wv2j" path="res://Lab/Assets/boss_gun_front.png" id="2_rj033"]
+[ext_resource type="Script" uid="uid://c38s4w1tog4px" path="res://Components/Combat/FactionComponent.gd" id="3_rj033"]
+[ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="4_auik3"]
+[ext_resource type="Script" uid="uid://b3cetyvq4j670" path="res://Components/Combat/DamageComponent.gd" id="5_0uk1h"]
+[ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="6_r5f0m"]
+[ext_resource type="Script" uid="uid://c4utn28cxq3h7" path="res://Components/Combat/GunComponent.gd" id="7_ap6ox"]
+[ext_resource type="PackedScene" uid="uid://bb84q0leewc3" path="res://Lab/BulletHell/BulletEnemyEntity.tscn" id="8_roxfo"]
+[ext_resource type="Texture2D" uid="uid://clox863hbl6dx" path="res://Assets/Tiles/Kenney1Bit-Monochrome-Transparent.png" id="10_auik3"]
+[ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="11_0uk1h"]
+[ext_resource type="Script" uid="uid://bth4n26ur8bvh" path="res://Components/Control/InputComponent.gd" id="12_r5f0m"]
+
+[node name="FrontArm" type="Node2D"]
+script = ExtResource("1_fb5x4")
+metadata/_custom_type_script = "uid://b3tgnb1y0hgk1"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rj033")
+
+[node name="FactionComponent" type="Node" parent="." groups=["components"] instance=ExtResource("2_cnftl")]
+script = ExtResource("3_rj033")
+factions = 8
+
+[node name="DamageComponent" type="Area2D" parent="." groups=["components"] instance=ExtResource("4_auik3")]
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("5_0uk1h")
+metadata/_edit_group_ = true
+
+[node name="GunComponent" parent="." node_paths=PackedStringArray("bulletEmitter") groups=["components"] instance=ExtResource("6_r5f0m")]
+rotation = 3.1415927
+script = ExtResource("7_ap6ox")
+bulletEntity = ExtResource("8_roxfo")
+bulletEmitter = NodePath("GunSprite/BulletEmitter")
+cooldown = 0.5
+metadata/_edit_group_ = true
+
+[node name="GunSprite" parent="GunComponent" index="0"]
+visible = false
+texture_filter = 2
+texture = ExtResource("10_auik3")
+region_enabled = true
+region_rect = Rect2(592, 144, 16, 16)
+
+[node name="BulletEmitter" parent="GunComponent/GunSprite" index="0"]
+unique_name_in_owner = true
+position = Vector2(-21, -23.999998)
+gizmo_extents = 20.0
+
+[node name="CooldownTimer" parent="GunComponent" index="1"]
+wait_time = 0.5
+one_shot = true
+
+[node name="InputComponent" type="Node" parent="." groups=["components"] instance=ExtResource("11_0uk1h")]
+script = ExtResource("12_r5f0m")
+
+[connection signal="timeout" from="GunComponent/CooldownTimer" to="GunComponent" method="finishCooldown"]
+
+[editable path="GunComponent"]

@@ -6,7 +6,7 @@ var time_since_last_attack: float = 0.0
 var available_attacks: Array
 
 #var all_attacks := ["laser", "missile", "spread", "explode", "rain"]
-var all_attacks := ["ring"]
+var all_attacks := ["ring", "laser", "missile", "explode"]
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	# Check if cooldown has elapsed

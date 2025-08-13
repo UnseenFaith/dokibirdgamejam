@@ -4,5 +4,5 @@ extends ActionLeaf
 var cooldown: float = 0.0
 
 func tick(actor:Node, blackboard:Blackboard) -> int:
-	actor.laser_attack()
+	actor.rapid_fire()
 	return SUCCESS

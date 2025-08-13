@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://duw46vl1qh2bk"]
+
+[ext_resource type="Script" uid="uid://dmiendkbyc2wj" path="res://Lab/BulletHell/BossAttacks/LaserBeam.gd" id="1_snf7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snf7c"]
+size = Vector2(700, 64)
+
+[node name="LaserBeam" type="Node2D"]
+script = ExtResource("1_snf7c")
+laser_length = -850.0
+
+[node name="WarningLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, -700, 0)
+width = 64.0
+default_color = Color(1, 1, 0, 0.5411765)
+
+[node name="LaserLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, -700, 0)
+width = 64.0
+default_color = Color(0.63529414, 0, 0, 1)
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-350, 0)
+shape = SubResource("RectangleShape2D_snf7c")

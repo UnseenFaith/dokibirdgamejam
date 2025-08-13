@@ -17,3 +17,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position.x -= delta * 100
+
+
+func onLaser_bodyEntered(body: Node2D) -> void:
+	if body is Entity:
+		var drc = body.getComponent(HealthComponent) as HealthComponent
+		if drc:
+			drc.damage(1)

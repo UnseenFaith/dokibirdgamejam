@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d2r4a8x46c7pa"]
+[gd_scene load_steps=20 format=4 uid="uid://d2r4a8x46c7pa"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_5pdtg"]
 [ext_resource type="Texture2D" uid="uid://o834wpmisl15" path="res://Lab/BulletHell/Assets/parralax/sky.png" id="1_hjm5k"]
@@ -16,12 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://bjcrjhth3ieg7" path="res://Lab/BulletHell/UI/BossHealthBar.tscn" id="13_q34lf"]
 [ext_resource type="AudioStream" uid="uid://c02d7gj5c3lsr" path="res://Lab/Assets/Music/DokiJam - Fight Theme (Fin v1).wav" id="14_eaick"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ravr"]
+resource_local_to_scene = true
+size = Vector2(96, 220)
+
 [sub_resource type="Resource" id="Resource_4qcyh"]
 resource_local_to_scene = true
 resource_name = "health"
 script = ExtResource("2_wlkfx")
-max = 5
-value = 5
+max = 1000
+value = 1000
 name = &"health"
 displayName = "Health"
 
@@ -47,10 +51,12 @@ musicFolder = ""
 editor_description = "Change this to a Regular Node Later so the Collision doesn't overlap with the playfield"
 tile_map_data = PackedByteArray("AAABABIAAAAIAAUAAAAAABEAAAAIAAUAAAAAABAAAAAIAAUAAAAAAA8AAAAIAAUAAAAAAA4AAAAIAAUAAAAAAA0AAAAIAAUAAAAAAAwAAAAIAAUAAAAAAAsAAAAIAAUAAAAAAAoAAAAIAAUAAAAAAAkAAAAIAAUAAAAAAAgAAAAIAAUAAAAAAAcAAAAIAAUAAAAAAAYAAAAIAAUAAAAAAAUAAAAIAAUAAAAAAAQAAAAIAAUAAAAAAAMAAAAIAAUAAAAAAAIAAAAIAAUAAAABAAIAAAAIAAUAAAACAAIAAAAIAAUAAAADAAIAAAAIAAUAAAAEAAIAAAAIAAUAAAAFAAIAAAAIAAUAAAAGAAIAAAAIAAUAAAAHAAIAAAAIAAUAAAAIAAIAAAAIAAUAAAAJAAIAAAAIAAUAAAAKAAIAAAAIAAUAAAALAAIAAAAIAAUAAAAMAAIAAAAIAAUAAAANAAIAAAAIAAUAAAAOAAIAAAAIAAUAAAAPAAIAAAAIAAUAAAAQAAIAAAAIAAUAAAARAAIAAAAIAAUAAAASAAIAAAAIAAUAAAATAAIAAAAIAAUAAAAUAAIAAAAIAAUAAAAVAAIAAAAIAAUAAAAWAAIAAAAIAAUAAAAXAAIAAAAIAAUAAAAYAAIAAAAIAAUAAAAZAAIAAAAIAAUAAAAaAAIAAAAIAAUAAAAbAAIAAAAIAAUAAAAcAAIAAAAIAAUAAAAcAAMAAAAIAAUAAAAcAAQAAAAIAAUAAAAcAAUAAAAIAAUAAAAcAAYAAAAIAAUAAAAcAAcAAAAIAAUAAAAcAAgAAAAIAAUAAAAcAAkAAAAIAAUAAAAcAAoAAAAIAAUAAAAcAAsAAAAIAAUAAAAcAAwAAAAIAAUAAAAcAA0AAAAIAAUAAAAcAA4AAAAIAAUAAAAcAA8AAAAIAAUAAAAcABAAAAAIAAUAAAAcABEAAAAIAAUAAAAcABIAAAAIAAUAAAAbABIAAAAIAAUAAAAaABIAAAAIAAUAAAAZABIAAAAIAAUAAAAYABIAAAAIAAUAAAAXABIAAAAIAAUAAAAWABIAAAAIAAUAAAAVABIAAAAIAAUAAAAUABIAAAAIAAUAAAATABIAAAAIAAUAAAASABIAAAAIAAUAAAARABIAAAAIAAUAAAAQABIAAAAIAAUAAAAPABIAAAAIAAUAAAAOABIAAAAIAAUAAAANABIAAAAIAAUAAAAMABIAAAAIAAUAAAALABIAAAAIAAUAAAAKABIAAAAIAAUAAAAJABIAAAAIAAUAAAAIABIAAAAIAAUAAAAHABIAAAAIAAUAAAAGABIAAAAIAAUAAAAFABIAAAAIAAUAAAAEABIAAAAIAAUAAAADABIAAAAIAAUAAAACABIAAAAIAAUAAAAAABIAAAAIAAUAAAA=")
 tile_set = ExtResource("11_pn6yh")
+metadata/_edit_lock_ = true
 
 [node name="BackgroundSize" type="Node2D" parent="."]
 position = Vector2(320, 180)
 scale = Vector2(1, 1.001)
+metadata/_edit_lock_ = true
 
 [node name="ScaleNode" type="Node2D" parent="BackgroundSize"]
 scale = Vector2(0.333, 0.333)
@@ -114,34 +120,43 @@ repeat_times = 3
 texture = ExtResource("6_01jtn")
 
 [node name="BossEntity" parent="." instance=ExtResource("2_a8yow")]
-position = Vector2(426, 178)
-rotation = -3.1415925
+position = Vector2(392, 175)
 
-[node name="GunComponent" parent="BossEntity" index="3" node_paths=PackedStringArray("bulletParentOverride")]
+[node name="GunComponent" parent="BossEntity" index="5" node_paths=PackedStringArray("bulletParentOverride")]
 autoFire = false
 bulletParentOverride = NodePath("../../Bullets")
 
-[node name="HealthComponent" parent="BossEntity" index="6"]
+[node name="GunSprite" parent="BossEntity/GunComponent" index="0"]
+visible = false
+
+[node name="ReceivingCollisionShape" parent="BossEntity/DamageReceivingComponent" index="0"]
+shape = SubResource("RectangleShape2D_4ravr")
+
+[node name="HealthComponent" parent="BossEntity" index="8"]
 health = SubResource("Resource_4qcyh")
 
-[node name="InputComponent" parent="BossEntity" index="10"]
+[node name="InputComponent" parent="BossEntity" index="12"]
 isPlayerControlled = false
 
-[node name="BeehaveTree" parent="BossEntity" index="11" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@105162")
+[node name="BeehaveTree" parent="BossEntity" index="13" node_paths=PackedStringArray("blackboard")]
+blackboard = NodePath("@Node@241938")
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
-position = Vector2(30, 213.00002)
+position = Vector2(35, 208.00002)
 scale = Vector2(1, 0.99999994)
 
-[node name="CollisionShape2D" parent="Player-OverheadCombat" index="1"]
+[node name="CollisionShape2D" parent="Player-OverheadCombat" index="2"]
+visible = false
 shape = SubResource("RectangleShape2D_2tr6k")
 
-[node name="HealthComponent" parent="Player-OverheadCombat" index="3"]
+[node name="HealthComponent" parent="Player-OverheadCombat" index="4"]
 health = SubResource("Resource_1id7j")
 
-[node name="HealthVisualComponent" parent="Player-OverheadCombat" index="4"]
+[node name="HealthVisualComponent" parent="Player-OverheadCombat" index="5"]
 shouldEmitBubble = false
+
+[node name="DamageReceivingComponent" parent="Player-OverheadCombat" index="7"]
+visible = false
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -149,6 +164,7 @@ shouldEmitBubble = false
 position = Vector2(35, 208)
 offset = Vector2(195, -40)
 zoom = Vector2(1.5, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="BossAttacks" type="Node2D" parent="."]
 
@@ -156,6 +172,8 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="BossHealthBar" parent="CanvasLayer" node_paths=PackedStringArray("healthComp") instance=ExtResource("13_q34lf")]
 healthComp = NodePath("../../BossEntity/HealthComponent")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("13_2tr6k")]
 
@@ -167,6 +185,11 @@ bus = &"Music"
 [connection signal="healthDidDecrease" from="Player-OverheadCombat/HealthComponent" to="CanvasLayer/PlayerHealthBar" method="onHealthComponent_healthDidDecrease"]
 
 [editable path="BossEntity"]
+[editable path="BossEntity/Arms/FrontArm"]
+[editable path="BossEntity/Arms/FrontArm/GunComponent"]
+[editable path="BossEntity/Arms/BackArm"]
+[editable path="BossEntity/Arms/BackArm/GunComponent"]
 [editable path="BossEntity/GunComponent"]
+[editable path="BossEntity/DamageReceivingComponent"]
 [editable path="Player-OverheadCombat"]
 [editable path="Player-OverheadCombat/GunComponent"]
