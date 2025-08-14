@@ -42,6 +42,10 @@ func _process(delta: float) -> void: # NOTE: If you need to process movement or 
 	pass # Placeholder: Perform andy per-frame updates.
 	
 
+func moveTo(position: Vector2) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "position", position, 1.0)
+
 func laser_attack() -> void:
 	isAttacking = true
 	var returnPosition := self.position

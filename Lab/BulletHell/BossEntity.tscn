@@ -138,7 +138,6 @@ name = &"health"
 displayName = "Health"
 
 [node name="BossEntity" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 126
 script = ExtResource("1_bhu65")
@@ -147,9 +146,11 @@ script = ExtResource("1_bhu65")
 position = Vector2(0, -2)
 
 [node name="Fire" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(10, 24)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_qgdtj")
 autoplay = "default"
-frame_progress = 0.594116
+frame_progress = 0.13918673
 
 [node name="Inside" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_0bd57")
@@ -158,28 +159,27 @@ texture = ExtResource("2_0bd57")
 texture = ExtResource("2_v6qt5")
 
 [node name="Panels" type="Sprite2D" parent="Sprites"]
+visible = false
 texture = ExtResource("5_7lwut")
 
 [node name="Beak" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_mjr86")
 
 [node name="Hat" type="Sprite2D" parent="Sprites"]
+visible = false
 texture = ExtResource("6_lxm5q")
 
 [node name="FrontGun" type="Sprite2D" parent="Sprites"]
-visible = false
-position = Vector2(108, 38)
+position = Vector2(102, 38)
 texture = ExtResource("7_u1ua6")
 
 [node name="BackGun" type="Sprite2D" parent="Sprites"]
-visible = false
 z_index = -1
 texture_filter = 1
 position = Vector2(-2, 2)
 texture = ExtResource("7_u1ua6")
 
 [node name="Dad" type="Sprite2D" parent="Sprites"]
-visible = false
 texture = ExtResource("8_ka5rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -218,7 +218,7 @@ shouldEmitBubble = false
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("15_suqsr")
-blackboard = NodePath("@Node@633217")
+blackboard = NodePath("@Node@674409")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bag6otltdtnve"
 

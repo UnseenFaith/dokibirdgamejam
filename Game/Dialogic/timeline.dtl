@@ -1,12 +1,37 @@
+join Doki leftmost
+Doki: Well... that was anticlimactic. I don't recognize this place.
+Doki: Is this another file? What do you think Mr. Crow?
 join Crow rightmost [length="0.1" wait="true"]
-Crow: Doki quick, you need to jump over the obstacles!
+Crow: It looks like that portal must have transported us into a game file.
+Crow: Well Doki, I've got good news and bad news.
+Crow: The good news is, gamer - we've found ourselves inside a game.
+Crow: Bad news... it's not an FPS.
+[signal arg="crow_flies_up"]
+[wait time="2.5"]
+Crow: More good news ahead! I think I can see Mint!
+Crow: Uhhh... Doki...
+Crow: MORE BAD NEWS — WE HAVE A BIG BAD DRAGOON INCOMING…
+Crow: Quick, jump over the dragoon!
 [signal arg="cutscene_2"]
-[wait time="3.0"]
-join Doki leftmost [length="0.1" wait="true"]
-Doki: Oh, that wasn't too hard \:3
-Crow: You just had to say that, didn't you?
-[signal arg="cutscene_3"]
-[wait time="3.0"]
-Doki: Uh oh...
-Crow: Run!
-[signal arg="start_game"]
+[wait time="2.5"]
+Doki: Phew, that was a close one...
+Crow: I don't think he's done yet.. I'll fly on ahead to Mint!
+Doki: What about me? I'm not a real bird, I can't fly!
+Doki: And what about him over there?
+leave Doki
+Crow: I suggest you put them Chicken Little legs to use.
+[signal arg="crow_flies_ahead"]
+[wait time="2.5"]
+[end_timeline]
+# at end of round, if you won, pick up antivirus piece
+# crow mentions finding the other pieces to escape the computer
+# if lost, crow mentions to win the games to get the pieces, maybe it can help get out if have all pieces
+# crow says while busy with that, i think the hooded figure dragged mint into that new folder
+# transition to level 2
+# doki says what happened to my neck
+# crow flies in and says I'm not sure, but I hope you're hungry
+# transition back to desktop with anti virus
+# if win crow: at this rate we'll be out of here in no time
+# if lose crow: how will get out of here at this rate
+# play d.a.d cutscene
+# doki sees cloaked figure go into folder and chases after him, says "I've caught him now"

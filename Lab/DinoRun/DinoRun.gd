@@ -28,16 +28,17 @@ func _ready() -> void:
 	$"Player-Platformer/InputComponent".isEnabled = false
 	$AnimationPlayer.play("cutscene")
 	Dialogic.connect("signal_event", _dialog_event)
+	Dialogic.connect("timeline_ended", timeline_ended)
 
 func _dialog_event(parameter: String) -> void:
-	if (parameter == "start_game"):
-		$AnimationPlayer.stop()
-		_start_game()
-	else:
-		$AnimationPlayer.play(parameter)
+	$AnimationPlayer.play(parameter)
 
 func _start_Dialogic() -> void:
 		Dialogic.start("timeline")
+
+func timeline_ended() -> void:
+	$AnimationPlayer.stop()
+	_start_game()
 	
 func _start_game() -> void:
 	$Floor/Dirt.autoscroll.x = - CURRENT_SPEED
@@ -46,7 +47,6 @@ func _start_game() -> void:
 	$Tracker.visible = true
 	$Tracker/Path2D/PathFollow2D.progress_ratio = 0.0
 	$Tracker.process_mode = Node.PROCESS_MODE_INHERIT
-	$ObstacleTimer.start()
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = true
 	$Enemy.monitoring = true
 	$Enemy.position.x = 20
@@ -54,6 +54,11 @@ func _start_game() -> void:
 	$"Player-Platformer/InputComponent".isEnabled = true
 	$AudioStreamPlayer.play()
 	$Tumbleweed.play()
+	$AnimationPlayer.play("tutorial")
+	$Crow.visible = false
+
+func start_obstacles() -> void:
+	$ObstacleTimer.start()
 
 func _process(delta: float) -> void:
 	$Tumbleweed.pitch_scale = randf_range(0.8, 1.2)

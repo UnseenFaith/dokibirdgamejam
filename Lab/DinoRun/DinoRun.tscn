@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://coypgt0d6bj26"]
+[gd_scene load_steps=27 format=4 uid="uid://coypgt0d6bj26"]
 
 [ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
 [ext_resource type="Texture2D" uid="uid://dcccd425g3fq7" path="res://Lab/DinoRun/Assets/Lvl 1 background 1.png" id="4_i4ny8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvymq85dc48js" path="res://Lab/DinoRun/Assets/Lvl 1 background 5.png" id="8_omlr4"]
 [ext_resource type="Texture2D" uid="uid://b7uw4tl34xj2o" path="res://Lab/DinoRun/Assets/Lvl 1 background 6.png" id="9_4gmof"]
 [ext_resource type="PackedScene" uid="uid://d3gr5jms2ycia" path="res://Lab/DinoRun/Entities/Enemy.tscn" id="10_atp7r"]
+[ext_resource type="Texture2D" uid="uid://b1qcdqyf2nxtk" path="res://Lab/Assets/sprites.png" id="10_oag7t"]
 [ext_resource type="Script" uid="uid://bdi3om1yfn0fq" path="res://Lab/DinoRun/GameOver.gd" id="11_20i0w"]
 [ext_resource type="PackedScene" uid="uid://cbhnnirun0in7" path="res://Lab/DinoRun/Scenes/Tracker.tscn" id="11_omlr4"]
 [ext_resource type="AudioStream" uid="uid://csfj8d3eexnc0" path="res://Lab/Assets/SFX/Tumbleweed Combo.wav" id="13_4gmof"]
@@ -76,6 +77,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("Crow:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195, 190)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enemy/AnimatedSprite2D:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_omlr4"]
 resource_name = "cutscene"
@@ -136,6 +173,18 @@ tracks/3/keys = {
 "method": &"_start_Dialogic"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-15, 190), Vector2(195, 190)]
+}
 
 [sub_resource type="Animation" id="Animation_oag7t"]
 resource_name = "cutscene_2"
@@ -144,29 +193,56 @@ step = 0.0333333
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("Player-Platformer/JumpComponent")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0],
-"method": &"generate_obstacle"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player-Platformer/JumpComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.93333334),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"cutsceneJump"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(482, 222), Vector2(12, 222)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy/AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemy/AnimatedSprite2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
 }]
 }
 
@@ -199,12 +275,80 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_cxfay"]
+resource_name = "tutorial"
+length = 3.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_obstacles"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7t2nu"]
+resource_name = "crow_flies_up"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(195, 190), Vector2(195, 120)]
+}
+
+[sub_resource type="Animation" id="Animation_2hxwx"]
+resource_name = "crow_flies_ahead"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(195, 120), Vector2(459, 120)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oag7t"]
 _data = {
 &"RESET": SubResource("Animation_4gmof"),
+&"crow_flies_ahead": SubResource("Animation_2hxwx"),
+&"crow_flies_up": SubResource("Animation_7t2nu"),
 &"cutscene": SubResource("Animation_omlr4"),
 &"cutscene_2": SubResource("Animation_oag7t"),
-&"cutscene_3": SubResource("Animation_ijs8h")
+&"cutscene_3": SubResource("Animation_ijs8h"),
+&"tutorial": SubResource("Animation_cxfay")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gmof"]
@@ -248,6 +392,8 @@ zoom = Vector2(1.5, 1.5)
 process_mode = 4
 position = Vector2(237, 222)
 scale = Vector2(0.75, 0.75)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="1" type="Sprite2D" parent="Background"]
 position = Vector2(0, -11.999756)
@@ -287,6 +433,8 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/5"]
 texture = ExtResource("8_omlr4")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="6" type="Parallax2D" parent="Background"]
 scroll_offset = Vector2(0, -22.666199)
@@ -321,9 +469,16 @@ editor_draw_screen = false
 [node name="ReceivingCollisionShape" parent="Player-Platformer/DamageReceivingComponent" index="0"]
 shape = SubResource("RectangleShape2D_omlr4")
 
+[node name="Crow" type="Sprite2D" parent="."]
+position = Vector2(502, 67)
+texture = ExtResource("10_oag7t")
+region_enabled = true
+region_rect = Rect2(73, 21, 17, 27)
+
 [node name="Enemy" parent="." instance=ExtResource("10_atp7r")]
+process_mode = 3
 z_index = 2
-position = Vector2(-69, 219)
+position = Vector2(482, 222)
 collision_layer = 16
 monitoring = false
 monitorable = false
@@ -372,6 +527,24 @@ text = "Restart"
 layout_mode = 2
 text = "Quit"
 
+[node name="CanvasLayer" type="Node2D" parent="."]
+visible = false
+position = Vector2(71, 170)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+offset_right = 40.0
+offset_bottom = 8.0
+text = "Press W to Jump"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 99.0
+offset_bottom = 18.0
+text = "Press S to Slide"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_omlr4")
 bus = &"Music"
@@ -386,3 +559,4 @@ bus = &"SFX"
 
 [editable path="Player-Platformer"]
 [editable path="Player-Platformer/DamageReceivingComponent"]
+[editable path="Enemy"]

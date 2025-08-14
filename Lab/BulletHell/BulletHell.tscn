@@ -107,11 +107,7 @@ repeat_times = 3
 texture = ExtResource("6_01jtn")
 
 [node name="BossEntity" parent="." instance=ExtResource("2_a8yow")]
-position = Vector2(381, 173)
-isAttacking = false
-isEnabled = true
-isLoggingEnabled = true
-debugMode = false
+position = Vector2(319, 174)
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
 position = Vector2(35, 208.00002)
