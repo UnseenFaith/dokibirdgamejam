@@ -7,7 +7,6 @@ var laser = preload("res://Lab/BulletHell/BossAttacks/LaserPairs.tscn")
 var homing_missile = preload("res://Lab/BulletHell/BossAttacks/HomingMissile.tscn")
 var exploding_bullet = preload("res://Lab/BulletHell/BossAttacks/ExplodingBullet.tscn")
 var bullet_enemy = preload("res://Lab/BulletHell/BulletEnemyEntity.tscn")
-@onready var laser_beam: Node2D = $LaserBeam
 
 
 @export var isAttacking = false
@@ -184,12 +183,3 @@ func rapid_fire() -> void:
 	pass
 	#$AnimationPlayer.play("rapid_fire")
 	#await $AnimationPlayer.animation_finished
-
-func start_telegraph():
-	laser_beam.start_telegraph()
-
-func start_attack():
-	laser_beam.start_attack()
-
-func stop_attack():
-	laser_beam.stop_attack()

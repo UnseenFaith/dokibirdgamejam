@@ -114,7 +114,6 @@ func setupGameState() -> void:
 func _ready() -> void:
 	startComedot()
 
-
 func startComedot() -> void:
 	printLog("[b]_ready()[/b]")
 	Global.hasStartScript = true
@@ -151,7 +150,6 @@ func applyGlobalFlags() -> void:
 func printLog(message: String) -> void:
 	Debug.printLog(message, str("[b]", self.get_script().resource_path.get_file(), "[/b] ", self), "WHITE", "WHITE")
 
-
 func onLevel1_pressed() -> void:
 	var level2: PackedScene = load("res://Lab/DinoRun/DinoRun.tscn")
 	SceneManager.transitionToScene(level2)
@@ -170,19 +168,11 @@ func onLevel3_pressed() -> void:
 
 
 var creditTree
-func onCreditsButton_buttonDown() -> void:
-	var credits = load("res://Lab/Scenes/Credits.tscn")
-	var scene = credits.instantiate()
-	creditTree = scene
-	scene.scale.x = 0.5
-	scene.scale.y = 0.5
-	scene.position = Vector2(160, 25)
-	add_child(scene)
-	scene.connect('cutscene_quit', credit_quit)
-	$CanvasLayer.visible = false
 
 func credit_quit() -> void:
 	$CanvasLayer.visible = true
+	$Transparent.visible = false
+	$TextureRect.visible = true
 	creditTree.queue_free()
 	pass
 	
@@ -197,3 +187,18 @@ func onStartButton_pressed() -> void:
 	$AudioStreamPlayer.stop()
 	$IntroCutscene.start_dialog()
 	$IntroCutscene.z_index = 5
+
+
+func onMainMenuButtons_credits() -> void:
+	var credits = load("res://Lab/Scenes/Credits.tscn")
+	var scene = credits.instantiate()
+	creditTree = scene
+	scene.z_index = -1
+	scene.scale.x = 0.5
+	scene.scale.y = 0.5
+	scene.position = Vector2(160, 25)
+	add_child(scene)
+	scene.connect('cutscene_quit', credit_quit)
+	$CanvasLayer.visible = false
+	$TextureRect.visible = false
+	$Transparent.visible = true

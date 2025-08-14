@@ -1,22 +1,16 @@
 extends Start
 
-var level1 = preload("res://Lab/DinoRun/DinoRun.tscn")
+var level1 := preload("res://Lab/DinoRun/DinoRun.tscn")
 
-var shouldTransitionToNextLevel = false
+var shouldTransitionToNextLevel := false
 
-func start_dialog() -> void:
+func _ready() -> void:
 	$AudioStreamPlayer.play()
-	Dialogic.connect("signal_event", dialog_event)
-	Dialogic.connect("timeline_ended", timeline_ended)
-	Dialogic.start("intro")
 
 func dialog_event(event: String) -> void:
 	if event == "show_link":
 		$Link.visible = true
-	
-	if event == "doki_desktop":
-		$Doki.visible = true
-		
+
 	if event == "show_crow":
 		$Crow.visible = true
 	
@@ -39,8 +33,14 @@ func onLink_guiInput(event: InputEvent) -> void:
 		$Link.visible = false
 		$X.visible = false
 		$Doki.visible = true
+		$Background.visible = false
 		Dialogic.start("intro2")
 
 func onX_buttonDown() -> void:
-	# roll credits
-	pass # Replace with function body.
+	pass
+
+
+func onLink_morphDone() -> void:
+	Dialogic.connect("signal_event", dialog_event)
+	Dialogic.connect("timeline_ended", timeline_ended)
+	Dialogic.start("intro")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://celt7hx1gstld"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_jd6d7"]
+[ext_resource type="Texture2D" uid="uid://cs3ixlt7auu0l" path="res://Lab/Assets/Dokie_desk_2.png" id="2_mabn4"]
 [ext_resource type="Script" uid="uid://dlj44gyo6xh11" path="res://UI/UINavigationContainer.gd" id="2_y2sis"]
 [ext_resource type="Texture2D" uid="uid://da3ql6mpvqrbo" path="res://Lab/Assets/Dokie_monitor_blank.png" id="6_sk5vc"]
-[ext_resource type="PackedScene" uid="uid://cot78dqevfb0l" path="res://Lab/Scenes/IntroCutscene.tscn" id="7_mabn4"]
 [ext_resource type="PackedScene" uid="uid://mwsrn6l4gw51" path="res://UI/Menus/MainMenuButtons.tscn" id="7_wy4rx"]
 [ext_resource type="AudioStream" uid="uid://ci32t0f588nwd" path="res://Lab/Assets/Music/DokiJam - Start Menu (Fin v1).wav" id="8_jd6d7"]
 [ext_resource type="Shortcut" uid="uid://c4er757mljhl4" path="res://Resources/Shortcuts/BackShortcut.tres" id="9_t25e2"]
@@ -11,28 +11,35 @@
 [node name="GameFrame" type="Node2D"]
 editor_description = "The Main Menu"
 script = ExtResource("1_jd6d7")
-mainGameScenePath = "uid://coypgt0d6bj26"
+mainGameScenePath = "uid://cot78dqevfb0l"
 musicFolder = ""
 showDebugWindow = false
 shouldPrintDebugLogs = false
 showDebugLabels = false
 showDebugBackground = false
 
-[node name="IntroCutscene" parent="." instance=ExtResource("7_mabn4")]
-process_mode = 4
+[node name="Transparent" type="TextureRect" parent="."]
+anchors_preset = -1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mabn4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = -1
 offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("6_sk5vc")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="UIMarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -21.0
+offset_right = -5.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -47,9 +54,8 @@ layout_mode = 2
 script = ExtResource("2_y2sis")
 backButton = NodePath("BackButton")
 
-[node name="MainMenuButtons" parent="CanvasLayer/UIMarginContainer/UINavigationContainer" instance=ExtResource("7_wy4rx")]
+[node name="MainMenuButtonsContainer" parent="CanvasLayer/UIMarginContainer/UINavigationContainer" instance=ExtResource("7_wy4rx")]
 layout_mode = 2
-focus_mode = 2
 
 [node name="BackButton" type="Button" parent="CanvasLayer/UIMarginContainer/UINavigationContainer"]
 layout_mode = 2
@@ -81,15 +87,26 @@ offset_right = 459.0
 offset_bottom = 92.0
 text = "Level 3"
 
+[node name="Credits" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 88.0
+offset_top = -41.0
+offset_right = 142.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jd6d7")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="CanvasLayer/UIMarginContainer/UINavigationContainer/MainMenuButtons/MainMenuButtons/StartButton" to="." method="onStartButton_pressed"]
-[connection signal="button_down" from="CanvasLayer/UIMarginContainer/UINavigationContainer/MainMenuButtons/MainMenuButtons/CreditsButton" to="." method="onCreditsButton_buttonDown"]
 [connection signal="pressed" from="CanvasLayer/Level 1" to="." method="onLevel1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 2" to="." method="onLevel2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 3" to="." method="onLevel3_pressed"]
-
-[editable path="CanvasLayer/UIMarginContainer/UINavigationContainer/MainMenuButtons"]
+[connection signal="pressed" from="CanvasLayer/Credits" to="." method="onMainMenuButtons_credits"]

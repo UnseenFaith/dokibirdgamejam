@@ -1,6 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://cot78dqevfb0l"]
+[gd_scene load_steps=52 format=3 uid="uid://cot78dqevfb0l"]
 
 [ext_resource type="Script" uid="uid://bq0isbqrxtkc7" path="res://Lab/Scenes/IntroCutscene.gd" id="1_nfyn4"]
+[ext_resource type="Texture2D" uid="uid://bf0atxj8bav85" path="res://Lab/Assets/Dokie_desk_3.png" id="2_2juf3"]
 [ext_resource type="Texture2D" uid="uid://da3ql6mpvqrbo" path="res://Lab/Assets/Dokie_monitor_blank.png" id="2_ab6fe"]
 [ext_resource type="Script" uid="uid://bua5etfqyhbja" path="res://Lab/Scenes/Intro/Link.gd" id="3_pcdpg"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="4_vqjbu"]
@@ -317,12 +318,15 @@ animations = [{
 [node name="IntroCutscene" type="Node2D"]
 script = ExtResource("1_nfyn4")
 
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("2_2juf3")
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
 texture = ExtResource("2_ab6fe")
 
 [node name="Link" type="Label" parent="."]
-process_mode = 4
 anchors_preset = -1
 offset_left = 264.0
 offset_top = 107.0
@@ -372,7 +376,7 @@ position = Vector2(-81, 0)
 [node name="Dog" type="AnimatedSprite2D" parent="MintContainer"]
 position = Vector2(184, 176)
 sprite_frames = SubResource("SpriteFrames_v2trs")
-frame_progress = 0.117778264
+frame_progress = 0.8663776
 
 [node name="Dragoon1" type="AnimatedSprite2D" parent="MintContainer"]
 position = Vector2(212, 192)
@@ -402,4 +406,5 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(5, 6, 23, 42)
 
+[connection signal="morph_done" from="Link" to="." method="onLink_morphDone"]
 [connection signal="visibility_changed" from="Link" to="Link" method="onVisibilityChanged"]

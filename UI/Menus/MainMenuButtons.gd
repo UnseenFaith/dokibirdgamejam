@@ -3,6 +3,7 @@
 #class_name MainMenu
 extends Control
 
+signal credits()
 
 func _input(event: InputEvent) -> void: # Need to Grab all input to prevent pausing, so we can't use _unhandled_input()
 	# Reassert unpausability as long as the Main Menu is onscreen, to workaround SceneManager resetting the flag.
@@ -11,8 +12,7 @@ func _input(event: InputEvent) -> void: # Need to Grab all input to prevent paus
 
 
 func onStartButton_pressed() -> void:
-	pass
-	#GameState.startMainScene()
+	GameState.startMainScene()
 
 
 func onQuitButton_longPressed() -> void:

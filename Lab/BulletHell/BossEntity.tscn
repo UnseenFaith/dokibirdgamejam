@@ -1,17 +1,21 @@
-[gd_scene load_steps=29 format=3 uid="uid://ciot5i76nld4m"]
+[gd_scene load_steps=46 format=3 uid="uid://ciot5i76nld4m"]
 
 [ext_resource type="Script" uid="uid://cq77ijorbele0" path="res://Lab/BulletHell/BossEntity.gd" id="1_bhu65"]
-[ext_resource type="PackedScene" uid="uid://dl77t36jj4vye" path="res://Lab/BulletHell/BossAttacks/FrontArm.tscn" id="2_7lwut"]
-[ext_resource type="Texture2D" uid="uid://burjp48047jmp" path="res://Lab/Assets/boss_clean.png" id="2_v0t4e"]
+[ext_resource type="Texture2D" uid="uid://b822f0iko503y" path="res://Lab/Assets/Boss/boss_inside.png" id="2_0bd57"]
+[ext_resource type="Texture2D" uid="uid://bhwnm1b4f5xw0" path="res://Lab/Assets/Boss/boss_base.png" id="2_v6qt5"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="3_4faen"]
-[ext_resource type="PackedScene" uid="uid://br446rumyjm88" path="res://Lab/BulletHell/BossAttacks/BackArm.tscn" id="3_lxm5q"]
-[ext_resource type="PackedScene" uid="uid://duw46vl1qh2bk" path="res://Lab/BulletHell/BossAttacks/LaserBeam.tscn" id="5_7lwut"]
+[ext_resource type="Texture2D" uid="uid://dkmm0m2loi27q" path="res://Lab/Assets/Boss/boss_beak.png" id="3_mjr86"]
+[ext_resource type="Texture2D" uid="uid://j03583rwwtvp" path="res://Lab/Assets/Boss/boss_panels.png" id="5_7lwut"]
 [ext_resource type="PackedScene" uid="uid://bb84q0leewc3" path="res://Lab/BulletHell/BulletEnemyEntity.tscn" id="5_g6b7d"]
 [ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="5_sns8m"]
 [ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_c8x7c"]
+[ext_resource type="Texture2D" uid="uid://cip13utv0b42u" path="res://Lab/Assets/Boss/boss_top.png" id="6_lxm5q"]
 [ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="7_g6b7d"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="7_spm5b"]
+[ext_resource type="Texture2D" uid="uid://bl6ir7cf25kmc" path="res://Lab/Assets/Boss/boss_gunn_back.png" id="7_u1ua6"]
+[ext_resource type="Texture2D" uid="uid://piagu0uyd2jl" path="res://Lab/Assets/Boss/boss_dog_dome.png" id="8_ka5rd"]
 [ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="8_uclee"]
+[ext_resource type="Texture2D" uid="uid://cggddguhoxqc6" path="res://Lab/Assets/Boss/boss_mech_fire.png" id="9_xlis3"]
 [ext_resource type="PackedScene" uid="uid://b1bqp8r4wjcg3" path="res://Components/Visual/DamageVisualComponent.tscn" id="10_nprmx"]
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="10_vejfc"]
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="12_5vyxp"]
@@ -25,6 +29,98 @@
 [ext_resource type="Script" uid="uid://bt7r4gk5t8drx" path="res://Lab/BulletHell/Beehave/LaserAttack.gd" id="21_lxm5q"]
 [ext_resource type="Script" uid="uid://cirb287gsn13o" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="22_7lwut"]
 [ext_resource type="Script" uid="uid://cnjgphhwqhpwb" path="res://Lab/BulletHell/Beehave/HomingMissileAttack.gd" id="22_u1ua6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oqmj"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(0, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd8t5"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(426, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i21re"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(852, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a25h"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(1278, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohi7a"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(1704, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82w71"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(2130, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5ee"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(2556, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbbul"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(2982, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xno4t"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(3408, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0oq3"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(3834, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f85ud"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(4260, 0, 426, 328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07ofg"]
+atlas = ExtResource("9_xlis3")
+region = Rect2(4686, 0, 426, 328)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgdtj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oqmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd8t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i21re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a25h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohi7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82w71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm5ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbbul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xno4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0oq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f85ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07ofg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuf5"]
 size = Vector2(232, 220)
@@ -47,45 +143,53 @@ collision_layer = 8
 collision_mask = 126
 script = ExtResource("1_bhu65")
 
-[node name="Arms" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0, -2)
 
-[node name="FrontArm" parent="Arms" instance=ExtResource("2_7lwut")]
-z_index = 1
-position = Vector2(8, 44)
+[node name="Fire" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_qgdtj")
+autoplay = "default"
+frame_progress = 0.594116
 
-[node name="DamageComponent" parent="Arms/FrontArm" index="2"]
+[node name="Inside" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_0bd57")
+
+[node name="Base" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_v6qt5")
+
+[node name="Panels" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("5_7lwut")
+
+[node name="Beak" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_mjr86")
+
+[node name="Hat" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("6_lxm5q")
+
+[node name="FrontGun" type="Sprite2D" parent="Sprites"]
 visible = false
+position = Vector2(108, 38)
+texture = ExtResource("7_u1ua6")
 
-[node name="GunComponent" parent="Arms/FrontArm" index="3"]
-position = Vector2(20, 24)
-autoFire = true
+[node name="BackGun" type="Sprite2D" parent="Sprites"]
+visible = false
+z_index = -1
+texture_filter = 1
+position = Vector2(-2, 2)
+texture = ExtResource("7_u1ua6")
 
-[node name="BackArm" parent="Arms" instance=ExtResource("3_lxm5q")]
-position = Vector2(-64, 8)
-
-[node name="GunComponent" parent="Arms/BackArm" index="3"]
-position = Vector2(-62, -4)
-autoFire = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_v0t4e")
-region_enabled = true
-region_rect = Rect2(51, 31, 231, 221)
-metadata/_edit_group_ = true
+[node name="Dad" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("8_ka5rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_8iuf5")
 
-[node name="LaserBeam" parent="." instance=ExtResource("5_7lwut")]
-visible = false
-position = Vector2(0, 44)
-
 [node name="FactionComponent" parent="." instance=ExtResource("3_4faen")]
 factions = 8
 
 [node name="GunComponent" parent="." instance=ExtResource("10_vejfc")]
-autoFire = true
 bulletEntity = ExtResource("5_g6b7d")
 cooldown = 0.01
 
@@ -114,7 +218,7 @@ shouldEmitBubble = false
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("15_suqsr")
-blackboard = NodePath("@Node@236819")
+blackboard = NodePath("@Node@633217")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bag6otltdtnve"
 
@@ -162,9 +266,5 @@ metadata/_custom_type_script = "uid://dhkaudqgmrjrr"
 script = ExtResource("19_bhu65")
 metadata/_custom_type_script = "uid://cevthawppkb0t"
 
-[editable path="Arms/FrontArm"]
-[editable path="Arms/FrontArm/GunComponent"]
-[editable path="Arms/BackArm"]
-[editable path="Arms/BackArm/GunComponent"]
 [editable path="GunComponent"]
 [editable path="DamageReceivingComponent"]

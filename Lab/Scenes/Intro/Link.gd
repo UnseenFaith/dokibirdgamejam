@@ -6,6 +6,8 @@ extends Label
 @export var gibberish_length := 12
 @export var morph_speed := 0.03
 
+signal morph_done()
+
 
 var _current_index := 0
 var _typing_done := false
@@ -66,6 +68,7 @@ func morph_step() -> void:
 		style.bg_color = Color(0, 0, 0, 0)
 		style.border_width_bottom = 1
 		set("theme_override_styles/normal", style)
+		morph_done.emit()
 		set_process(false)
 
 func make_gibberish_link(length: int) -> String:

@@ -21,6 +21,7 @@ func _ready() -> void:
 		setInitialFocus()
 
 
+
 func setInitialFocus() -> void:
 	if not didSetInitialFocus:
 		self.grab_focus.call_deferred() # Godot Documentation: Using this method together with `Callable.call_deferred()` makes it more reliable, especially when called inside _ready().
