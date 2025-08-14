@@ -5,10 +5,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ifor"]
 
-[node name="Crate" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Crate" type="CharacterBody2D" node_paths=PackedStringArray("collisions", "sprite")]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_1nw0l")
+collisions = [NodePath("CollisionShape2D")]
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

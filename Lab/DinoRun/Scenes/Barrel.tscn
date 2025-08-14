@@ -5,10 +5,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vswjd"]
 
-[node name="Barrel" type="CharacterBody2D"]
+[node name="Barrel" type="CharacterBody2D" node_paths=PackedStringArray("collisions")]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_vswjd")
+collisions = [NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vswjd")

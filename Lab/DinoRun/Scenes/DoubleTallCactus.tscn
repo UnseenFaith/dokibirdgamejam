@@ -6,7 +6,8 @@
 [node name="DoubleTallCactus" type="Node2D"]
 script = ExtResource("1_igr8b")
 
-[node name="SingleTallCactus" parent="." groups=["obstacles"] instance=ExtResource("2_igr8b")]
+[node name="SingleTallCactus" parent="." node_paths=PackedStringArray("collisions") groups=["obstacles"] instance=ExtResource("2_igr8b")]
+collisions = []
 
 [node name="SingleTallCactus2" parent="." groups=["obstacles"] instance=ExtResource("2_igr8b")]
 position = Vector2(16, 0)

@@ -4,6 +4,7 @@ class_name Crate2
 extends Entity
 
 @export var speed: float
+@export var collisions: Array[CollisionShape2D] = []
 
 var has_been_hit := false
 
@@ -14,6 +15,10 @@ var fly_angular_velocity := 0.0
 func fly_off() -> void:
 	if has_been_hit:
 		return
+	
+	for col in collisions:
+		col.shape = null
+		
 	has_been_hit = true
 	fly_velocity = Vector2(randf_range(200, 500), randf_range(-700, -500))
 	fly_angular_velocity = randf_range(-8, 8)

@@ -42,10 +42,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qhb4"]
 size = Vector2(55, 22)
 
-[node name="Bird" type="CharacterBody2D"]
+[node name="Bird" type="CharacterBody2D" node_paths=PackedStringArray("collisions")]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_11rt2")
+collisions = [NodePath("CollisionShape2D")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0t7v8")

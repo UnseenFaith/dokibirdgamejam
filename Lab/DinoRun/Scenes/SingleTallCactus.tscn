@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy6kt"]
 size = Vector2(16, 32)
 
-[node name="SingleTallCactus" type="CharacterBody2D"]
+[node name="SingleTallCactus" type="CharacterBody2D" node_paths=PackedStringArray("collisions")]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_n0imu")
+collisions = [NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_sy8hw")
