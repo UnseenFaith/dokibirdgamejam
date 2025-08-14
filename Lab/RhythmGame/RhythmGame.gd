@@ -6,7 +6,7 @@ extends Node2D
 
 var note_scene := preload("res://Lab/RhythmGame/Note.tscn")
 
-var lane_y_positions := [100, 200, 300] # Adjust for your lanes
+var lane_y_positions := [100, 200, 300, 400, 500] # Adjust for your lanes
 var hit_zone := 200
 var spawn_x := 600
 var lead_time := 1.5

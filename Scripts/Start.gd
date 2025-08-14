@@ -153,10 +153,9 @@ func printLog(message: String) -> void:
 
 
 func onLevel1_pressed() -> void:
-	var level1: PackedScene = load("res://Lab/DinoRun/DinoRun.tscn")
-	SceneManager.transitionToScene(level1)
+	var level2: PackedScene = load("res://Lab/DinoRun/DinoRun.tscn")
+	SceneManager.transitionToScene(level2)
 	GlobalInput.isPauseShortcutAllowed = true
-
 
 func onLevel2_pressed() -> void:
 	var level2: PackedScene = load("res://Lab/RhythmGame/RhythmGame.tscn")
@@ -168,3 +167,33 @@ func onLevel3_pressed() -> void:
 	var level3: PackedScene = load("res://Lab/BulletHell/BulletHell.tscn")
 	SceneManager.transitionToScene(level3)
 	GlobalInput.isPauseShortcutAllowed = true
+
+
+var creditTree
+func onCreditsButton_buttonDown() -> void:
+	var credits = load("res://Lab/Scenes/Credits.tscn")
+	var scene = credits.instantiate()
+	creditTree = scene
+	scene.scale.x = 0.5
+	scene.scale.y = 0.5
+	scene.position = Vector2(160, 25)
+	add_child(scene)
+	scene.connect('cutscene_quit', credit_quit)
+	$CanvasLayer.visible = false
+
+func credit_quit() -> void:
+	$CanvasLayer.visible = true
+	creditTree.queue_free()
+	pass
+	
+
+
+func onStartButton_pressed() -> void:
+	$CanvasLayer.visible = false
+	$CanvasLayer.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	$IntroCutscene.visible = true
+	$IntroCutscene.process_mode = Node.PROCESS_MODE_ALWAYS
+	$AudioStreamPlayer.stop()
+	$IntroCutscene.start_dialog()
+	$IntroCutscene.z_index = 5

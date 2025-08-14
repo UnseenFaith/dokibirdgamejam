@@ -91,13 +91,18 @@ func _process(_delta: float) -> void:
 	# Are we chilling?
 	if not idleAnimation.is_empty() \
 	and is_zero_approx(body.velocity.x) \
+	and jumpFinished \
 	and not sliding:
+		if not $"../RunSound".playing:
+			$"../RunSound".pitch_scale = randf_range(0.8, 1.2)
+			$"../RunSound".play()
 		animationToPlay = idleAnimation
 
 	# Are we walking?
 	if not walkAnimation.is_empty() \
 	and not is_zero_approx(body.velocity.x) \
 	and not sliding:
+
 		animationToPlay = walkAnimation
 
 	if inputComponent.verticalInput == 1.0  \
@@ -124,6 +129,7 @@ func _process(_delta: float) -> void:
 		var verticalDirection: float = signf(body.velocity.y)
 		if not jumpAnimation.is_empty() \
 		and verticalDirection < 0.0:
+			$"../RunSound".stop()
 			animationToPlay = jumpAnimation
 
 	# Play the chosen animation
@@ -134,6 +140,9 @@ func _process(_delta: float) -> void:
 		animatedSprite.stop()
 		$"../CollisionShape2D".shape.size.y = 40
 		$"../CollisionShape2D".position.y = -12
+		$"../RunSound".stop()
+		$"../JumpSound".pitch_scale = randf_range(0.8, 1.2)
+		$"../JumpSound".play()
 		$"../AnimatedSprite2D/AnimationPlayer".play("jump")
 	elif jumpFinished && slideFinished:
 		animatedSprite.play(animationToPlay)

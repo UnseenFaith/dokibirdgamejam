@@ -92,6 +92,7 @@ func _ready() -> void:
 
 func cutsceneJump() -> void:
 	body.velocity.y = parameters.jumpVelocity1stJump * body.up_direction.y
+	$"../AnimatedSprite2D".play("front_jump")
 	characterBodyComponent.shouldMoveThisFrame = true
 #region Update Cycle
 

@@ -5,8 +5,19 @@
 &"color": Color(1, 0.7088318, 0.20703125, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Mood 1",
+"sound_moods": {
+"Mood 1": {
+"mode": 2,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "res://Lab/Assets/SFX/RPGTxt - Doki.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "",
 "suffix": ""
 },
@@ -25,7 +36,8 @@
 "mirror": false,
 "offset": Vector2(225, 0),
 "scale": 1.0,
-"scene": ""
+"scene": "",
+"sound_mood": "Mood 1"
 }
 },
 &"scale": 1.0

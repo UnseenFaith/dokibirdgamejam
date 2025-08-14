@@ -6,4 +6,5 @@ func onBodyEntered(body: Node2D) -> void:
 			print("fly off!")
 			body.fly_off()
 	else:
+		GlobalInput.isPauseShortcutAllowed = false
 		GameState.removePlayer(GameState.getPlayer())

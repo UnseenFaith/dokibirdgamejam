@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="NoteData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="NoteData" load_steps=2 format=3 uid="uid://bfhp68oex5ys6"]
 
-[ext_resource type="Script" path="res://Lab/RhythmGame/Pattern/NoteData.gd" id="1_5pwyv"]
+[ext_resource type="Script" uid="uid://jwxe7ptc43gu" path="res://Lab/RhythmGame/Pattern/NoteData.gd" id="1_5pwyv"]
 
 [resource]
 script = ExtResource("1_5pwyv")
@@ -77,11 +77,11 @@ notes = [{
 "lane": -1,
 "note": 60
 }, {
-"hit_time": 9.080268666666635,
+"hit_time": 9.080268666666637,
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 9.080268666666635,
+"hit_time": 9.080268666666637,
 "lane": 1,
 "note": 60
 }, {
@@ -109,11 +109,11 @@ notes = [{
 "lane": -1,
 "note": 60
 }, {
-"hit_time": 10.146892666666659,
+"hit_time": 10.14689266666666,
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 10.330218666666667,
+"hit_time": 10.330218666666669,
 "lane": -1,
 "note": 60
 }, {
@@ -125,7 +125,7 @@ notes = [{
 "lane": 1,
 "note": 60
 }, {
-"hit_time": 10.680204666666683,
+"hit_time": 10.680204666666684,
 "lane": -1,
 "note": 60
 }, {
@@ -133,7 +133,7 @@ notes = [{
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 11.046856666666699,
+"hit_time": 11.0468566666667,
 "lane": -1,
 "note": 60
 }, {
@@ -169,11 +169,11 @@ notes = [{
 "lane": -1,
 "note": 60
 }, {
-"hit_time": 12.280140666666753,
+"hit_time": 12.280140666666751,
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 12.463466666666761,
+"hit_time": 12.46346666666676,
 "lane": -1,
 "note": 60
 }, {
@@ -289,7 +289,7 @@ notes = [{
 "lane": 0,
 "note": 58
 }, {
-"hit_time": 18.179904666667014,
+"hit_time": 18.179904666667017,
 "lane": 0,
 "note": 56
 }, {
@@ -377,7 +377,7 @@ notes = [{
 "lane": 0,
 "note": 58
 }, {
-"hit_time": 20.279820666667106,
+"hit_time": 20.279820666667103,
 "lane": -1,
 "note": 65
 }, {
@@ -397,7 +397,7 @@ notes = [{
 "lane": 0,
 "note": 61
 }, {
-"hit_time": 20.629806666667122,
+"hit_time": 20.62980666666712,
 "lane": -1,
 "note": 68
 }, {
@@ -485,11 +485,11 @@ notes = [{
 "lane": -1,
 "note": 63
 }, {
-"hit_time": 22.263074666667194,
+"hit_time": 22.26307466666719,
 "lane": 0,
 "note": 58
 }, {
-"hit_time": 22.446400666667202,
+"hit_time": 22.4464006666672,
 "lane": 0,
 "note": 56
 }, {
@@ -585,7 +585,7 @@ notes = [{
 "lane": 0,
 "note": 56
 }, {
-"hit_time": 24.529650666667294,
+"hit_time": 24.529650666667298,
 "lane": -1,
 "note": 60
 }, {
@@ -593,11 +593,11 @@ notes = [{
 "lane": 0,
 "note": 54
 }, {
-"hit_time": 24.712976666667302,
+"hit_time": 24.712976666667306,
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 24.712976666667302,
+"hit_time": 24.712976666667306,
 "lane": 1,
 "note": 60
 }, {
@@ -617,11 +617,11 @@ notes = [{
 "lane": 0,
 "note": 50
 }, {
-"hit_time": 25.062962666667318,
+"hit_time": 25.06296266666732,
 "lane": 0,
 "note": 60
 }, {
-"hit_time": 25.062962666667318,
+"hit_time": 25.06296266666732,
 "lane": -1,
 "note": 63
 }, {
@@ -629,7 +629,7 @@ notes = [{
 "lane": 0,
 "note": 51
 }, {
-"hit_time": 25.246288666667326,
+"hit_time": 25.24628866666733,
 "lane": -1,
 "note": 60
 }, {
@@ -697,7 +697,7 @@ notes = [{
 "lane": -1,
 "note": 66
 }, {
-"hit_time": 26.162918666667366,
+"hit_time": 26.16291866666737,
 "lane": 0,
 "note": 61
 }, {
@@ -709,7 +709,7 @@ notes = [{
 "lane": -1,
 "note": 68
 }, {
-"hit_time": 26.346244666667374,
+"hit_time": 26.346244666667378,
 "lane": 0,
 "note": 59
 }, {
@@ -745,7 +745,7 @@ notes = [{
 "lane": -1,
 "note": 70
 }, {
-"hit_time": 26.879556666667398,
+"hit_time": 26.8795566666674,
 "lane": 0,
 "note": 58
 }, {
@@ -753,7 +753,7 @@ notes = [{
 "lane": -1,
 "note": 60
 }, {
-"hit_time": 27.062882666667406,
+"hit_time": 27.06288266666741,
 "lane": 0,
 "note": 54
 }, {
@@ -837,11 +837,11 @@ notes = [{
 "lane": -1,
 "note": 60
 }, {
-"hit_time": 28.612820666667474,
+"hit_time": 28.61282066666747,
 "lane": -1,
 "note": 65
 }, {
-"hit_time": 28.796146666667482,
+"hit_time": 28.79614666666748,
 "lane": -1,
 "note": 66
 }, {
@@ -849,11 +849,11 @@ notes = [{
 "lane": -1,
 "note": 68
 }, {
-"hit_time": 29.146132666667498,
+"hit_time": 29.146132666667494,
 "lane": -1,
 "note": 69
 }, {
-"hit_time": 29.329458666667506,
+"hit_time": 29.329458666667502,
 "lane": -1,
 "note": 65
 }, {

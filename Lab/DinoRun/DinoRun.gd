@@ -53,8 +53,10 @@ func _start_game() -> void:
 	$Enemy/AnimatedSprite2D.play("default")
 	$"Player-Platformer/InputComponent".isEnabled = true
 	$AudioStreamPlayer.play()
+	$Tumbleweed.play()
 
 func _process(delta: float) -> void:
+	$Tumbleweed.pitch_scale = randf_range(0.8, 1.2)
 	if audio.playing:
 		var current_time = audio.get_playback_position()
 		var total_time = audio.stream.get_length()

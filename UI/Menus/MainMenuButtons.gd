@@ -11,7 +11,8 @@ func _input(event: InputEvent) -> void: # Need to Grab all input to prevent paus
 
 
 func onStartButton_pressed() -> void:
-	GameState.startMainScene()
+	pass
+	#GameState.startMainScene()
 
 
 func onQuitButton_longPressed() -> void:

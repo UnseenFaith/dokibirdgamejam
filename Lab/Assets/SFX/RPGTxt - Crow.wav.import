@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dj7w8rt0lkyn8"
+path="res://.godot/imported/RPGTxt - Crow.wav-28a3dafbea2743abc1307d7fdbde9929.sample"
+
+[deps]
+
+source_file="res://Lab/Assets/SFX/RPGTxt - Crow.wav"
+dest_files=["res://.godot/imported/RPGTxt - Crow.wav-28a3dafbea2743abc1307d7fdbde9929.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,8 +1,9 @@
-[gd_scene load_steps=75 format=3 uid="uid://bmssbkevfv3ft"]
+[gd_scene load_steps=94 format=3 uid="uid://bmssbkevfv3ft"]
 
 [ext_resource type="Script" uid="uid://bisowd0k143yp" path="res://Entities/Characters/PlayerEntity.gd" id="1_mgt6d"]
 [ext_resource type="PackedScene" uid="uid://dekgkos84sljm" path="res://Components/Visual/CameraComponent.tscn" id="3_24xqn"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="3_fggwt"]
+[ext_resource type="Texture2D" uid="uid://br4se5e7k32fs" path="res://Game/Doki_Jump.png" id="3_qhs00"]
 [ext_resource type="PackedScene" uid="uid://d06m60dgdv8ui" path="res://Components/Data/StatsComponent.tscn" id="4_fj8vo"]
 [ext_resource type="Texture2D" uid="uid://gw643va87flg" path="res://Lab/Assets/Doki_side_jump-Sheet.png" id="4_gcuor"]
 [ext_resource type="Texture2D" uid="uid://mg5idc1adtml" path="res://Game/vagabond-run-end.png" id="4_q1k2l"]
@@ -20,6 +21,8 @@
 [ext_resource type="Script" uid="uid://bqtlb3ebf2ocg" path="res://Resources/Parameters/PlatformerJumpParameters.gd" id="17_td0hg"]
 [ext_resource type="Script" uid="uid://cki34kcp6p026" path="res://Resources/Parameters/PlatformerMovementParameters.gd" id="19_fggwt"]
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="19_wto0t"]
+[ext_resource type="AudioStream" uid="uid://cxid1fvukkfxn" path="res://Lab/Assets/SFX/Running.wav" id="22_td0hg"]
+[ext_resource type="AudioStream" uid="uid://hjc8lltvhxny" path="res://Lab/Assets/SFX/Jump.wav" id="23_fggwt"]
 [ext_resource type="PackedScene" uid="uid://b672vnmenyvb3" path="res://Game/Components/DokiAnimationComponent.tscn" id="24_q1k2l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hakja"]
@@ -45,6 +48,70 @@ region = Rect2(320, 0, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ag1uf"]
 atlas = ExtResource("4_gcuor")
 region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj06o"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plve6"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5efa"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yig5q"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnngv"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndpxu"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrn72"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1jey"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mclx7"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eisec"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk0bm"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4o2d"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnoxi"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmt0v"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(416, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6wfu"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(448, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfrky"]
+atlas = ExtResource("3_qhs00")
+region = Rect2(480, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhs00"]
 atlas = ExtResource("3_fggwt")
@@ -214,6 +281,59 @@ animations = [{
 "loop": false,
 "name": &"fall",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj06o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plve6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5efa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yig5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnngv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndpxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrn72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1jey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mclx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eisec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk0bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4o2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnoxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmt0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6wfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfrky")
+}],
+"loop": false,
+"name": &"front_jump",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -583,6 +703,15 @@ body = NodePath("..")
 idleAnimation = &"walk"
 
 [node name="InputComponent" parent="." instance=ExtResource("19_wto0t")]
+
+[node name="RunSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_td0hg")
+bus = &"SFX"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_fggwt")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="DokiAnimationComponent" method="onAnimatedSprite2d_animationFinished"]
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="DokiAnimationComponent" method="onAnimationPlayer_animationFinished"]

@@ -48,6 +48,10 @@ text = "OPTIONS"
 script = ExtResource("2_phlj7")
 navigationDestination = "uid://cysctd14jlutm"
 
+[node name="CreditsButton" type="Button" parent="MainMenuButtons"]
+layout_mode = 2
+text = "Credits"
+
 [node name="QuitButton" parent="MainMenuButtons" instance=ExtResource("4_0dnri")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")

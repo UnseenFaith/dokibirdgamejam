@@ -58,9 +58,12 @@ gdscript/warnings/untyped_declaration=1
 directories/dch_directory={
 "Crow": "res://Game/Dialogic/Crow.dch",
 "Doki": "res://Game/Dialogic/Doki.dch",
-"Mint": "res://Game/Dialogic/Mint.dch"
+"Mint": "res://Game/Dialogic/Mint.dch",
+"Narrator": "res://Game/Dialogic/Narrator.dch"
 }
 directories/dtl_directory={
+"intro": "res://Game/Dialogic/intro.dtl",
+"intro2": "res://Game/Dialogic/intro2.dtl",
 "timeline": "res://Game/Dialogic/timeline.dtl"
 }
 layout/style_directory={
@@ -88,13 +91,13 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 audio/channel_defaults={
 "": {
-"audio_bus": "",
+"audio_bus": "SFX",
 "fade_length": 0.0,
 "loop": false,
 "volume": 0.0
 },
 "music": {
-"audio_bus": "",
+"audio_bus": "Music",
 "fade_length": 0.0,
 "loop": true,
 "volume": 0.0
@@ -104,6 +107,7 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://Game/Dialogic/DokiStyle.tres"]
 layout/default_style="res://Game/Dialogic/DokiStyle.tres"
 variables={}
+save/autosave=false
 
 [display]
 

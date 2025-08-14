@@ -122,6 +122,9 @@ texture = ExtResource("6_01jtn")
 [node name="BossEntity" parent="." instance=ExtResource("2_a8yow")]
 position = Vector2(392, 175)
 
+[node name="Arms" parent="BossEntity" index="0"]
+visible = false
+
 [node name="GunComponent" parent="BossEntity" index="5" node_paths=PackedStringArray("bulletParentOverride")]
 autoFire = false
 bulletParentOverride = NodePath("../../Bullets")
@@ -139,7 +142,7 @@ health = SubResource("Resource_4qcyh")
 isPlayerControlled = false
 
 [node name="BeehaveTree" parent="BossEntity" index="13" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@241938")
+blackboard = NodePath("@Node@26554")
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
 position = Vector2(35, 208.00002)

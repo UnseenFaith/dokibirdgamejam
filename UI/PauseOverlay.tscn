@@ -64,6 +64,7 @@ hueModifier = 0.5
 
 [node name="SubtitleLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.8)
 custom_minimum_size = Vector2(80, 8)
 layout_mode = 2
@@ -105,6 +106,7 @@ text = "REBOOT"
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "TIME"
 horizontal_alignment = 1

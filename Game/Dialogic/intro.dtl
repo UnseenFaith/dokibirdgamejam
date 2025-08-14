@@ -1,0 +1,6 @@
+[signal arg="show_link"]
+[wait time="4.0"]
+join Doki leftmost
+Doki: That's weird... for a second I thought that was a message from Mint.
+Doki: I wonder what'll happen if I click that link..
+[end_timeline]

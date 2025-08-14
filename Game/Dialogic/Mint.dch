@@ -5,17 +5,38 @@
 &"color": Color(0.4749298, 0.97265625, 0.9143289, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Mood 1",
+"sound_moods": {
+"Mood 1": {
+"mode": 2,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "res://Lab/Assets/SFX/RPGTxt - Mint.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "Group/Default",
 &"description": "",
 &"display_name": "Mint",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Group/Default": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/ui_minti.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }
