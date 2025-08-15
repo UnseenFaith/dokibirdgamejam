@@ -29,11 +29,18 @@ var cutscenePlayed = Settings.get('firstCutscenePlayed')
 var cutscene := ""
 var gameEnded := false
 
+var playback_latency := 0.0
 func _ready() -> void:
 	$"Player-Platformer/InputComponent".isEnabled = false
 	$AnimationPlayer.play("cutscene")
 	Dialogic.connect("signal_event", _dialog_event)
 	Dialogic.connect("timeline_ended", timeline_ended)
+	
+	# Estimate output latency
+	if OS.has_feature("web"):
+		playback_latency = 3.0 # ~3000ms
+	else:
+		playback_latency = 0.0
 
 func _dialog_event(parameter: String) -> void:
 	$AnimationPlayer.play(parameter)
@@ -63,24 +70,27 @@ func _start_game() -> void:
 	$Enemy.position.x = 20
 	$Enemy/AnimatedSprite2D.play("default")
 	$"Player-Platformer/InputComponent".isEnabled = true
-	$AudioStreamPlayer.play()
 	$Tumbleweed.play()
 	$AnimationPlayer.play("tutorial")
 	$Crow.visible = false
+	$AudioStreamPlayer.play()
+	play_start_time = Time.get_ticks_msec() / 1000.0
 
 func start_obstacles() -> void:
 	$ObstacleTimer.start()
 
+var play_start_time := 0.0
+
 func _process(delta: float) -> void:
 	$Tumbleweed.pitch_scale = randf_range(0.8, 1.2)
 	if audio.playing:
-		var current_time = audio.get_playback_position()
+		var current_time = Time.get_ticks_msec() / 1000.0 - play_start_time
 		var total_time = audio.stream.get_length()
 		current_time += delta
 		
 		# Avoid division by zero if stream length is unknown
 		if total_time > 0:
-			$Tracker/Path2D/PathFollow2D.progress_ratio = (current_time / total_time)
+			$Tracker/Path2D/PathFollow2D.progress_ratio = clampf(current_time / total_time, 0.0, 1.0)
 		else:
 			$Tracker/Path2D/PathFollow2D.progress_ratio = 0.0
 

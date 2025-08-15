@@ -10,7 +10,7 @@ signal note_missed()
 func _ready() -> void:
 	randomize()
 	var choice := randf_range(0, 1)
-	if choice >= 0.05:
+	if choice >= 0.02:
 		$AnimatedSprite2D.animation = "tomato"
 	else:
 		$AnimatedSprite2D.animation = "racoon"

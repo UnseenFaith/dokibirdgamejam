@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.nlaha.godotmidi"
+type="MidiResource"
+uid="uid://btpjo5h4s344e"
+path="res://.godot/imported/Rhythm v3.mid-03d68da3fd07a02d735a3b25a8fede30.res"
+
+[deps]
+
+source_file="res://Lab/RhythmGame/Assets/Rhythm v3.mid"
+dest_files=["res://.godot/imported/Rhythm v3.mid-03d68da3fd07a02d735a3b25a8fede30.res"]
+
+[params]
+

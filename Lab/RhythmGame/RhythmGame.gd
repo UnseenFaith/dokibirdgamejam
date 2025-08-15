@@ -21,10 +21,10 @@ var finished := false
 
 var delta_sum := 0.0
 
-var min_note := 50
-var max_note := 83
+var min_note := 48
+var max_note := 87
 
-var min_y := 168
+var min_y := 160
 var max_y := 256
 
 var game_started = false

@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://ic7pden1fgfl"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
-[ext_resource type="MidiResource" uid="uid://dg8isrbqfkgmi" path="res://Lab/RhythmGame/Assets/Rhythm (if pitch based).mid" id="2_qbl1s"]
-[ext_resource type="AudioStream" uid="uid://cw3je403pr4k8" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v2).wav" id="3_1ayhs"]
+[ext_resource type="MidiResource" uid="uid://btpjo5h4s344e" path="res://Lab/RhythmGame/Assets/Rhythm v3.mid" id="2_cto7o"]
+[ext_resource type="AudioStream" uid="uid://ccxxwufkbbvj2" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v3).wav" id="3_pe4iu"]
 [ext_resource type="Texture2D" uid="uid://d3l4gubffnk8k" path="res://Lab/BulletHell/Assets/Doki_head_chest.png" id="5_1ayhs"]
 [ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="6_1ayhs"]
@@ -243,13 +243,13 @@ libraries = {
 }
 
 [node name="MidiQueue" type="MidiPlayer" parent="."]
-midi = ExtResource("2_qbl1s")
+midi = ExtResource("2_cto7o")
 
 [node name="MidiPlayer" type="MidiPlayer" parent="."]
-midi = ExtResource("2_qbl1s")
+midi = ExtResource("2_cto7o")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_1ayhs")
+stream = ExtResource("3_pe4iu")
 bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("5_qbl1s")]
