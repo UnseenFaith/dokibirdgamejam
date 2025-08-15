@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ciot5i76nld4m"]
+[gd_scene load_steps=35 format=3 uid="uid://ciot5i76nld4m"]
 
 [ext_resource type="Script" uid="uid://cq77ijorbele0" path="res://Lab/BulletHell/BossEntity.gd" id="1_bhu65"]
 [ext_resource type="Texture2D" uid="uid://b822f0iko503y" path="res://Lab/Assets/Boss/boss_inside.png" id="2_0bd57"]
@@ -14,21 +14,10 @@
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="7_spm5b"]
 [ext_resource type="Texture2D" uid="uid://bl6ir7cf25kmc" path="res://Lab/Assets/Boss/boss_gunn_back.png" id="7_u1ua6"]
 [ext_resource type="Texture2D" uid="uid://piagu0uyd2jl" path="res://Lab/Assets/Boss/boss_dog_dome.png" id="8_ka5rd"]
-[ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="8_uclee"]
 [ext_resource type="Texture2D" uid="uid://cggddguhoxqc6" path="res://Lab/Assets/Boss/boss_mech_fire.png" id="9_xlis3"]
-[ext_resource type="PackedScene" uid="uid://b1bqp8r4wjcg3" path="res://Components/Visual/DamageVisualComponent.tscn" id="10_nprmx"]
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="10_vejfc"]
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="12_5vyxp"]
-[ext_resource type="Script" uid="uid://bag6otltdtnve" path="res://addons/beehave/nodes/beehave_tree.gd" id="15_suqsr"]
-[ext_resource type="Script" uid="uid://b8ni3dgybvb3l" path="res://addons/beehave/nodes/composites/selector.gd" id="16_ccbw4"]
-[ext_resource type="Script" uid="uid://20eh3l215hkf" path="res://addons/beehave/nodes/composites/sequence.gd" id="17_bhu65"]
 [ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="17_v0t4e"]
-[ext_resource type="Script" uid="uid://do7mxeknpdjow" path="res://addons/beehave/nodes/composites/selector_random.gd" id="18_0bd57"]
-[ext_resource type="Script" uid="uid://dhkaudqgmrjrr" path="res://Lab/BulletHell/Beehave/HealthCondition.gd" id="18_v0t4e"]
-[ext_resource type="Script" uid="uid://cevthawppkb0t" path="res://Lab/BulletHell/Beehave/TestAction.gd" id="19_bhu65"]
-[ext_resource type="Script" uid="uid://bt7r4gk5t8drx" path="res://Lab/BulletHell/Beehave/LaserAttack.gd" id="21_lxm5q"]
-[ext_resource type="Script" uid="uid://cirb287gsn13o" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="22_7lwut"]
-[ext_resource type="Script" uid="uid://cnjgphhwqhpwb" path="res://Lab/BulletHell/Beehave/HomingMissileAttack.gd" id="22_u1ua6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqmj"]
 atlas = ExtResource("9_xlis3")
@@ -123,7 +112,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuf5"]
-size = Vector2(232, 220)
+size = Vector2(194, 302)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alspo"]
 resource_local_to_scene = true
@@ -133,7 +122,8 @@ size = Vector2(96, 220)
 resource_local_to_scene = true
 resource_name = "health"
 script = ExtResource("7_spm5b")
-value = 10
+max = 100
+value = 100
 name = &"health"
 displayName = "Health"
 
@@ -183,18 +173,19 @@ texture = ExtResource("7_u1ua6")
 texture = ExtResource("8_ka5rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(19, -4)
 shape = SubResource("RectangleShape2D_8iuf5")
 
 [node name="FactionComponent" parent="." instance=ExtResource("3_4faen")]
 factions = 8
 
 [node name="GunComponent" parent="." instance=ExtResource("10_vejfc")]
+isEnabled = false
 bulletEntity = ExtResource("5_g6b7d")
 cooldown = 0.01
 
 [node name="DamageReceivingComponent" parent="." instance=ExtResource("6_c8x7c")]
-visible = false
+position = Vector2(96, 0)
 
 [node name="ReceivingCollisionShape" parent="DamageReceivingComponent" index="0"]
 position = Vector2(-48, 0)
@@ -206,65 +197,22 @@ friendlyFire = true
 [node name="HealthComponent" parent="." instance=ExtResource("5_sns8m")]
 health = SubResource("Resource_4qcyh")
 
-[node name="DamageVisualComponent" parent="." instance=ExtResource("10_nprmx")]
-shouldEmitBubble = false
-
-[node name="HealthVisualComponent" parent="." instance=ExtResource("8_uclee")]
-shouldEmitBubble = false
-
 [node name="CharacterBodyComponent" parent="." instance=ExtResource("17_v0t4e")]
 
 [node name="InputComponent" parent="." instance=ExtResource("12_5vyxp")]
 
-[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
-script = ExtResource("15_suqsr")
-blackboard = NodePath("@Node@674409")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://bag6otltdtnve"
+[node name="State" type="Label" parent="."]
+anchors_preset = -1
+offset_top = -121.0
+offset_right = 42.0
+offset_bottom = -113.0
+text = "State: "
 
-[node name="SelectorComposite" type="Node" parent="BeehaveTree"]
-script = ExtResource("16_ccbw4")
-metadata/_custom_type_script = "uid://b8ni3dgybvb3l"
-
-[node name="Phase1 Composite" type="Node" parent="BeehaveTree/SelectorComposite"]
-script = ExtResource("18_0bd57")
-metadata/_custom_type_script = "uid://do7mxeknpdjow"
-
-[node name="HealthCondition" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite" node_paths=PackedStringArray("healthComponent")]
-script = ExtResource("18_v0t4e")
-healthComponent = NodePath("../../../../HealthComponent")
-metadata/_custom_type_script = "uid://dhkaudqgmrjrr"
-
-[node name="CooldownDecorator2" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite"]
-script = ExtResource("22_7lwut")
-wait_time = 10.0
-metadata/_custom_type_script = "uid://cirb287gsn13o"
-
-[node name="LaserAttack" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite/CooldownDecorator2"]
-script = ExtResource("21_lxm5q")
-metadata/_custom_type_script = "uid://bt7r4gk5t8drx"
-
-[node name="CooldownDecorator" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite"]
-script = ExtResource("22_7lwut")
-wait_time = 5.0
-metadata/_custom_type_script = "uid://cirb287gsn13o"
-
-[node name="HomingMissileAttack" type="Node" parent="BeehaveTree/SelectorComposite/Phase1 Composite/CooldownDecorator"]
-script = ExtResource("22_u1ua6")
-metadata/_custom_type_script = "uid://cnjgphhwqhpwb"
-
-[node name="Phase 2 Sequence" type="Node" parent="BeehaveTree/SelectorComposite"]
-script = ExtResource("17_bhu65")
-metadata/_custom_type_script = "uid://20eh3l215hkf"
-
-[node name="HealthCondition" type="Node" parent="BeehaveTree/SelectorComposite/Phase 2 Sequence"]
-script = ExtResource("18_v0t4e")
-healthToCheck = 0
-metadata/_custom_type_script = "uid://dhkaudqgmrjrr"
-
-[node name="TestAction" type="Node" parent="BeehaveTree/SelectorComposite/Phase 2 Sequence"]
-script = ExtResource("19_bhu65")
-metadata/_custom_type_script = "uid://cevthawppkb0t"
+[node name="CurrentState" type="Label" parent="State"]
+layout_mode = 0
+offset_left = 39.0
+offset_right = 103.0
+offset_bottom = 8.0
 
 [editable path="GunComponent"]
 [editable path="DamageReceivingComponent"]

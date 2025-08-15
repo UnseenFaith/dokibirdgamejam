@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn1fg48eql4d4"]
+
+[ext_resource type="Script" uid="uid://gehr4o4k6tuh" path="res://Game/Components/OverheadDokiAnimationComponent.gd" id="1_hmhrk"]
+
+[node name="OverheadDokiAnimationComponent" type="Node" groups=["components"]]
+script = ExtResource("1_hmhrk")

@@ -1,38 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://uhpryrs6kicb"]
+[gd_scene load_steps=19 format=3 uid="uid://uhpryrs6kicb"]
 
 [ext_resource type="PackedScene" uid="uid://b6c5d68ty35va" path="res://Templates/Entities/PlayerEntityTemplate-Overhead.tscn" id="1_rja4v"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="2_82ebn"]
-[ext_resource type="Texture2D" uid="uid://berxbumt1ame5" path="res://Lab/Assets/Doki_bird.png" id="2_142k4"]
 [ext_resource type="PackedScene" uid="uid://cnu5f0ycxgu8d" path="res://Components/Combat/HealthComponent.tscn" id="3_2u5kn"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="4_h6ywj"]
 [ext_resource type="PackedScene" uid="uid://bgfxxe60d72c0" path="res://Components/Visual/HealthVisualComponent.tscn" id="5_kwqpf"]
 [ext_resource type="PackedScene" uid="uid://ffkcrlcom1kx" path="res://Components/Combat/DamageReceivingComponent.tscn" id="6_qpgeg"]
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="7_chq7u"]
 [ext_resource type="PackedScene" uid="uid://cd7vapsmxp183" path="res://Components/Combat/InvulnerabilityOnHitComponent.tscn" id="7_wh2cs"]
-[ext_resource type="Script" uid="uid://dasb7rs3nfxka" path="res://Components/Combat/InvulnerabilityOnHitComponent.gd" id="8_peug6"]
-
-[sub_resource type="Animation" id="Animation_wh2cs"]
-resource_name = "invulnerabilityOnHit"
-step = 0.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false, true, false, true, false, true]
-}
+[ext_resource type="PackedScene" uid="uid://c8h7hhcc082h" path="res://Templates/Entities/DokiBulletEntityTemplate.tscn" id="9_peug6"]
+[ext_resource type="PackedScene" uid="uid://cn1fg48eql4d4" path="res://Game/Components/OverheadDokiAnimationComponent.tscn" id="10_peug6"]
+[ext_resource type="Script" uid="uid://g6spk2uwn3kv" path="res://Resources/Parameters/OverheadMovementParameters.gd" id="10_wh2cs"]
 
 [sub_resource type="Animation" id="Animation_peug6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("Top:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,16 +26,52 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wh2cs"]
+resource_name = "invulnerabilityOnHit"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.2, 0.3, 0.40000004, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_peug6"]
 _data = {
 &"RESET": SubResource("Animation_peug6"),
 &"invulnerabilityOnHit": SubResource("Animation_wh2cs")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_peug6"]
-resource_local_to_scene = true
-size = Vector2(15, 15)
 
 [sub_resource type="Resource" id="Resource_1id7j"]
 resource_local_to_scene = true
@@ -69,6 +90,15 @@ max = 100
 value = 100
 name = &"ammo"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peug6"]
+resource_local_to_scene = true
+size = Vector2(15, 15)
+
+[sub_resource type="Resource" id="Resource_peug6"]
+script = ExtResource("10_wh2cs")
+shouldApplyAcceleration = false
+metadata/_custom_type_script = "uid://g6spk2uwn3kv"
+
 [node name="Player-OverheadCombat" instance=ExtResource("1_rja4v")]
 editor_description = "A template for the player character in an \"overhead\" or \"top-down\" view game with combat functionality."
 
@@ -76,14 +106,6 @@ editor_description = "A template for the player character in an \"overhead\" or 
 libraries = {
 &"": SubResource("AnimationLibrary_peug6")
 }
-
-[node name="Sprite2D" parent="." index="1"]
-modulate = Color(1, 1, 1, 1)
-texture = ExtResource("2_142k4")
-region_rect = Rect2(0, 0, 32, 48)
-
-[node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource("RectangleShape2D_peug6")
 
 [node name="FactionComponent" parent="." index="3" instance=ExtResource("2_82ebn")]
 factions = 2
@@ -94,8 +116,7 @@ shouldGameOverOnZero = true
 
 [node name="HealthVisualComponent" parent="." index="5" instance=ExtResource("5_kwqpf")]
 
-[node name="InvulnerabilityOnHitComponent" type="Node" parent="." index="6" node_paths=PackedStringArray("animationPlayer") groups=["components"] instance=ExtResource("7_wh2cs")]
-script = ExtResource("8_peug6")
+[node name="InvulnerabilityOnHitComponent" parent="." index="6" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("7_wh2cs")]
 animationPlayer = NodePath("../AnimationPlayer")
 
 [node name="DamageReceivingComponent" parent="." index="7" instance=ExtResource("6_qpgeg")]
@@ -103,7 +124,9 @@ collision_layer = 1028
 collision_mask = 1064
 
 [node name="GunComponent" parent="." index="8" instance=ExtResource("7_chq7u")]
+position = Vector2(17, -15)
 ammo = SubResource("Resource_qdfo0")
+bulletEntity = ExtResource("9_peug6")
 cooldown = 0.16000000000000003
 
 [node name="GunSprite" parent="GunComponent" index="0"]
@@ -112,10 +135,19 @@ visible = false
 [node name="BulletEmitter" parent="GunComponent/GunSprite" index="0"]
 position = Vector2(16, -2)
 
-[node name="CameraComponent" parent="." index="9"]
+[node name="CollisionShape2D" parent="." index="9"]
+shape = SubResource("RectangleShape2D_peug6")
+
+[node name="CameraComponent" parent="." index="10"]
 offset = Vector2(195, -40)
 enabled = false
 zoom = Vector2(1.5, 1.5)
 editor_draw_screen = false
+
+[node name="OverheadPhysicsComponent" parent="." index="11"]
+parameters = SubResource("Resource_peug6")
+
+[node name="OverheadDokiAnimationComponent" parent="." index="14" node_paths=PackedStringArray("animatedSprite") instance=ExtResource("10_peug6")]
+animatedSprite = NodePath("../Top")
 
 [editable path="GunComponent"]

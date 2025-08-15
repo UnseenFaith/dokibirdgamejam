@@ -24,7 +24,7 @@ var min_note := 50
 var max_note := 83
 
 var min_y := 50
-var max_y := 350
+var max_y := 300
 
 func _ready():
 	notes = load_notes()

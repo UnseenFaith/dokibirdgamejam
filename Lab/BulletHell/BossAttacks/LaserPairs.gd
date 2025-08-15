@@ -20,7 +20,8 @@ func _physics_process(delta: float) -> void:
 
 
 func onLaser_bodyEntered(body: Node2D) -> void:
-	if body is Entity:
-		var drc = body.getComponent(HealthComponent) as HealthComponent
+	if body is PlayerEntity:
+		var dc := body.getComponent(DamageComponent) as DamageComponent
+		var drc := body.getComponent(DamageReceivingComponent) as DamageReceivingComponent
 		if drc:
-			drc.damage(1)
+			drc.processDamage(dc, 1, 8)

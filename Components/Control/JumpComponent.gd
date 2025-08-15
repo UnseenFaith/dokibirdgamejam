@@ -98,12 +98,13 @@ func cutsceneJump() -> void:
 
 func onInputComponent_didProcessInput(event: InputEvent) -> void:
 	if not isEnabled \
-	or not event.is_action(GlobalInput.Actions.jump): return
-
+		or not (event.is_action("jump") or event.is_action("dinoJump")): return
+	
 	# DESIGN: Cache input state as local properties, in case InputComponent's state changes while we're still processing an event/frame.
 	# TIP: AI components & demo scripts may generate synthetic [InputEvent]s for jump etc.
 
-	self.jumpInput = inputComponent.inputActionsPressed.has(GlobalInput.Actions.jump)
+	self.jumpInput = inputComponent.inputActionsPressed.has(GlobalInput.Actions.jump) \
+		or inputComponent.inputActionsPressed.has(GlobalInput.Actions.dinoJump)
 	# MAGIC: jumpInputJustPressed & jumpInputJustReleased are set by jumpInput setter
 	# This allows AI/scripted input via InputComponent.generateEvent()
 	# TBD: CHECK: Does this cause any jank behavior compared to Input.is_action_just_pressed()/released()?

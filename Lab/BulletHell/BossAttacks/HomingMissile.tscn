@@ -1,26 +1,133 @@
-[gd_scene load_steps=4 format=3 uid="uid://casptss7c38ns"]
+[gd_scene load_steps=18 format=3 uid="uid://casptss7c38ns"]
 
 [ext_resource type="Script" uid="uid://bmot00nlyg1lm" path="res://Lab/BulletHell/BossAttacks/HomingMissile.gd" id="1_1ljvn"]
-[ext_resource type="Texture2D" uid="uid://dlgr48hfwadef" path="res://Assets/Tiles/Kenney1Bit-Colored.png" id="1_cfkin"]
+[ext_resource type="Texture2D" uid="uid://c7lmjbua4641b" path="res://Lab/Assets/Boss/boss_attacks.png" id="2_1ljvn"]
+[ext_resource type="Texture2D" uid="uid://dn8fwurlarxwf" path="res://Lab/Assets/Boss/boss_missile_fire.png" id="2_qjbh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8aqh"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu2me"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt10a"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43y7h"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjmu5"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n0ki"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbpkj"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fxhx"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgluh"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(256, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqiuv"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(288, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0emfu"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(320, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4dov"]
+atlas = ExtResource("2_qjbh4")
+region = Rect2(352, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqgcj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8aqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu2me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt10a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43y7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjmu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n0ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbpkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fxhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgluh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqiuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0emfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4dov")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfkin"]
-size = Vector2(16, 16)
+size = Vector2(21, 8)
 
 [node name="HomingMissile" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_1ljvn")
 speed = 50.0
 max_speed = 200.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, 3.5)
+sprite_frames = SubResource("SpriteFrames_eqgcj")
+autoplay = "default"
+frame_progress = 0.91790354
+flip_h = true
+flip_v = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_cfkin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cfkin")
+texture = ExtResource("2_1ljvn")
+flip_h = true
+flip_v = true
 region_enabled = true
-region_rect = Rect2(544, 256, 16, 16)
+region_rect = Rect2(96, 39, 21, 9)
 
 [node name="LifetimeTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifetimeTimer" to="." method="onLifetimeTimer_timeout"]

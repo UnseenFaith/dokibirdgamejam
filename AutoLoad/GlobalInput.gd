@@ -34,6 +34,7 @@ class Actions:
 	const aimDown		:= &"aimDown"
 
 	const jump			:= &"jump"
+	const dinoJump      := &"dinoJump"
 	const fire			:= &"fire"
 	const interact		:= &"interact"
 

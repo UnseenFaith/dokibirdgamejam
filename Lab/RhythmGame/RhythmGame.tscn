@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn0cc04rm7sio"]
+[gd_scene load_steps=7 format=3 uid="uid://ic7pden1fgfl"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
 [ext_resource type="MidiResource" uid="uid://dg8isrbqfkgmi" path="res://Lab/RhythmGame/Assets/Rhythm (if pitch based).mid" id="2_qbl1s"]
 [ext_resource type="AudioStream" uid="uid://cw3je403pr4k8" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v2).wav" id="3_1ayhs"]
+[ext_resource type="Texture2D" uid="uid://d3l4gubffnk8k" path="res://Lab/BulletHell/Assets/Doki_head_chest.png" id="5_1ayhs"]
 [ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbl1s"]
@@ -77,6 +78,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_qbl1s")
 max_value = 5.0
 step = 1.0
 value = 5.0
+
+[node name="Shoulders" type="Sprite2D" parent="."]
+position = Vector2(81, 326)
+texture = ExtResource("5_1ayhs")
 
 [connection signal="finished" from="MidiQueue" to="." method="onMidiQueue_finished"]
 [connection signal="note" from="MidiQueue" to="." method="my_note_callback"]

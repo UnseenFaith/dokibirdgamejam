@@ -1,7 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cavwj5eyvhe7d"]
 
-[ext_resource type="Texture2D" uid="uid://dlgr48hfwadef" path="res://Assets/Tiles/Kenney1Bit-Colored.png" id="1_4xel7"]
 [ext_resource type="Script" uid="uid://4xt0nqmsnfbp" path="res://Lab/BulletHell/BossAttacks/LaserPairs.gd" id="1_552ha"]
+[ext_resource type="Texture2D" uid="uid://c7lmjbua4641b" path="res://Lab/Assets/Boss/boss_attacks.png" id="2_1y07n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xel7"]
+size = Vector2(12, 62)
 
 [sub_resource type="Animation" id="Animation_552ha"]
 length = 0.001
@@ -15,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -4)]
+"values": [Vector2(0, -2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,7 +30,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 4)]
+"values": [Vector2(0, 2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -52,10 +55,10 @@ tracks/0/path = NodePath("TopHalf:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -4), Vector2(0, -4), Vector2(0, -43)]
+"values": [Vector2(0, -2), Vector2(0, -26)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,10 +67,10 @@ tracks/1/path = NodePath("BottomHalf:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 4), Vector2(0, 4), Vector2(0, 45)]
+"values": [Vector2(0, 2), Vector2(0, 26)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -88,29 +91,14 @@ _data = {
 &"expand": SubResource("Animation_4xel7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xel7"]
-size = Vector2(16, 96)
-
 [node name="LaserPairs" type="Node2D"]
 script = ExtResource("1_552ha")
 
-[node name="TopHalf" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
-texture = ExtResource("1_4xel7")
-region_enabled = true
-region_rect = Rect2(544, 192, 16, 8)
-
 [node name="BottomHalf" type="Sprite2D" parent="."]
-position = Vector2(0, 4)
-texture = ExtResource("1_4xel7")
+position = Vector2(0, 2)
+texture = ExtResource("2_1y07n")
 region_enabled = true
-region_rect = Rect2(544, 200, 16, 8)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_552ha")
-}
-autoplay = "expand"
+region_rect = Rect2(64, 38, 12, 10)
 
 [node name="Laser" type="Area2D" parent="."]
 visible = false
@@ -118,37 +106,23 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_4xel7")
 
-[node name="Sprite2" type="Sprite2D" parent="Laser"]
-position = Vector2(0, -31)
-texture = ExtResource("1_4xel7")
+[node name="Sprite2D" type="Sprite2D" parent="Laser"]
+texture = ExtResource("2_1y07n")
 region_enabled = true
-region_rect = Rect2(576, 336, 16, 16)
+region_rect = Rect2(0, 1, 4, 47)
 
-[node name="Sprite3" type="Sprite2D" parent="Laser"]
-position = Vector2(0, -15)
-texture = ExtResource("1_4xel7")
+[node name="TopHalf" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("2_1y07n")
 region_enabled = true
-region_rect = Rect2(576, 336, 16, 16)
+region_rect = Rect2(32, 38, 12, 10)
 
-[node name="Sprite4" type="Sprite2D" parent="Laser"]
-position = Vector2(0, 17)
-texture = ExtResource("1_4xel7")
-region_enabled = true
-region_rect = Rect2(576, 336, 16, 16)
-
-[node name="Sprite" type="Sprite2D" parent="Laser"]
-position = Vector2(0, 33)
-texture = ExtResource("1_4xel7")
-region_enabled = true
-region_rect = Rect2(576, 336, 16, 16)
-
-[node name="Sprite5" type="Sprite2D" parent="Laser"]
-position = Vector2(0, 1)
-texture = ExtResource("1_4xel7")
-region_enabled = true
-region_rect = Rect2(576, 336, 16, 16)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_552ha")
+}
+autoplay = "expand"
 
 [connection signal="body_entered" from="Laser" to="." method="onLaser_bodyEntered"]

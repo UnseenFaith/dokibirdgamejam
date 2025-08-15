@@ -202,3 +202,7 @@ func onMainMenuButtons_credits() -> void:
 	$CanvasLayer.visible = false
 	$TextureRect.visible = false
 	$Transparent.visible = true
+
+
+func onAudioStreamPlayer_finished() -> void:
+	$AudioStreamPlayer.play()

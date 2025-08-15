@@ -79,6 +79,7 @@ extends Component
 ## Because dummy Godot doesn't let us directly get all the input actions from an [InputEvent],
 ## we have to manually check every possibility, so here we shorten that list of possible events.
 @export var inputActionsToMonitor: PackedStringArray = [
+	GlobalInput.Actions.dinoJump,
 	GlobalInput.Actions.jump,
 	GlobalInput.Actions.fire,
 	GlobalInput.Actions.interact,

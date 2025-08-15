@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs4k1w0si6yik"]
+[gd_scene load_steps=7 format=3 uid="uid://cs4k1w0si6yik"]
 
 [ext_resource type="Script" uid="uid://pmgirpk7nryc" path="res://Lab/Scenes/Credits.gd" id="1_o1nrj"]
 [ext_resource type="FontFile" uid="uid://diege42yh8hot" path="res://Lab/Scenes/Credits/Assets/Stacked_Pixel.ttf" id="2_o1nrj"]
+[ext_resource type="Texture2D" uid="uid://belnahrbqyfya" path="res://Lab/Assets/credits.png" id="3_gmpgw"]
 
 [sub_resource type="Animation" id="Animation_gmpgw"]
 length = 0.001
@@ -62,9 +63,9 @@ color = Color(0, 0, 0, 1)
 [node name="Label" type="Label" parent="Container"]
 anchors_preset = -1
 offset_left = 169.0
-offset_top = -341.0
+offset_top = -213.0
 offset_right = 434.0
-offset_bottom = -208.0
+offset_bottom = -80.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_o1nrj")
 theme_override_font_sizes/font_size = 80
@@ -106,6 +107,14 @@ theme_override_fonts/font = ExtResource("2_o1nrj")
 theme_override_font_sizes/font_size = 80
 text = "amiomoe"
 uppercase = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Design"]
+visible = false
+position = Vector2(456, 268)
+scale = Vector2(1, 0.2278481)
+texture = ExtResource("3_gmpgw")
+region_enabled = true
+region_rect = Rect2(128, 34, 90, 158)
 
 [node name="Programmer" type="Label" parent="Container"]
 anchors_preset = -1

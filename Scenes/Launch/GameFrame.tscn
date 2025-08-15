@@ -110,3 +110,4 @@ bus = &"Music"
 [connection signal="pressed" from="CanvasLayer/Level 2" to="." method="onLevel2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 3" to="." method="onLevel3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Credits" to="." method="onMainMenuButtons_credits"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="onAudioStreamPlayer_finished"]

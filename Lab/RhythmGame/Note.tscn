@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dml1yg8xko6f3"]
+[gd_scene load_steps=10 format=3 uid="uid://bxk2bj5r25a2t"]
 
-[ext_resource type="Script" uid="uid://dfvxp2je07kme" path="res://Lab/RhythmGame/Note.gd" id="1_lu8ck"]
+[ext_resource type="Script" uid="uid://drfuvioih218p" path="res://Lab/RhythmGame/Note.gd" id="1_lu8ck"]
 [ext_resource type="Texture2D" uid="uid://dx6tfniopmnxa" path="res://Lab/RhythmGame/Assets/Lvl_2_beats.png" id="2_ah6or"]
 
 [sub_resource type="Animation" id="Animation_v0fem"]

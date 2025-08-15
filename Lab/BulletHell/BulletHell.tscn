@@ -16,10 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bjcrjhth3ieg7" path="res://Lab/BulletHell/UI/BossHealthBar.tscn" id="13_q34lf"]
 [ext_resource type="AudioStream" uid="uid://c02d7gj5c3lsr" path="res://Lab/Assets/Music/DokiJam - Fight Theme (Fin v1).wav" id="14_eaick"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tr6k"]
-resource_local_to_scene = true
-size = Vector2(15, 15)
-
 [sub_resource type="Resource" id="Resource_1id7j"]
 resource_local_to_scene = true
 resource_name = "playerHealth"
@@ -29,6 +25,10 @@ value = 5
 name = &"playerHealth"
 displayName = "HP"
 metadata/_custom_type_script = "uid://dif3dj8k5ixfw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tr6k"]
+resource_local_to_scene = true
+size = Vector2(15, 15)
 
 [node name="BulletHell" type="Node2D"]
 script = ExtResource("1_5pdtg")
@@ -113,9 +113,12 @@ position = Vector2(319, 174)
 position = Vector2(35, 208.00002)
 scale = Vector2(1, 0.99999994)
 
-[node name="CollisionShape2D" parent="Player-OverheadCombat" index="2"]
-visible = false
-shape = SubResource("RectangleShape2D_2tr6k")
+[node name="Top" parent="Player-OverheadCombat" index="1"]
+animation = &"default"
+frame_progress = 0.0
+
+[node name="Bottom" parent="Player-OverheadCombat" index="2"]
+frame_progress = 0.50080484
 
 [node name="HealthComponent" parent="Player-OverheadCombat" index="4"]
 health = SubResource("Resource_1id7j")
@@ -125,6 +128,10 @@ shouldEmitBubble = false
 
 [node name="DamageReceivingComponent" parent="Player-OverheadCombat" index="7"]
 visible = false
+
+[node name="CollisionShape2D" parent="Player-OverheadCombat" index="9"]
+visible = false
+shape = SubResource("RectangleShape2D_2tr6k")
 
 [node name="Bullets" type="Node2D" parent="."]
 
