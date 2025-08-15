@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn0cc04rm7sio"]
+[gd_scene load_steps=6 format=3 uid="uid://cn0cc04rm7sio"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
-[ext_resource type="MidiResource" uid="uid://bpn1jctdrqa4j" path="res://Lab/RhythmGame/Assets/RhythmMIDI v1.mid" id="2_qbl1s"]
-[ext_resource type="AudioStream" uid="uid://cbse1vak62gor" path="res://Lab/RhythmGame/Assets/Rhythm WIP.wav" id="3_bveiw"]
-[ext_resource type="Texture2D" uid="uid://dfus3p82wj5pw" path="res://Assets/Images/Solid16.png" id="4_7ww33"]
+[ext_resource type="MidiResource" uid="uid://dg8isrbqfkgmi" path="res://Lab/RhythmGame/Assets/Rhythm (if pitch based).mid" id="2_qbl1s"]
+[ext_resource type="AudioStream" uid="uid://cw3je403pr4k8" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v2).wav" id="3_1ayhs"]
 [ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbl1s"]
@@ -22,24 +21,12 @@ midi = ExtResource("2_qbl1s")
 midi = ExtResource("2_qbl1s")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bveiw")
+stream = ExtResource("3_1ayhs")
 volume_db = -5.0
 bus = &"Music"
 
-[node name="Lane1" type="Sprite2D" parent="."]
-position = Vector2(200, 100)
-texture = ExtResource("4_7ww33")
-
-[node name="Lane2" type="Sprite2D" parent="."]
-position = Vector2(200, 200)
-texture = ExtResource("4_7ww33")
-
-[node name="Lane3" type="Sprite2D" parent="."]
-position = Vector2(200, 300)
-texture = ExtResource("4_7ww33")
-
 [node name="Player" parent="." instance=ExtResource("5_qbl1s")]
-position = Vector2(63, 87)
+position = Vector2(96, 87)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -93,4 +80,5 @@ value = 5.0
 
 [connection signal="finished" from="MidiQueue" to="." method="onMidiQueue_finished"]
 [connection signal="note" from="MidiQueue" to="." method="my_note_callback"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="onAudioStreamPlayer_finished"]
 [connection signal="note_hit" from="Player" to="." method="onPlayer_noteHit"]

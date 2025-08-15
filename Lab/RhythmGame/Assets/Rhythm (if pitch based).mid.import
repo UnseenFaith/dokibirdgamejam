@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.nlaha.godotmidi"
+type="MidiResource"
+uid="uid://dg8isrbqfkgmi"
+path="res://.godot/imported/Rhythm (if pitch based).mid-f8038816f97bca5d0f8aec267891d754.res"
+
+[deps]
+
+source_file="res://Lab/RhythmGame/Assets/Rhythm (if pitch based).mid"
+dest_files=["res://.godot/imported/Rhythm (if pitch based).mid-f8038816f97bca5d0f8aec267891d754.res"]
+
+[params]
+

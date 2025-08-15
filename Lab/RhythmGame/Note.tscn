@@ -1,10 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://dml1yg8xko6f3"]
+[gd_scene load_steps=10 format=3 uid="uid://dml1yg8xko6f3"]
 
 [ext_resource type="Script" uid="uid://dfvxp2je07kme" path="res://Lab/RhythmGame/Note.gd" id="1_lu8ck"]
-[ext_resource type="Texture2D" uid="uid://dfus3p82wj5pw" path="res://Assets/Images/Solid16.png" id="2_ah6or"]
+[ext_resource type="Texture2D" uid="uid://dx6tfniopmnxa" path="res://Lab/RhythmGame/Assets/Lvl_2_beats.png" id="2_ah6or"]
+
+[sub_resource type="Animation" id="Animation_v0fem"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ah6or"]
+resource_name = "twerk"
+length = 0.5
+loop_mode = 2
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292519943295, 0.17453292519943295]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0fem"]
+_data = {
+&"RESET": SubResource("Animation_v0fem"),
+&"wiggle": SubResource("Animation_ah6or")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah6or"]
+atlas = ExtResource("2_ah6or")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0fem"]
+atlas = ExtResource("2_ah6or")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8c0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah6or")
+}],
+"loop": true,
+"name": &"racoon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0fem")
+}],
+"loop": true,
+"name": &"tomato",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah6or"]
-size = Vector2(16, 16)
+size = Vector2(24, 25)
 
 [node name="Note" type="AnimatableBody2D"]
 collision_layer = 32768
@@ -12,9 +78,17 @@ collision_mask = 0
 sync_to_physics = false
 script = ExtResource("1_lu8ck")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.6035344, 1, 0.57329637, 1)
-texture = ExtResource("2_ah6or")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v0fem")
+}
+autoplay = "wiggle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -11)
+sprite_frames = SubResource("SpriteFrames_o8c0x")
+animation = &"tomato"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_ah6or")

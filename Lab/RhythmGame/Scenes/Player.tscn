@@ -1,7 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxp7p2hbajrcq"]
+[gd_scene load_steps=12 format=3 uid="uid://bxp7p2hbajrcq"]
 
 [ext_resource type="Script" uid="uid://dgs8q55bukuoe" path="res://Lab/RhythmGame/Scenes/Player.gd" id="1_s8ctt"]
-[ext_resource type="Texture2D" uid="uid://b2wasjk3c2p77" path="res://Game/Assets/flappybird.png" id="1_sxdg3"]
+[ext_resource type="Texture2D" uid="uid://daeyy7vghm4i6" path="res://Lab/RhythmGame/Assets/Doki_Head_closed.png" id="2_s8ctt"]
+[ext_resource type="Texture2D" uid="uid://bewa7tm8le8m7" path="res://Lab/RhythmGame/Assets/Doki_Head_open.png" id="3_wx1ec"]
+[ext_resource type="Texture2D" uid="uid://dh1palx1pjnrq" path="res://Lab/RhythmGame/Assets/Doki_Head_Neck.png" id="4_snwkc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7sj"]
+atlas = ExtResource("3_wx1ec")
+region = Rect2(0, 0, 192, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3ebo"]
+atlas = ExtResource("2_s8ctt")
+region = Rect2(0, 0, 192, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca2wj"]
+atlas = ExtResource("3_wx1ec")
+region = Rect2(0, 0, 192, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx1ec"]
+atlas = ExtResource("2_s8ctt")
+region = Rect2(0, 0, 192, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snwkc"]
+atlas = ExtResource("3_wx1ec")
+region = Rect2(0, 0, 192, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxdg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do7sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3ebo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca2wj")
+}],
+"loop": false,
+"name": &"chomp",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx1ec")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snwkc")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ctt"]
 size = Vector2(20, 25)
@@ -11,12 +66,19 @@ collision_layer = 32768
 collision_mask = 32768
 script = ExtResource("1_s8ctt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_sxdg3")
+[node name="Neck1" type="Sprite2D" parent="."]
+position = Vector2(-24, 217)
+texture = ExtResource("4_snwkc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sxdg3")
+animation = &"chomp"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31, 20.5)
+position = Vector2(25, 37)
 shape = SubResource("RectangleShape2D_s8ctt")
 
 [connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="onAnimatedSprite2d_animationFinished"]

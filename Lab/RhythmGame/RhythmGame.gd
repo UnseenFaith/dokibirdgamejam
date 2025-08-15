@@ -6,14 +6,13 @@ extends Node2D
 
 var note_scene := preload("res://Lab/RhythmGame/Note.tscn")
 
-var lane_y_positions := [100, 200, 300, 400, 500] # Adjust for your lanes
-var hit_zone := 200
+var hit_zone := 120
 var spawn_x := 600
 var lead_time := 1.5
 
-var total_notes = 0.0
-var missed_notes = 0.0
-var combo = 0
+var total_notes := 0.0
+var missed_notes := 0.0
+var combo := 0
 
 var notes = []
 var notes2 = []
@@ -21,16 +20,41 @@ var finished := false
 
 var delta_sum := 0.0
 
+var min_note := 50
+var max_note := 83
+
+var min_y := 50
+var max_y := 350
+
 func _ready():
 	notes = load_notes()
 	total_notes = notes.size()
 	
+	#var min_note = INF
+	#var max_note = -INF
+
+	#for n in notes:
+	#	var pitch = n["note"]
+	#	if pitch < min_note:
+	#		min_note = pitch
+	#	if pitch > max_note:
+	#		max_note = pitch
+
+	#print("Min note:", min_note, " Max note:", max_note)
+	
+	
+	
 	#midi_player.link_audio_stream_player([asp])
 	#midi_queue.play()
+
+func map_note_to_y(note: int) -> float:
+	var normalized = float(note - min_note) / float(max_note - min_note)
+	return lerp(min_y, max_y, normalized)
 
 func my_note_callback(event, track):
 	if (event['subtype'] == MIDI_MESSAGE_NOTE_ON):
 		var queue_time = delta_sum + lead_time
+		print(track)
 		notes.append({ "hit_time": queue_time, "lane": (track % 3 - 1), "note": event['note'] })
 		notes2.append({ "hit_time": queue_time, "lane": (track % 3 - 1), "note": event['note'] })
 	elif (event['subtype'] == MIDI_MESSAGE_NOTE_OFF):
@@ -57,9 +81,9 @@ func _process(delta) -> void:
 func spawn_note(data) -> void:
 	var note := note_scene.instantiate()
 	note.lane = data.lane
-	note.position = Vector2(spawn_x, lane_y_positions[1])
+	note.position = Vector2(spawn_x, map_note_to_y(data.note))
 	note.speed = float(spawn_x - hit_zone) / lead_time
-	note.note_missed.connect(note_missed)
+	note.note_missed.connect(note_missed)	
 	add_child(note)
 	
 func note_missed() -> void:
@@ -74,7 +98,7 @@ func onMidiQueue_finished() -> void:
 	finished = true
 	var note_data = preload("res://Lab/RhythmGame/Pattern/NoteData.gd").new()
 	note_data.notes = notes2.duplicate() # Copy the notes array
-	var path = "res://Lab/RhythmGame/Pattern/Test.tres"
+	var path = "res://Lab/RhythmGame/Pattern/Final.tres"
 
 	var err = ResourceSaver.save(note_data, path)
 	if err == OK:
@@ -84,9 +108,12 @@ func onMidiQueue_finished() -> void:
 
 
 func load_notes() -> Array[Variant]:
-	var file := ResourceLoader.load("res://Lab/RhythmGame/Pattern/Test.tres")
+	var file := ResourceLoader.load("res://Lab/RhythmGame/Pattern/Final.tres")
 	return file.notes
 
 func onPlayer_noteHit() -> void:
 	combo += 1
 	$CanvasLayer/HealthTracker.value += 1
+
+func onAudioStreamPlayer_finished() -> void:
+	finished = true

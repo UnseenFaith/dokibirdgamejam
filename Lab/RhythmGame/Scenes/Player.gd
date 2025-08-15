@@ -8,4 +8,9 @@ func _physics_process(delta: float) -> void:
 
 func onBodyEntered(body: Node2D) -> void:
 	body.queue_free()
+	$AnimatedSprite2D.play("chomp")
 	note_hit.emit()
+
+
+func onAnimatedSprite2d_animationFinished() -> void:
+	$AnimatedSprite2D.play("open")
