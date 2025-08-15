@@ -64,6 +64,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "intro": "res://Game/Dialogic/intro.dtl",
 "intro2": "res://Game/Dialogic/intro2.dtl",
+"level1_outro": "res://Game/Dialogic/level1_outro.dtl",
 "timeline": "res://Game/Dialogic/timeline.dtl"
 }
 layout/style_directory={
