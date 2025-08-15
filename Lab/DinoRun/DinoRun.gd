@@ -20,11 +20,14 @@ var last_obstacle
 
 @onready var audio := $AudioStreamPlayer
 
+var virusCutscene := preload("res://Lab/Scenes/VirusCutscene.tscn")
+
+var game_won := false
 var CURRENT_SPEED := 200
 
 var cutscenePlayed = Settings.get('firstCutscenePlayed')
-
-var gameEnded = false
+var cutscene := ""
+var gameEnded := false
 
 func _ready() -> void:
 	$"Player-Platformer/InputComponent".isEnabled = false
@@ -43,8 +46,11 @@ func timeline_ended() -> void:
 		$AnimationPlayer.stop()
 		_start_game()
 	else:
-		print("Transition Back to Desktop Here")
-	
+		if cutscene == "level1_outro":
+			#$AnimationPlayer.play("tv_fade_out")
+			Dialogic.VAR.firstGameWon = true
+			SceneManager.transitionToScene(virusCutscene)
+
 func _start_game() -> void:
 	$Floor/Dirt.autoscroll.x = - CURRENT_SPEED
 	$Floor/Tumble.autoscroll.x = - CURRENT_SPEED
@@ -70,6 +76,7 @@ func _process(delta: float) -> void:
 	if audio.playing:
 		var current_time = audio.get_playback_position()
 		var total_time = audio.stream.get_length()
+		current_time += delta
 		
 		# Avoid division by zero if stream length is unknown
 		if total_time > 0:
@@ -98,17 +105,17 @@ func onObstacleTimer_timeout() -> void:
 		player.velocity.x += 100
 
 
-func onTracker_finished() -> void:
-	print("Game Won!")
-	
+func onTracker_finished() -> void:	
+	game_won = true
+	gameEnded = true
 	$"Player-Platformer/InputComponent".isEnabled = false
+	$ObstacleTimer.stop()
 	var tween = create_tween()
-	$Crow.visible = true
 	$Crow.position = Vector2(459, 120)
 	tween.tween_property($Enemy, "position", Vector2(-50, 220), 2.0)
-	tween.parallel().tween_property($"Player-Platformer", "position", $Midpoint.position, 1.0)
+	tween.parallel().tween_property($"Player-Platformer", "position", $Midpoint.position - Vector2(100, 0), 1.0)
 	tween.parallel().tween_property($Crow, "position", Vector2(195, 120), 2.0)
-	
+	tween.parallel().tween_property($Crow, "visible", true, 0.2)
 	await get_tree().create_timer(3.0).timeout
 	
 	$Floor/Dirt.autoscroll.x = 0
@@ -117,8 +124,16 @@ func onTracker_finished() -> void:
 	$Tracker.visible = false
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = false
 	$"Player-Platformer/AnimatedSprite2D".play("idle")
-	
-	$AntiVirus.visible = true
-	$AntiVirus/Player.play("virus")
-	
+	$YouWon.visible = true
+	cutscene = "level1_outro"
 	Dialogic.start("level1_outro")
+
+
+func onEnemy_gameOver() -> void:
+	$Enemy/AnimatedSprite2D.pause()
+	GlobalInput.isPauseShortcutAllowed = false
+	GameState.removePlayer($"Player-Platformer")
+	$YouLost.visible = true
+	await get_tree().create_timer(1.0).timeout
+	Dialogic.VAR.firstGameWon = false
+	SceneManager.transitionToScene(virusCutscene)

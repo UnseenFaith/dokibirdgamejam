@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxp7p2hbajrcq"]
+[gd_scene load_steps=13 format=3 uid="uid://bxp7p2hbajrcq"]
 
 [ext_resource type="Script" uid="uid://dgs8q55bukuoe" path="res://Lab/RhythmGame/Scenes/Player.gd" id="1_s8ctt"]
 [ext_resource type="Texture2D" uid="uid://daeyy7vghm4i6" path="res://Lab/RhythmGame/Assets/Doki_Head_closed.png" id="2_s8ctt"]
 [ext_resource type="Texture2D" uid="uid://bewa7tm8le8m7" path="res://Lab/RhythmGame/Assets/Doki_Head_open.png" id="3_wx1ec"]
 [ext_resource type="Texture2D" uid="uid://dh1palx1pjnrq" path="res://Lab/RhythmGame/Assets/Doki_Head_Neck.png" id="4_snwkc"]
+[ext_resource type="AudioStream" uid="uid://bsjkllc7dmp77" path="res://Lab/RhythmGame/Assets/Eat gong.wav" id="5_do7sj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_do7sj"]
 atlas = ExtResource("3_wx1ec")
@@ -72,13 +73,16 @@ texture = ExtResource("4_snwkc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sxdg3")
-animation = &"chomp"
-frame = 2
-frame_progress = 1.0
+animation = &"close"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(25, 37)
 shape = SubResource("RectangleShape2D_s8ctt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_do7sj")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="onBodyEntered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="onAnimatedSprite2d_animationFinished"]

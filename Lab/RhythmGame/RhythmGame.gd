@@ -5,8 +5,9 @@ extends Node2D
 @onready var asp := $AudioStreamPlayer
 
 var note_scene := preload("res://Lab/RhythmGame/Note.tscn")
+var virus_2 := preload("res://Lab/Scenes/VirusCutscene2.tscn")
 
-var hit_zone := 120
+var hit_zone := 56
 var spawn_x := 600
 var lead_time := 1.5
 
@@ -23,12 +24,20 @@ var delta_sum := 0.0
 var min_note := 50
 var max_note := 83
 
-var min_y := 50
-var max_y := 300
+var min_y := 168
+var max_y := 256
+
+var game_started = false
+var played = false
 
 func _ready():
+	Dialogic.connect("timeline_ended", timeline_ended)
 	notes = load_notes()
 	total_notes = notes.size()
+	
+	set_process(false)
+	$Player.set_process(false)
+	$AnimationPlayer.play("intro")
 	
 	#var min_note = INF
 	#var max_note = -INF
@@ -62,13 +71,13 @@ func my_note_callback(event, track):
 	
 func _process(delta) -> void:
 	delta_sum += delta
-	$CanvasLayer/Accuracy.text = "%0.2f%%" % ((float(total_notes - missed_notes) / total_notes) * 100)
-	$CanvasLayer/Combo.text = str(combo) + "x"
-	$CanvasLayer/LevelTracker.value = (((total_notes - float(notes.size())) / total_notes) * 100)
+	$UI/Accuracy.text = "%0.2f%%" % ((float(total_notes - missed_notes) / total_notes) * 100)
+	$UI/Combo.text = str(combo) + "x"
+	$UI/LevelTracker.value = (((total_notes - float(notes.size())) / total_notes) * 100)
 	
-	if delta_sum >= lead_time and not asp.playing and not finished:
+	if delta_sum >= lead_time and not asp.playing and not finished and not played:
 		asp.play()
-		pass
+		played = true
 		#midi_player.play()
 		
 	#var song_time = midi_player.get_current_time()
@@ -89,9 +98,13 @@ func spawn_note(data) -> void:
 func note_missed() -> void:
 	combo = 0
 	missed_notes += 1
-	$CanvasLayer/HealthTracker.value -= 1
-	if $CanvasLayer/HealthTracker.value == 0:
-		print("Game Over")
+	$UI/HealthTracker.value -= 1
+	if $UI/HealthTracker.value == 0:
+		$Player.set_process(false)
+		set_process(false)
+		$YouLose.visible = true
+		await get_tree().create_timer(1.0).timeout
+		transitionToNextLevel()
 
 func onMidiQueue_finished() -> void:
 	print("Finished!")
@@ -113,7 +126,35 @@ func load_notes() -> Array[Variant]:
 
 func onPlayer_noteHit() -> void:
 	combo += 1
-	$CanvasLayer/HealthTracker.value += 1
+	$UI/HealthTracker.value += 1
+
 
 func onAudioStreamPlayer_finished() -> void:
-	finished = true
+	$Player/AnimatedSprite2D.animation = "close"
+	$Player.set_process(false)
+	
+	if float($UI/Accuracy.text) >= 95.00:
+		$YouWon.visible = true
+		Dialogic.VAR.secondGameWon = true
+	else:
+		$YouLose.visible = false
+		Dialogic.VAR.secondGameWon = false
+	
+	transitionToNextLevel()
+
+func transitionToNextLevel() -> void:
+	await get_tree().create_timer(2.0).timeout
+	SceneManager.transitionToScene(virus_2)
+
+func onAnimationPlayer_animationFinished(anim_name: StringName) -> void:
+	if anim_name == "intro":
+		Dialogic.start("rhythm_game")
+	if anim_name == "tutorial":
+		game_started = true
+		set_process(true)
+
+func timeline_ended() -> void:
+	var tween = create_tween()
+	tween.tween_property($Crow, "position", Vector2(300, -10), 1.0)
+	$Player.set_process(true)
+	$AnimationPlayer.play("tutorial")

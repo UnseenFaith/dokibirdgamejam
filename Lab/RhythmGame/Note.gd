@@ -15,7 +15,7 @@ func _ready() -> void:
 	else:
 		$AnimatedSprite2D.animation = "racoon"
 	
-func _process(delta):
+func _process(delta: float) -> void:
 	position.x -= speed * delta
 	if position.x <= 0:
 		note_missed.emit()

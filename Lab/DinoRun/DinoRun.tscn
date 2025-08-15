@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://coypgt0d6bj26"]
+[gd_scene load_steps=42 format=4 uid="uid://coypgt0d6bj26"]
 
 [ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
 [ext_resource type="Texture2D" uid="uid://dcccd425g3fq7" path="res://Lab/DinoRun/Assets/Lvl 1 background 1.png" id="4_i4ny8"]
@@ -9,12 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://dmeuf3uvumn5g" path="res://Lab/DinoRun/Scenes/Floor.tscn" id="7_lkn3h"]
 [ext_resource type="Texture2D" uid="uid://cvymq85dc48js" path="res://Lab/DinoRun/Assets/Lvl 1 background 5.png" id="8_omlr4"]
 [ext_resource type="Texture2D" uid="uid://b7uw4tl34xj2o" path="res://Lab/DinoRun/Assets/Lvl 1 background 6.png" id="9_4gmof"]
+[ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="10_7t2nu"]
 [ext_resource type="PackedScene" uid="uid://d3gr5jms2ycia" path="res://Lab/DinoRun/Entities/Enemy.tscn" id="10_atp7r"]
-[ext_resource type="Texture2D" uid="uid://b1qcdqyf2nxtk" path="res://Lab/Assets/sprites.png" id="10_oag7t"]
+[ext_resource type="Texture2D" uid="uid://bme4dy0kg6umr" path="res://Lab/Assets/Crowki_Landing.png" id="11_2hxwx"]
 [ext_resource type="Script" uid="uid://bdi3om1yfn0fq" path="res://Lab/DinoRun/GameOver.gd" id="11_20i0w"]
 [ext_resource type="PackedScene" uid="uid://cbhnnirun0in7" path="res://Lab/DinoRun/Scenes/Tracker.tscn" id="11_omlr4"]
 [ext_resource type="AudioStream" uid="uid://csfj8d3eexnc0" path="res://Lab/Assets/SFX/Tumbleweed Combo.wav" id="13_4gmof"]
-[ext_resource type="Texture2D" uid="uid://b2wasjk3c2p77" path="res://Game/Assets/flappybird.png" id="15_ijs8h"]
+[ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="16_2hxwx"]
+[ext_resource type="Texture2D" uid="uid://d18c6pjwp5dnj" path="res://Lab/Assets/You_Won.png" id="16_7t2nu"]
+[ext_resource type="Texture2D" uid="uid://bxypj13ycgfow" path="res://Lab/Assets/Doki_run_tab.png" id="16_cxfay"]
 
 [sub_resource type="Animation" id="Animation_4gmof"]
 length = 0.001
@@ -114,6 +117,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Crow:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
 
 [sub_resource type="Animation" id="Animation_2hxwx"]
 resource_name = "crow_flies_ahead"
@@ -131,6 +146,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(195, 120), Vector2(459, 120)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crow:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
 
 [sub_resource type="Animation" id="Animation_7t2nu"]
 resource_name = "crow_flies_up"
@@ -147,6 +174,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(195, 190), Vector2(195, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crow:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"default", &"default"]
 }
 
 [sub_resource type="Animation" id="Animation_omlr4"]
@@ -219,6 +258,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-15, 190), Vector2(195, 190)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crow:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
 }
 
 [sub_resource type="Animation" id="Animation_oag7t"]
@@ -345,6 +396,11 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_0b7fl"]
+resource_name = "tv_fade_out"
+length = 2.0
+step = 0.0333333
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oag7t"]
 _data = {
 &"RESET": SubResource("Animation_4gmof"),
@@ -354,7 +410,8 @@ _data = {
 &"cutscene_2": SubResource("Animation_oag7t"),
 &"cutscene_3": SubResource("Animation_ijs8h"),
 &"outro": SubResource("Animation_775sv"),
-&"tutorial": SubResource("Animation_cxfay")
+&"tutorial": SubResource("Animation_cxfay"),
+&"tv_fade_out": SubResource("Animation_0b7fl")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gmof"]
@@ -364,6 +421,75 @@ size = Vector2(12, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omlr4"]
 resource_local_to_scene = true
 size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxwx"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_775sv"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b7fl"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pavbu"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic0dv"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eibc"]
+atlas = ExtResource("10_7t2nu")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa0ov"]
+atlas = ExtResource("11_2hxwx")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maljy"]
+atlas = ExtResource("11_2hxwx")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sa0ov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hxwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_775sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b7fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pavbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic0dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eibc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa0ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maljy")
+}],
+"loop": true,
+"name": &"flying_up",
+"speed": 6.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_20i0w"]
 outline_size = 4
@@ -376,44 +502,6 @@ mix_rate = 48000
 stereo = true
 tags = {
 "software": "Bitwig Studio 5.3.8"
-}
-
-[sub_resource type="Animation" id="Animation_pavbu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(390, 211)]
-}
-
-[sub_resource type="Animation" id="Animation_0b7fl"]
-resource_name = "virus"
-loop_mode = 2
-step = 0.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.93333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(390, 211), Vector2(390, 202)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pavbu"]
-_data = {
-&"RESET": SubResource("Animation_pavbu"),
-&"virus": SubResource("Animation_0b7fl")
 }
 
 [node name="DinoRun" type="Node2D"]
@@ -513,16 +601,15 @@ editor_draw_screen = false
 [node name="ReceivingCollisionShape" parent="Player-Platformer/DamageReceivingComponent" index="0"]
 shape = SubResource("RectangleShape2D_omlr4")
 
-[node name="Crow" type="Sprite2D" parent="."]
-position = Vector2(195, 120)
-texture = ExtResource("10_oag7t")
-region_enabled = true
-region_rect = Rect2(73, 21, 17, 27)
+[node name="Crow" type="AnimatedSprite2D" parent="."]
+position = Vector2(195, 190)
+sprite_frames = SubResource("SpriteFrames_sa0ov")
+autoplay = "flying_up"
 
 [node name="Enemy" parent="." instance=ExtResource("10_atp7r")]
 process_mode = 3
 z_index = 2
-position = Vector2(-108, 220)
+position = Vector2(482, 222)
 collision_layer = 16
 monitoring = false
 monitorable = false
@@ -598,18 +685,26 @@ bus = &"Music"
 stream = ExtResource("13_4gmof")
 bus = &"SFX"
 
-[node name="AntiVirus" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(390, 211)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("15_ijs8h")
+[node name="Window" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(219, 207.8)
+scale = Vector2(1.002, 1.002)
+texture = ExtResource("16_cxfay")
 
-[node name="Player" type="AnimationPlayer" parent="AntiVirus"]
-libraries = {
-&"": SubResource("AnimationLibrary_pavbu")
-}
+[node name="YouLost" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(219, 208)
+texture = ExtResource("16_2hxwx")
+
+[node name="YouWon" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(219, 208)
+texture = ExtResource("16_7t2nu")
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="onObstacleTimer_timeout"]
+[connection signal="game_over" from="Enemy" to="." method="onEnemy_gameOver"]
 [connection signal="finished" from="Tracker" to="." method="onTracker_finished"]
 [connection signal="button_down" from="GameOver/MarginContainer/VBoxContainer/Button" to="GameOver" method="onButton_buttonDown"]
 [connection signal="button_down" from="GameOver/MarginContainer/VBoxContainer/Button2" to="GameOver" method="onButton_buttonDown"]

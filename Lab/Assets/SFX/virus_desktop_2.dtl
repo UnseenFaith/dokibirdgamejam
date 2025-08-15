@@ -1,0 +1,16 @@
+join Crow rightmost
+join Doki leftmost
+Crow: <Empty Text Event>
+if {secondGameWon} == true:
+	Crow: Good job Doki! Looks like we got another piece of the antivirus.
+	Crow: We'll be out of here at no at this rate!
+else:
+	Crow: It seems like another piece of the antivirus has disintegrated.
+	Crow: I wonder how we'll get out of here at this rate..
+leave Doki
+[signal arg="hooded_figure_enters"]
+[wait time="1.0"]
+Crow: Look Doki, the hooded figure is back!
+Crow: After him, quick!
+leave Crow
+[end_timeline]

@@ -1,0 +1,61 @@
+join Crow rightmost
+Crow: Oh, we're back at your Desktop Doki!
+join Doki leftmost
+Doki: We are, but what is that?
+if {firstGameWon} == true:
+	leave Crow
+	[wait time="0.5"]
+	[signal arg="slot_in"]
+	[wait time="2.0"]
+	join Crow rightmost
+	Crow: It looks like we gather pieces whenever we win games.
+	Crow: We probably need to gather all of them to save Mint.
+	Doki: Oh well that should be super easy then.
+	Doki: We all know I'm great at video games.
+	[signal arg="hooded_figure"]
+	Crow: If you're done glazing yourself, I think I just saw the hooded figure jump into that new folder.
+	Doki: Is that so? Let's get after him!
+	[end_timeline]
+else:
+	leave Crow
+	[wait time="0.5"]
+	[signal arg="disintegrate"]
+	[wait time="2.0"]
+	join Crow rightmost
+	Crow: Huh, that's weird, the piece disappeared..
+	Crow: I wonder if that has something to do with losing the last game?
+	Doki: Maybe I really am only good at FPS games..
+	[signal arg="hooded_figure"]
+	Crow: Well if you're done being so down on yourself.. I think I saw the hooded figure jump into that new folder.
+	Doki: Is that so? Let's get after him!
+	[end_timeline]
+# The anti virus floats down and poofs into the icon, denoting that a piece of the anti virus has been gotten, only if the player wins
+# If the player loses, the anti virus disintegrates, and the crow mentions how you probably need to win the games to get the pieces
+# If the player wins, the crow explains that you gather the pieces by winning, and if we collect all of them we can probably save Mint
+# Doki says cheesy line about being good at video games and it'll be easy
+# Crow says Doki I know you're trying to glaze yourself, but the hooded figure took Mint into that new icon that popped up
+# Doki walks over, says "Hey, stop right there" and follows the figure into Level 2
+# ~ Level 2 Cutscene ~
+# Dokis neck animates up and down with bwourngwkahd sound
+# Doki says "WHAT THE PLUCK HPAPENED TO MY NECK
+# *Mint voice plays hear in the distant background*
+# Crow says "Do you hear that Doki, I think I just heard Mint screaming help
+# Doki says, What? I can't hear you over the sound of my 
+# Crow, I think that joke was so bad the crowd is throwing tomatos at us Doki
+# Crow, Get ready to put that neck to use and catch those tomatos
+# Crow, I hope you're hungry
+# Tutorial shows how to move neck up and down, wait couple of seconds, and then the song plays
+# Play out Level 2, Game Won screen when finished, Crow says something cheeky before going back to Virus Cutscene 2
+# ~ Virus Cutscene 2 ~
+# Crow says, Nice, looks like we got another piece of the puzzle
+# Crow says, Quick Doki, run, the hooded figure, we almost got him!
+# Doki runs into 3rd folder (throne room) right after the hooded figure leaves, to signify catching up
+# ~ Throne Room/Level 3~
+# D.A.D. says Well, well, well… look what the dog dragged in.
+# Doki walks up to Hooded figure and says "You again!!! You have no where to run. Who are you? And where have you taken Mint?”
+# Doki says Wait, why are you wearing a hood indoors?
+# D.A.D says “Poor little Doki… you’ve come so far, and yet still understand so little of the situation you’re in. Very well — allow me to reintroduce myself, ‘best friend.’”
+# Doki: WHO ARE YOU?
+# D.A.D. says Doki... I am your dad
+# Confused Doki says Father?
+# D.A.D NO! *pulls down hook* D.A.D!!!

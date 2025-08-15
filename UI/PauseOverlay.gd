@@ -20,4 +20,5 @@ func _process(_delta: float) -> void:
 
 func onRestartButton_longPressed() -> void:
 	SceneManager.setPause(false)
+	Dialogic.end_timeline()
 	GameState.restart()

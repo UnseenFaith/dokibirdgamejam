@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bmssbkevfv3ft"]
+[gd_scene load_steps=89 format=3 uid="uid://bmssbkevfv3ft"]
 
 [ext_resource type="Script" uid="uid://bisowd0k143yp" path="res://Entities/Characters/PlayerEntity.gd" id="1_mgt6d"]
 [ext_resource type="PackedScene" uid="uid://dekgkos84sljm" path="res://Components/Visual/CameraComponent.tscn" id="3_24xqn"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://br4se5e7k32fs" path="res://Game/Doki_Jump.png" id="3_qhs00"]
 [ext_resource type="PackedScene" uid="uid://d06m60dgdv8ui" path="res://Components/Data/StatsComponent.tscn" id="4_fj8vo"]
 [ext_resource type="Texture2D" uid="uid://gw643va87flg" path="res://Lab/Assets/Doki_side_jump-Sheet.png" id="4_gcuor"]
-[ext_resource type="Texture2D" uid="uid://mg5idc1adtml" path="res://Game/vagabond-run-end.png" id="4_q1k2l"]
 [ext_resource type="Texture2D" uid="uid://dkginrv2qvgcc" path="res://Lab/DinoRun/Assets/Doki_side.png" id="4_w5402"]
 [ext_resource type="Texture2D" uid="uid://5o31svvaggch" path="res://Game/doki_run.png" id="5_j2a3c"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="5_j4p8p"]
@@ -192,22 +191,6 @@ region = Rect2(96, 0, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_q66n7"]
 atlas = ExtResource("4_w5402")
 region = Rect2(128, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4av6"]
-atlas = ExtResource("4_q1k2l")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2xt5"]
-atlas = ExtResource("4_q1k2l")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0ft3"]
-atlas = ExtResource("4_q1k2l")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3iqb5"]
-atlas = ExtResource("4_q1k2l")
-region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5402"]
 atlas = ExtResource("6_w5402")
@@ -405,19 +388,7 @@ animations = [{
 "name": &"jump",
 "speed": 12.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d4av6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2xt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w0ft3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3iqb5")
-}],
+"frames": [],
 "loop": false,
 "name": &"run_end",
 "speed": 12.0

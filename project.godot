@@ -63,7 +63,10 @@ directories/dtl_directory={
 "intro": "res://Game/Dialogic/intro.dtl",
 "intro2": "res://Game/Dialogic/intro2.dtl",
 "level1_outro": "res://Game/Dialogic/level1_outro.dtl",
-"timeline": "res://Game/Dialogic/timeline.dtl"
+"rhythm_game": "res://Lab/Assets/SFX/rhythm_game.dtl",
+"timeline": "res://Game/Dialogic/timeline.dtl",
+"virus_desktop_1": "res://Lab/Assets/SFX/virus_desktop_1.dtl",
+"virus_desktop_2": "res://Lab/Assets/SFX/virus_desktop_2.dtl"
 }
 layout/style_directory={
 "": "res://Game/Dialogic/DokiStyle.tres",
@@ -105,7 +108,10 @@ audio/channel_defaults={
 glossary/default_case_sensitive=true
 layout/style_list=["res://Game/Dialogic/DokiStyle.tres"]
 layout/default_style="res://Game/Dialogic/DokiStyle.tres"
-variables={}
+variables={
+"firstGameWon": false,
+"secondGameWon": false
+}
 save/autosave=false
 
 [display]

@@ -1,10 +1,177 @@
-[gd_scene load_steps=7 format=3 uid="uid://ic7pden1fgfl"]
+[gd_scene load_steps=22 format=3 uid="uid://ic7pden1fgfl"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
 [ext_resource type="MidiResource" uid="uid://dg8isrbqfkgmi" path="res://Lab/RhythmGame/Assets/Rhythm (if pitch based).mid" id="2_qbl1s"]
 [ext_resource type="AudioStream" uid="uid://cw3je403pr4k8" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v2).wav" id="3_1ayhs"]
 [ext_resource type="Texture2D" uid="uid://d3l4gubffnk8k" path="res://Lab/BulletHell/Assets/Doki_head_chest.png" id="5_1ayhs"]
 [ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
+[ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="6_1ayhs"]
+[ext_resource type="Texture2D" uid="uid://d18c6pjwp5dnj" path="res://Lab/Assets/You_Won.png" id="7_tp5ut"]
+[ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="8_cto7o"]
+[ext_resource type="Texture2D" uid="uid://dialmulobkl3b" path="res://Lab/Assets/Tomato_catch.png" id="8_kgcan"]
+
+[sub_resource type="Animation" id="Animation_1ayhs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, 265)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"close"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tutorial:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tutorial:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qbl1s"]
+resource_name = "intro"
+length = 4.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-58, 200), Vector2(300, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6333334, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(56, 265), Vector2(56, 265), Vector2(56, 139)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"close"]
+}
+
+[sub_resource type="Animation" id="Animation_kgcan"]
+resource_name = "tutorial"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tutorial:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ayhs"]
+_data = {
+&"RESET": SubResource("Animation_1ayhs"),
+&"intro": SubResource("Animation_qbl1s"),
+&"tutorial": SubResource("Animation_kgcan")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbl1s"]
 bg_color = Color(1, 0, 0, 1)
@@ -12,8 +179,68 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 corner_detail = 1
 anti_aliasing = false
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp5ut"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgcan"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cto7o"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe4iu"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqejw"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuc7c"]
+atlas = ExtResource("6_1ayhs")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1e11r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp5ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgcan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cto7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe4iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqejw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuc7c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="RhythmGame" type="Node2D"]
 script = ExtResource("1_vd6rt")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(24, 248)
+offset = Vector2(195, -40)
+zoom = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1ayhs")
+}
 
 [node name="MidiQueue" type="MidiPlayer" parent="."]
 midi = ExtResource("2_qbl1s")
@@ -23,56 +250,69 @@ midi = ExtResource("2_qbl1s")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1ayhs")
-volume_db = -5.0
 bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("5_qbl1s")]
-position = Vector2(96, 87)
+position = Vector2(56, 265)
+scale = Vector2(0.5, 0.5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
 
-[node name="AccuracyLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="AccuracyLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_right = 72.0
-offset_bottom = 40.0
+offset_left = 305.0
+offset_top = 104.0
+offset_right = 395.0
+offset_bottom = 144.0
 text = "Accuracy: "
 
-[node name="Accuracy" type="RichTextLabel" parent="CanvasLayer"]
+[node name="Accuracy" type="RichTextLabel" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_left = 63.0
-offset_top = 1.0
-offset_right = 115.0
-offset_bottom = 28.0
+offset_left = 378.0
+offset_top = 105.0
+offset_right = 430.0
+offset_bottom = 132.0
 text = "100.00"
 
-[node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="ComboLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_top = 9.0
-offset_right = 42.0
-offset_bottom = 49.0
+offset_left = 304.0
+offset_top = 127.0
+offset_right = 415.0
+offset_bottom = 167.0
 text = "Combo:"
 
-[node name="Combo" type="RichTextLabel" parent="CanvasLayer"]
+[node name="Combo" type="RichTextLabel" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_left = 63.0
-offset_top = 9.0
-offset_right = 103.0
-offset_bottom = 49.0
+offset_left = 378.0
+offset_top = 127.0
+offset_right = 418.0
+offset_bottom = 167.0
 text = "200x"
 
-[node name="LevelTracker" type="ProgressBar" parent="CanvasLayer"]
+[node name="LevelTracker" type="ProgressBar" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_left = 174.0
-offset_right = 348.0
-offset_bottom = 10.0
+offset_left = 123.5
+offset_top = 293.96
+offset_right = 297.5
+offset_bottom = 320.96
 theme_override_colors/font_color = Color(0, 0.7049909, 0.37744042, 1)
 
-[node name="HealthTracker" type="ProgressBar" parent="CanvasLayer"]
+[node name="HealthTracker" type="ProgressBar" parent="UI"]
+layout_mode = 1
 anchors_preset = -1
-offset_left = 174.0
-offset_top = 13.0
-offset_right = 348.0
-offset_bottom = 23.0
+offset_left = 115.0
+offset_top = 121.0
+offset_right = 289.0
+offset_bottom = 133.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_qbl1s")
 max_value = 5.0
@@ -80,10 +320,43 @@ step = 1.0
 value = 5.0
 
 [node name="Shoulders" type="Sprite2D" parent="."]
-position = Vector2(81, 326)
+position = Vector2(48.5, 311)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_1ayhs")
 
+[node name="Crow" type="AnimatedSprite2D" parent="."]
+position = Vector2(-58, 64)
+sprite_frames = SubResource("SpriteFrames_1e11r")
+autoplay = "default"
+
+[node name="YouWon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(219, 208)
+texture = ExtResource("7_tp5ut")
+
+[node name="YouLose" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(219, 208)
+texture = ExtResource("8_cto7o")
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(219, 207.8)
+scale = Vector2(1.002, 1.002)
+texture = ExtResource("8_kgcan")
+
+[node name="Tutorial" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+offset_left = 78.0
+offset_top = 167.0
+offset_right = 354.0
+offset_bottom = 190.0
+text = "Use the mouse to move doki's neck!"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="onAnimationPlayer_animationFinished"]
 [connection signal="finished" from="MidiQueue" to="." method="onMidiQueue_finished"]
 [connection signal="note" from="MidiQueue" to="." method="my_note_callback"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="onAudioStreamPlayer_finished"]
 [connection signal="note_hit" from="Player" to="." method="onPlayer_noteHit"]
+
+[editable path="Player"]
