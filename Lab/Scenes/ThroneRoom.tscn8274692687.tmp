@@ -11,42 +11,6 @@
 [sub_resource type="Animation" id="Animation_457tr"]
 resource_name = "intro"
 step = 0.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Doki:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Crow:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerCamera:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxmc0"]
 _data = {
@@ -313,10 +277,10 @@ texture = ExtResource("1_k06i3")
 
 [node name="Doki" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_jqe23")
-position = Vector2(81, 226)
+position = Vector2(53, 226)
 sprite_frames = SubResource("SpriteFrames_k06i3")
-animation = &"idle"
-frame_progress = 0.48347503
+animation = &"walk"
+frame_progress = 0.7329414
 
 [node name="Crow" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_g25ps")
