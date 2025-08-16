@@ -38,6 +38,10 @@ func _ready() -> void:
 		$VirusPiece.throw_to(Vector2(355, -64.5))
 		await get_tree().create_timer(1.0).timeout
 	Dialogic.start("post-boss")
+	
+	await Dialogic.signal_event
+	$Doki.play("tomato")
+	
 	await Dialogic.timeline_ended
 	
 	var tv_tween2 := create_tween()

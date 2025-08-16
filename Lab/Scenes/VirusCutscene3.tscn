@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://boy3oxxgqc8xq"]
+[gd_scene load_steps=85 format=3 uid="uid://boy3oxxgqc8xq"]
 
 [ext_resource type="Script" uid="uid://damwei6dsebvy" path="res://Lab/Scenes/VirusCutscene3.gd" id="1_67cuq"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_5ikpl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="6_itviw"]
 [ext_resource type="Texture2D" uid="uid://5o31svvaggch" path="res://Game/doki_run.png" id="7_n65xq"]
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="8_8ispa"]
+[ext_resource type="Texture2D" uid="uid://b0l4ejinccng4" path="res://Lab/Assets/Expressions/tomato_idle.png" id="8_wpb3p"]
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="9_vy2s2"]
 [ext_resource type="Texture2D" uid="uid://b2vw1ptjotcfx" path="res://Lab/Assets/uncloaked_figure_idle.png" id="10_5ikpl"]
 [ext_resource type="Texture2D" uid="uid://dseaoxca8bba3" path="res://Lab/Assets/Anti_virus_1_normal.png" id="11_67cuq"]
@@ -122,6 +123,22 @@ region = Rect2(192, 0, 32, 48)
 atlas = ExtResource("7_n65xq")
 region = Rect2(224, 0, 32, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvofv"]
+atlas = ExtResource("8_wpb3p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te24g"]
+atlas = ExtResource("8_wpb3p")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ppp7"]
+atlas = ExtResource("8_wpb3p")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4hbb"]
+atlas = ExtResource("8_wpb3p")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kin84"]
 animations = [{
 "frames": [{
@@ -130,7 +147,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"holding",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -209,6 +226,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvofv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te24g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ppp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4hbb")
+}],
+"loop": true,
+"name": &"tomato",
 "speed": 12.0
 }]
 
@@ -493,7 +527,7 @@ metadata/_edit_lock_ = true
 material = SubResource("ShaderMaterial_j4uuq")
 position = Vector2(236, -51)
 sprite_frames = SubResource("SpriteFrames_kin84")
-animation = &"holding"
+animation = &"tomato"
 autoplay = "idle"
 flip_h = true
 script = ExtResource("8_8ispa")

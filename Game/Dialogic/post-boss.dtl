@@ -11,10 +11,11 @@ if {thirdGameWon} == true && {secondGameWon} == true && {firstGameWon} == true:
 	join Mint rightmost
 	Mint: Doki!! Thank you... you really saved me!
 	Doki (Default): Save you? I wouldn't do that, I was just trying to steal your hear—
-	Mint: Oh, right right. But since the start, my heart has been yours. Thank you Doki!
+	Mint (Group/smooch): Oh, right right. But since the start, my heart has been yours. Thank you Doki!
 	[signal arg="kiss_tomato"]
+	[wait time="0.5"]
 	join Doki (tomato) leftmost [animation="Instant In" length="0.0"]
-	Mint: Oh... Doki... you blushed so hard you turned completely red.
+	Mint (Group/Default): Oh... Doki... you blushed so hard you turned completely red.
 	Doki (tomato): Mint... I'm actually a tomato.
 	Mint: You know what they say, Doki... you are what you eat.
 	[end_timeline]

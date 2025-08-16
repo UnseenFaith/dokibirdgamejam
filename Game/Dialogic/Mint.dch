@@ -54,6 +54,15 @@
 "offset": Vector2(-225, 0),
 "scale": 1,
 "scene": ""
+},
+"Group/smooch": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/mint_kiss.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
 }
 },
 &"scale": 1.0
