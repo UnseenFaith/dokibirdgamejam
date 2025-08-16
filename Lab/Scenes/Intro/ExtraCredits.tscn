@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8tq4wvst0r4g"]
+[gd_scene load_steps=5 format=3 uid="uid://c8tq4wvst0r4g"]
 
+[ext_resource type="Script" uid="uid://dru114wyk02j1" path="res://Lab/Scenes/Intro/ExtraCredits.gd" id="1_0rsv1"]
 [ext_resource type="PackedScene" uid="uid://cs4k1w0si6yik" path="res://Lab/Scenes/Credits.tscn" id="1_jqgc4"]
 [ext_resource type="Texture2D" uid="uid://cs3ixlt7auu0l" path="res://Lab/Assets/Dokie_desk_2.png" id="2_tcn82"]
+[ext_resource type="AudioStream" uid="uid://ci32t0f588nwd" path="res://Lab/Assets/Music/DokiJam - Start Menu (Fin v1).wav" id="4_olxem"]
 
 [node name="ExtraCredits" type="Node2D"]
+script = ExtResource("1_0rsv1")
 
 [node name="Credits" parent="." instance=ExtResource("1_jqgc4")]
+z_index = -1
+position = Vector2(165, 25)
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(320, 179)
 texture = ExtResource("2_tcn82")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_olxem")
+autoplay = true
+
+[connection signal="cutscene_quit" from="Credits" to="." method="onCredits_cutsceneQuit"]

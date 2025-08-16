@@ -1,8 +1,8 @@
-[gd_scene load_steps=67 format=3 uid="uid://boy3oxxgqc8xq"]
+[gd_scene load_steps=80 format=3 uid="uid://boy3oxxgqc8xq"]
 
 [ext_resource type="Script" uid="uid://damwei6dsebvy" path="res://Lab/Scenes/VirusCutscene3.gd" id="1_67cuq"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_5ikpl"]
-[ext_resource type="Texture2D" uid="uid://clejrk0xj88iw" path="res://Lab/Assets/virus_background.png" id="3_bpulx"]
+[ext_resource type="Texture2D" uid="uid://ookiwwfqqqfk" path="res://Lab/Assets/Desktop_ending.png" id="3_5ikpl"]
 [ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="4_wpb3p"]
 [ext_resource type="Texture2D" uid="uid://bhhqtn8uorens" path="res://Lab/Assets/Doki_holding_anti_virus.png" id="5_5e18s"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="6_itviw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="9_vy2s2"]
 [ext_resource type="Texture2D" uid="uid://b2vw1ptjotcfx" path="res://Lab/Assets/uncloaked_figure_idle.png" id="10_5ikpl"]
 [ext_resource type="Texture2D" uid="uid://dseaoxca8bba3" path="res://Lab/Assets/Anti_virus_1_normal.png" id="11_67cuq"]
+[ext_resource type="Texture2D" uid="uid://y7a76a6wixx6" path="res://Lab/Assets/Mint_idle.png" id="11_bpulx"]
 [ext_resource type="Texture2D" uid="uid://db2hwcvvcrmih" path="res://Lab/Assets/Anti_virus_2_normal.png" id="12_5ikpl"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="12_lse54"]
 
@@ -361,6 +362,88 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpulx"]
+shader = ExtResource("4_wpb3p")
+shader_parameter/progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxohk"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p2vt"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo1bl"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl6bi"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueavg"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_davxo"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adcfa"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqsij"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x6df"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy5cg"]
+atlas = ExtResource("11_bpulx")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ikpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxohk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p2vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo1bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl6bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueavg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_davxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adcfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqsij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x6df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy5cg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ikpl"]
 atlas = ExtResource("11_67cuq")
 region = Rect2(0, 0, 48, 32)
@@ -403,11 +486,12 @@ zoom = Vector2(1.5, 1.5)
 [node name="Background" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_i8hch")
 position = Vector2(196, -41)
-texture = ExtResource("3_bpulx")
+texture = ExtResource("3_5ikpl")
+metadata/_edit_lock_ = true
 
 [node name="Doki" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j4uuq")
-position = Vector2(356, 34)
+position = Vector2(236, -51)
 sprite_frames = SubResource("SpriteFrames_kin84")
 animation = &"holding"
 autoplay = "idle"
@@ -416,7 +500,7 @@ script = ExtResource("8_8ispa")
 
 [node name="Crow" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_i571w")
-position = Vector2(385, 7)
+position = Vector2(200, -81)
 sprite_frames = SubResource("SpriteFrames_auk2n")
 autoplay = "default"
 flip_h = true
@@ -424,12 +508,19 @@ script = ExtResource("8_8ispa")
 
 [node name="HoodedFigure" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ejuss")
-position = Vector2(0, 34)
+position = Vector2(161, -36)
 sprite_frames = SubResource("SpriteFrames_opy3l")
 autoplay = "default"
 frame = 1
 frame_progress = 0.5799542
 script = ExtResource("8_8ispa")
+
+[node name="Minty" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_bpulx")
+position = Vector2(278, -50)
+sprite_frames = SubResource("SpriteFrames_5ikpl")
+autoplay = "default"
+flip_h = true
 
 [node name="Virus1" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -445,7 +536,7 @@ sprite_frames = SubResource("SpriteFrames_67cuq")
 autoplay = "default"
 
 [node name="VirusPiece" parent="." instance=ExtResource("12_lse54")]
-position = Vector2(361, -4)
+position = Vector2(239, -87)
 piece = 3
 
 [node name="NextGame" type="Marker2D" parent="."]

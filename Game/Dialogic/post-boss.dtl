@@ -22,7 +22,7 @@ elif {thirdGameWon} == true && ({secondGame} != true or {firstGame} != true):
 	Dad: Ha... ha... ha... HA... HAH... HAHAHAHAHA!
 	Dad: You might have beat me but without all the pieces of the anti virus you are still trapped in here forever!
 elif {thirdGameWon} == false:
-	Dad: Ha... ha... ha... HA... HAH... HAHAHAHAHA! I have won! Mint is mine! all mine!!
+	Dad: Ha... ha... ha... HA... HAH... HAHAHAHAHA! I have won! Mint is mine! All mine!!
 	Dad: Now you will remain trapped here... pawever.
 Dad: I must give you credit—Your plan might very well have worked.
 Dad: But Doki... the antivirus requires 3 pieces, not {pieces}.
