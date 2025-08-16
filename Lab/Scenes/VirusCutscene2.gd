@@ -3,9 +3,15 @@ extends Node2D
 var rhythm := preload("res://Lab/RhythmGame/RhythmGame.tscn")
 
 func _ready() -> void:
-	#var tween := create_tween()
-	#tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 0.5)
-	#tween.tween_property($Crow.material, "shader_parameter/progress", 1.0, 0.5)
+	var tv_tween := create_tween()
+	tv_tween.tween_property($Background.material, "shader_parameter/progress", 0, 1.0)
+	await tv_tween.finished
+	
+	var tween := create_tween()
+	tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 1.0)
+	tween.tween_property($Crow.material, "shader_parameter/progress", 1.0, 1.0)
+	await tween.finished
+
 	if Dialogic.VAR.firstGameWon:
 		$Virus1.visible = true
 	

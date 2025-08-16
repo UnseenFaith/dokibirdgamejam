@@ -1,6 +1,7 @@
-[gd_scene load_steps=64 format=3 uid="uid://dfgxtqaog3gav"]
+[gd_scene load_steps=68 format=3 uid="uid://dfgxtqaog3gav"]
 
 [ext_resource type="Script" uid="uid://crln80g6dp32" path="res://Lab/Scenes/VirusCutscene2.gd" id="1_uxfr2"]
+[ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_b5cyv"]
 [ext_resource type="Texture2D" uid="uid://clejrk0xj88iw" path="res://Lab/Assets/virus_background.png" id="2_p2ncu"]
 [ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="3_p2ncu"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="3_rims8"]
@@ -11,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="8_0vltq"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="10_0vltq"]
 [ext_resource type="Texture2D" uid="uid://dwvs0ddd4r7sk" path="res://Lab/Assets/anti_virus_pieces.png" id="10_eu70x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5cyv"]
 
 [sub_resource type="Animation" id="Animation_opy3l"]
 length = 0.001
@@ -66,10 +69,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"holding", &"idle"]
 }
-
-[sub_resource type="Animation" id="Animation_rims8"]
-resource_name = "hooded_figure_enters"
-step = 0.0333333
 
 [sub_resource type="Animation" id="Animation_0vltq"]
 resource_name = "chase_hooded_figure"
@@ -162,6 +161,10 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_rims8"]
+resource_name = "hooded_figure_enters"
+step = 0.0333333
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ejuss"]
 _data = {
 &"RESET": SubResource("Animation_opy3l"),
@@ -170,9 +173,16 @@ _data = {
 &"hooded_figure_enters": SubResource("Animation_rims8")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rims8"]
-shader = ExtResource("3_p2ncu")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8hch"]
+shader = ExtResource("2_b5cyv")
 shader_parameter/progress = 1.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/glow_strength = 0.0
+shader_parameter/static_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uuq"]
+shader = ExtResource("3_p2ncu")
+shader_parameter/progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ahw5"]
 atlas = ExtResource("4_ejuss")
@@ -360,6 +370,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i571w"]
+shader = ExtResource("3_p2ncu")
+shader_parameter/progress = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kin84"]
 atlas = ExtResource("4_opy3l")
 region = Rect2(0, 0, 48, 32)
@@ -508,6 +522,7 @@ animations = [{
 }]
 
 [node name="VirusCutscene2" type="Node2D"]
+material = SubResource("ShaderMaterial_b5cyv")
 script = ExtResource("1_uxfr2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -517,15 +532,17 @@ libraries = {
 
 [node name="Camera" type="Camera2D" parent="."]
 z_index = 100
+position = Vector2(1, -1)
 offset = Vector2(195, -40)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_i8hch")
 position = Vector2(196, -41)
 texture = ExtResource("2_p2ncu")
 
 [node name="Doki" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_rims8")
+material = SubResource("ShaderMaterial_j4uuq")
 position = Vector2(356, 34)
 sprite_frames = SubResource("SpriteFrames_kin84")
 animation = &"holding"
@@ -534,6 +551,7 @@ flip_h = true
 script = ExtResource("8_0vltq")
 
 [node name="Crow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_i571w")
 position = Vector2(385, 7)
 sprite_frames = SubResource("SpriteFrames_auk2n")
 autoplay = "default"

@@ -25,15 +25,11 @@ void fragment() {
     vec2 distorted_uv = center + dir;
 
     // Sample texture with RGB separation for vintage feel
-    vec4 tex_color = vec4(0.0);
-    if (distorted_uv.x >= 0.0 && distorted_uv.x <= 1.0 &&
-        distorted_uv.y >= 0.0 && distorted_uv.y <= 1.0) {
-        float offset = 0.002; // small RGB shift
-        float r = texture(TEXTURE, distorted_uv + vec2(offset, 0.0)).r;
-        float g = texture(TEXTURE, distorted_uv).g;
-        float b = texture(TEXTURE, distorted_uv - vec2(offset, 0.0)).b;
-        tex_color = vec4(r, g, b, 1.0);
-    }
+	vec4 tex_color = vec4(0.0);
+	if (distorted_uv.x >= 0.0 && distorted_uv.x <= 1.0 &&
+    	distorted_uv.y >= 0.0 && distorted_uv.y <= 1.0) {
+    	tex_color = texture(TEXTURE, distorted_uv);
+	}
 
     // Add white glow at center during collapse
     float dist_to_center = length(uv - center);
