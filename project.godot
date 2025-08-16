@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dokibird Jam"
+config/name="Doki Quest: Save the Maiden"
 config/name_localized={
 "ja_JP": "カムドット",
 "ja_Kana_JP": "カムドット"
