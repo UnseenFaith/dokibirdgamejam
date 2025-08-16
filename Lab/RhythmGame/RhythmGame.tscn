@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://ic7pden1fgfl"]
+[gd_scene load_steps=27 format=3 uid="uid://ic7pden1fgfl"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
 [ext_resource type="AudioStream" uid="uid://ccxxwufkbbvj2" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v3).wav" id="3_pe4iu"]
 [ext_resource type="Texture2D" uid="uid://d3l4gubffnk8k" path="res://Lab/BulletHell/Assets/Doki_head_chest.png" id="5_1ayhs"]
 [ext_resource type="Texture2D" uid="uid://c1brmau7uihb3" path="res://Lab/Assets/Lvl_2_progress_back.png" id="5_1e11r"]
+[ext_resource type="AudioStream" uid="uid://djvf1bab6v1n3" path="res://Lab/Assets/SFX/Help.wav" id="5_ofk0y"]
 [ext_resource type="Texture2D" uid="uid://cv61jif5fptl" path="res://Lab/Assets/Lvl_2_health_back_.png" id="5_pe4iu"]
 [ext_resource type="PackedScene" uid="uid://bxp7p2hbajrcq" path="res://Lab/RhythmGame/Scenes/Player.tscn" id="5_qbl1s"]
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="6_1ayhs"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="8_cto7o"]
 [ext_resource type="Texture2D" uid="uid://dialmulobkl3b" path="res://Lab/Assets/Tomato_catch.png" id="8_kgcan"]
 [ext_resource type="Texture2D" uid="uid://bigfbkxpevu5y" path="res://Lab/Assets/Lvl_2_background.png" id="9_cto7o"]
+[ext_resource type="Texture2D" uid="uid://c8o5k7plm2fmc" path="res://Lab/Assets/lvl_2_tutorial_buttons.png" id="15_xogsf"]
 
 [sub_resource type="Animation" id="Animation_1ayhs"]
 length = 0.001
@@ -245,6 +247,7 @@ stream = ExtResource("3_pe4iu")
 bus = &"Music"
 
 [node name="Disc" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.43529412)
 z_as_relative = false
 position = Vector2(219, 213)
 scale = Vector2(0.8, 0.8)
@@ -253,6 +256,11 @@ texture = ExtResource("9_cto7o")
 [node name="Player" parent="." instance=ExtResource("5_qbl1s")]
 position = Vector2(56, 265)
 scale = Vector2(0.5, 0.5)
+
+[node name="Mint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ofk0y")
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="UI" type="Control" parent="."]
 visible = false
@@ -313,8 +321,8 @@ offset_left = -117.0
 offset_top = 93.0
 offset_right = 309.0
 offset_bottom = 333.0
-max_value = 5.0
-value = 5.0
+max_value = 10.0
+value = 10.0
 texture_under = ExtResource("5_pe4iu")
 texture_progress = ExtResource("6_uqejw")
 
@@ -343,14 +351,32 @@ position = Vector2(219, 207.8)
 scale = Vector2(1.002, 1.002)
 texture = ExtResource("8_kgcan")
 
-[node name="Tutorial" type="Label" parent="."]
+[node name="Tutorial" type="Node2D" parent="."]
 visible = false
-anchors_preset = -1
-offset_left = 78.0
-offset_top = 167.0
-offset_right = 354.0
-offset_bottom = 190.0
-text = "Use the mouse to move doki's neck!"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(56, 192)
+texture = ExtResource("15_xogsf")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Tutorial"]
+position = Vector2(79, 190)
+texture = ExtResource("15_xogsf")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tutorial"]
+position = Vector2(100, 193)
+texture = ExtResource("15_xogsf")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial"]
+position = Vector2(163, 194)
+texture = ExtResource("15_xogsf")
+region_enabled = true
+region_rect = Rect2(0, 48, 96, 16)
 
 [node name="BG" type="ColorRect" parent="."]
 z_index = -1

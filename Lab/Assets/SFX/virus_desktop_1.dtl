@@ -1,33 +1,33 @@
-join Crow rightmost
-Crow: Oh, we're back at your Desktop Doki!
-Crow: Looks like completing a game, win or lose, takes us back to your Desktop.
-join Doki leftmost
-Doki: Yeah.. what is thing that I'm holding though?
-Crow: It looks like a piece of the antivirus.
+join Crow (shocked) rightmost
+Crow (shocked): Oh, we're back at your Desktop Doki!
+Crow (Default): Looks like completing a game, win or lose, takes us back to your Desktop.
+join Doki (confuse) leftmost
+Doki (confuse): Yeah.. what is this thing that I'm holding though?
+Crow (Default): It looks like a piece of the antivirus.
 if {firstGameWon} == true:
 	leave Crow
 	[wait time="0.5"]
 	[signal arg="slot_in"]
 	[wait time="2.0"]
-	join Crow rightmost
-	Crow: We can probably gather the rest of the pieces by winning games.
-	Crow: We'll probably need to gather all of them to get out of here.
-	Doki: Oh, well that should be super easy then.
-	Doki: We all know I'm great at video games.
+	join Crow (Default) rightmost
+	Crow (Default): We can probably gather the rest of the pieces by winning games.
+	Crow (Default): We'll probably need to gather all of them to get out of here.
+	Doki (smug): Oh, well that should be super easy then.
+	Doki (smug): We all know I'm great at video games.
 	[signal arg="hooded_figure"]
-	Crow: If you're done glazing yourself, I think I just saw the hooded figure jump into that new folder.
-	Doki: Is that so? Let's get after him!
+	Crow (dot): If you're done glazing yourself, I think I just saw the hooded figure jump into that new folder.
+	Doki (Default): Is that so? Let's get after him!
 	[end_timeline]
 else:
 	leave Crow
 	[wait time="0.5"]
 	[signal arg="disintegrate"]
 	[wait time="2.0"]
-	join Crow rightmost
-	Crow: Huh, that's weird, the antivirus piece disappeared..
-	Crow: I wonder if that has something to do with losing the last game?
-	Doki: Maybe I really am only good at FPS games..
+	join Crow (tired) rightmost
+	Crow (tired): Huh, that's weird, the antivirus piece disappeared..
+	Crow (Default): I wonder if that has something to do with losing the last game?
+	Doki (cry): Maybe I really am only good at FPS games..
 	[signal arg="hooded_figure"]
-	Crow: Well if you're done being so down on yourself.. I think I saw the hooded figure jump into that new folder.
-	Doki: Is that so? Let's get after him!
+	Crow (Default): Well if you're done being so down on yourself.. I think I saw the hooded figure jump into another folder.
+	Doki (Default): Is that so? Let's get after him!
 	[end_timeline]

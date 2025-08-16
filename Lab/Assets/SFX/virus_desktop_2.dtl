@@ -1,15 +1,15 @@
-join Crow rightmost
-join Doki leftmost
+join Crow (Default) rightmost
+join Doki (Default) leftmost
 if {secondGameWon} == true:
-	Crow: Good job Doki! Looks like we got another piece of the antivirus.
-	Crow: We'll be out of here at no at this rate!
+	Crow (Default): Good job Doki! Looks like we got another piece of the antivirus.
+	Crow (Default): We'll be out of here at no at this rate!
 else:
-	Crow: It seems like another piece of the antivirus has disintegrated.
-	Crow: I wonder how we'll get out of here at this rate..
+	Crow (tired): It seems like another piece of the antivirus has disintegrated.
+	Crow (tired): I wonder how we'll get out of here at this rate..
 leave Doki
 [signal arg="hooded_figure_enters"]
 [wait time="1.0"]
-Crow: Look Doki, the hooded figure is back!
-Crow: After him, quick!
+Crow (extra_shocked): Look Doki, the hooded figure is back!
+Crow (shocked): After him, quick!
 leave Crow
 [end_timeline]

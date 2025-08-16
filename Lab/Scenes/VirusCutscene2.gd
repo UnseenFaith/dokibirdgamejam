@@ -7,15 +7,15 @@ func _ready() -> void:
 	tv_tween.tween_property($Background.material, "shader_parameter/progress", 0, 1.0)
 	await tv_tween.finished
 	
+	if Dialogic.VAR.firstGameWon:
+		$Virus1.visible = true
+	
 	var tween := create_tween()
 	tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 1.0)
 	tween.parallel().tween_property($VirusPiece/AnimatedSprite2D.material, "shader_parameter/progress", 1.0, 1.0)
 	tween.tween_property($Crow.material, "shader_parameter/progress", 1.0, 1.0)
 	await tween.finished
 
-	if Dialogic.VAR.firstGameWon:
-		$Virus1.visible = true
-	
 	await get_tree().create_timer(1.0).timeout
 	if not Dialogic.VAR.secondGameWon:
 		$VirusPiece.disintegrate()

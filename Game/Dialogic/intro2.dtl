@@ -1,34 +1,34 @@
-join Doki leftmost
-Doki: Ow... my head...
-Doki: Where am I..? And why do I look like this..
-Doki: .. this looks familiar.. This is my Desktop!
+join Doki (Default) leftmost
+Doki (dizzy): Ow... my head...
+Doki (Default): Where am I..? And why do I look like this..
+Doki (Default): .. this looks familiar.. This is my Desktop!
 [signal arg="show_crow"]
-Doki: Wait... Crowki, is that you?
-join Crow rightmost
-Crow: Of all the days to be a mod sigh...
+Doki (Default): Wait... Crowki, is that you?
+join Crow (Default) rightmost
+Crow (dot): Of all the days to be a mod sigh...
 leave Doki
 [wait time="1.0"]
 [signal arg="show_mint"]
-Crow: HEY STREAMER! ISN’T THAT MINT?
-join Doki leftmost
+Crow (shocked): HEY STREAMER! ISN’T THAT MINT?
+join Doki (Default) leftmost
 leave Crow
-join Mint rightmost
-Mint: WHERE ARE YOU TAKING ME?!?!?
-Mint: GET YOUR HANDS OFF ME!!!
+join Mint (Group/Default) rightmost
+Mint (Group/scared): WHERE ARE YOU TAKING ME?!?!?
+Mint (Group/scared): GET YOUR HANDS OFF ME!!!
 leave Mint
-join Crow rightmost
-Crow: I don’t know how to tell you this, Doki… but your fans… have been turned against you…
-Crow: I really don't think you should have clicked that suspicious link.
-Crow: It looks like it was a virus that’ll stop at nothing until your whole digital identity is corrupted.
-Crow: The dragoons have already fallen to the virus…
-Crow: It’s only a matter of time before Mint and the others do too.
-Doki: Jokes on you virus, I’ve waited years to steal Mint’s heart…
-Doki: and now’s my chance!
+join Crow (Default) rightmost
+Crow (Default): I don’t know how to tell you this, Doki… but your fans… have been turned against you…
+Crow (Default): I really don't think you should have clicked that suspicious link.
+Crow (Default): It looks like it was a virus that’ll stop at nothing until your whole digital identity is corrupted.
+Crow (Default): The dragoons have already fallen to the virus…
+Crow (Default): It’s only a matter of time before Mint and the others do too.
+Doki (Default): Jokes on you virus, I’ve waited years to steal Mint’s heart…
+Doki (rizz): and now’s my chance!
 leave Doki
 [signal arg="hooded_jump"]
 [wait time="3.0"]
-Crow: They seemed to have jumped into that folder.
-Crow: I reckon we could probably do the same
+Crow (shocked): They seemed to have jumped into that folder.
+Crow (Default): I reckon we could probably do the same
 [signal arg="doki_jump"]
 [wait time="2.5"]
 [end_timeline]

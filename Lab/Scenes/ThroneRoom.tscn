@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cwfowoyuip5yw"]
+[gd_scene load_steps=84 format=3 uid="uid://cwfowoyuip5yw"]
 
 [ext_resource type="Script" uid="uid://nn8o4fftcrkr" path="res://Lab/Scenes/ThroneRoom.gd" id="1_h2k7n"]
 [ext_resource type="Texture2D" uid="uid://cj4oiy3apdma8" path="res://Lab/Assets/throne_room_1.png" id="1_k06i3"]
@@ -8,8 +8,11 @@
 [ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="3_vka5s"]
 [ext_resource type="Texture2D" uid="uid://b1s3fwyawqrvy" path="res://Lab/Assets/throne_room_2.png" id="4_g25ps"]
 [ext_resource type="Texture2D" uid="uid://d38m1cpw17l1h" path="res://Game/Doki_walk.png" id="6_jqe23"]
+[ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="8_215iy"]
 [ext_resource type="Texture2D" uid="uid://gsr88nq4jyhx" path="res://Lab/Assets/cloaked_figure_idle.png" id="9_akar0"]
 [ext_resource type="Texture2D" uid="uid://b2vw1ptjotcfx" path="res://Lab/Assets/uncloaked_figure_idle.png" id="10_p2a36"]
+[ext_resource type="Texture2D" uid="uid://bv5f1vo3d6rhn" path="res://Lab/BulletHell/Assets/doki_bird_top_1_new.png" id="12_mvc7x"]
+[ext_resource type="Texture2D" uid="uid://dwxn86itocsa3" path="res://Lab/BulletHell/Assets/doki_bird_bottom.png" id="13_tyx4a"]
 
 [sub_resource type="Animation" id="Animation_akar0"]
 length = 0.001
@@ -116,7 +119,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vka5s"]
 shader = ExtResource("1_vka5s")
-shader_parameter/progress = 0.0
+shader_parameter/progress = 1.0
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/glow_strength = 0.0
 shader_parameter/static_strength = 0.0
@@ -520,6 +523,78 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhm54"]
+atlas = ExtResource("12_mvc7x")
+region = Rect2(0, 0, 80, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udhp1"]
+atlas = ExtResource("12_mvc7x")
+region = Rect2(80, 0, 80, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isp5v"]
+atlas = ExtResource("12_mvc7x")
+region = Rect2(160, 0, 80, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c27e"]
+atlas = ExtResource("12_mvc7x")
+region = Rect2(240, 0, 80, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5ogb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhm54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udhp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isp5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c27e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbbdx"]
+atlas = ExtResource("13_tyx4a")
+region = Rect2(0, 0, 79, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vvsu"]
+atlas = ExtResource("13_tyx4a")
+region = Rect2(79, 0, 79, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0asf"]
+atlas = ExtResource("13_tyx4a")
+region = Rect2(158, 0, 79, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33f7k"]
+atlas = ExtResource("13_tyx4a")
+region = Rect2(237, 0, 79, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_883re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbbdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vvsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0asf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33f7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="ThroneRoom" type="Node2D"]
 script = ExtResource("1_h2k7n")
 
@@ -551,6 +626,7 @@ material = SubResource("ShaderMaterial_jqe23")
 position = Vector2(81, 226)
 sprite_frames = SubResource("SpriteFrames_k06i3")
 animation = &"idle"
+script = ExtResource("8_215iy")
 
 [node name="Crow" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_g25ps")
@@ -568,3 +644,24 @@ flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(377, 232)
+
+[node name="Flash" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+offset_right = 639.0
+offset_bottom = 360.0
+
+[node name="DokiCrow" type="Node2D" parent="."]
+visible = false
+position = Vector2(341, 215)
+
+[node name="Top" type="AnimatedSprite2D" parent="DokiCrow"]
+position = Vector2(1, -32)
+sprite_frames = SubResource("SpriteFrames_c5ogb")
+autoplay = "default"
+frame_progress = 0.2906847
+
+[node name="Bottom" type="AnimatedSprite2D" parent="DokiCrow"]
+sprite_frames = SubResource("SpriteFrames_883re")
+autoplay = "default"
+frame_progress = 0.8554021

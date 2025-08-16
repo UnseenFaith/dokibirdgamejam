@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xq4y2o0pajf4"]
+
+[ext_resource type="PackedScene" uid="uid://cs4k1w0si6yik" path="res://Lab/Scenes/Credits.tscn" id="1_5kqsl"]
+
+[node name="EndCredits" type="Node2D"]
+
+[node name="Credits" parent="." instance=ExtResource("1_5kqsl")]

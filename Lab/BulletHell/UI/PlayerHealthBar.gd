@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var hearts := [$Heart, $Heart2, $Heart3, $Heart4, $Heart5]
 @onready var current_heart := 4

@@ -112,7 +112,7 @@ func setupGameState() -> void:
 
 ## ATTENTION: A subclass which `extends Start` and overrides [method _ready] MUST call `super._ready()`
 func _ready() -> void:
-	startComedot()
+	startComedot()		
 
 func startComedot() -> void:
 	printLog("[b]_ready()[/b]")
@@ -170,7 +170,7 @@ func onLevel3_pressed() -> void:
 var creditTree
 
 func credit_quit() -> void:
-	$CanvasLayer.visible = true
+	#$CanvasLayer.visible = true
 	$Transparent.visible = false
 	$TextureRect.visible = true
 	creditTree.queue_free()
@@ -179,14 +179,15 @@ func credit_quit() -> void:
 
 
 func onStartButton_pressed() -> void:
-	$CanvasLayer.visible = false
-	$CanvasLayer.process_mode = Node.PROCESS_MODE_DISABLED
+	GameState.startMainScene()
+	#$CanvasLayer.visible = false
+	#$CanvasLayer.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	$IntroCutscene.visible = true
-	$IntroCutscene.process_mode = Node.PROCESS_MODE_ALWAYS
-	$AudioStreamPlayer.stop()
-	$IntroCutscene.start_dialog()
-	$IntroCutscene.z_index = 5
+	#$IntroCutscene.visible = true
+	#$IntroCutscene.process_mode = Node.PROCESS_MODE_ALWAYS
+	#$AudioStreamPlayer.stop()
+	#$IntroCutscene.start_dialog()
+	#$IntroCutscene.z_index = 5
 
 
 func onMainMenuButtons_credits() -> void:
@@ -199,7 +200,7 @@ func onMainMenuButtons_credits() -> void:
 	scene.position = Vector2(160, 25)
 	add_child(scene)
 	scene.connect('cutscene_quit', credit_quit)
-	$CanvasLayer.visible = false
+	#$CanvasLayer.visible = false
 	$TextureRect.visible = false
 	$Transparent.visible = true
 
@@ -213,4 +214,14 @@ func onStart_buttonDown() -> void:
 
 
 func onSettings_buttonDown() -> void:
-	pass # Replace with function body.
+	$TextureRect.visible = false
+	$BackButton.visible = true
+	$OptionsUI.visible = true
+	$Transparent.visible = true
+
+
+func onBackButton_buttonDown() -> void:
+	$TextureRect.visible = true
+	$BackButton.visible = false
+	$OptionsUI.visible = false
+	$Transparent.visible = false

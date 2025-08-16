@@ -7,15 +7,17 @@ var throw_time := 0.0
 var throw_duration := 0.5
 var throw_peak := 100.0
 var throwing := false
+var queue_after := true
 
 ## Call this to make the node throw itself to a position
-func throw_to(target_position: Vector2, duration := 0.5, peak := 100.0) -> void:
+func throw_to(target_position: Vector2, duration := 0.5, peak := 100.0, free = true) -> void:
 	throw_start = position
 	throw_end = target_position
 	throw_duration = duration
 	throw_peak = peak
 	throw_time = 0.0
 	throwing = true
+	queue_after = free
 
 func _process(delta: float) -> void:
 	if throwing:
@@ -24,7 +26,8 @@ func _process(delta: float) -> void:
 		if t >= 1.0:
 			t = 1.0
 			throwing = false
-			queue_free()
+			if queue_after:
+				queue_free()
 
 		# Linear X/Y movement
 		var pos := throw_start.lerp(throw_end, t)

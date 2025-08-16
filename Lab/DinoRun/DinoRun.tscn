@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://coypgt0d6bj26"]
+[gd_scene load_steps=48 format=4 uid="uid://coypgt0d6bj26"]
 
 [ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_775sv"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="16_2hxwx"]
 [ext_resource type="Texture2D" uid="uid://d18c6pjwp5dnj" path="res://Lab/Assets/You_Won.png" id="16_7t2nu"]
 [ext_resource type="Texture2D" uid="uid://bxypj13ycgfow" path="res://Lab/Assets/Doki_run_tab.png" id="16_cxfay"]
+[ext_resource type="Texture2D" uid="uid://bd43e8sxnh05i" path="res://Lab/Assets/lvl_1_tutorial_buttons.png" id="16_pavbu"]
+[ext_resource type="Texture2D" uid="uid://dqdctdij26lhb" path="res://Lab/Assets/Lvl_1_merged.png" id="20_0b7fl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_775sv"]
 
@@ -514,6 +516,13 @@ tags = {
 "software": "Bitwig Studio 5.3.8"
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pavbu"]
+shader = ExtResource("2_775sv")
+shader_parameter/progress = 0.08500000403750001
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/glow_strength = 1.0
+shader_parameter/static_strength = 0.15
+
 [node name="DinoRun" type="Node2D"]
 material = SubResource("ShaderMaterial_775sv")
 script = ExtResource("1_tqvxc")
@@ -676,13 +685,39 @@ text = "Quit"
 visible = false
 position = Vector2(71, 170)
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="S" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(15, 4)
+texture = ExtResource("16_pavbu")
+region_enabled = true
+region_rect = Rect2(0, 1, 67, 15)
+
+[node name="S2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(71, 5)
+texture = ExtResource("16_pavbu")
+region_enabled = true
+region_rect = Rect2(0, 67, 34, 13)
+
+[node name="S3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(15, 22)
+texture = ExtResource("16_pavbu")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="S4" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(49, 22)
+texture = ExtResource("16_pavbu")
+region_enabled = true
+region_rect = Rect2(0, 88, 40, 8)
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
-offset_right = 40.0
+offset_right = 99.0
 offset_bottom = 8.0
 text = "Press W to Jump"
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 offset_left = 1.0
 offset_top = 10.0
@@ -715,6 +750,13 @@ visible = false
 z_index = 11
 position = Vector2(219, 208)
 texture = ExtResource("16_7t2nu")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_pavbu")
+position = Vector2(285, 222)
+texture = ExtResource("20_0b7fl")
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="onObstacleTimer_timeout"]
 [connection signal="game_over" from="Enemy" to="." method="onEnemy_gameOver"]

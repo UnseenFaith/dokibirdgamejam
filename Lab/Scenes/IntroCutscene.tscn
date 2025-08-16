@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bua5etfqyhbja" path="res://Lab/Scenes/Intro/Link.gd" id="3_pcdpg"]
 [ext_resource type="Texture2D" uid="uid://dgffovaktt8qq" path="res://Lab/Assets/Dokie_desk_discord.png" id="3_wasx7"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="4_vqjbu"]
-[ext_resource type="Texture2D" uid="uid://b1qcdqyf2nxtk" path="res://Lab/Assets/sprites.png" id="5_22qj5"]
 [ext_resource type="AudioStream" uid="uid://dmaymbi4qoytr" path="res://Lab/Assets/Music/DokiJam - Desktop Menu.wav" id="5_fcxna"]
 [ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="6_8mavl"]
 [ext_resource type="Texture2D" uid="uid://5o31svvaggch" path="res://Game/doki_run.png" id="6_n8rdn"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="7_xard0"]
 [ext_resource type="Texture2D" uid="uid://b8coku2ag6s05" path="res://Lab/Assets/Dragoon_2.png" id="8_6xi5e"]
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="10_xard0"]
+[ext_resource type="Texture2D" uid="uid://djqpr5fwr021q" path="res://Lab/Assets/sprites2.png" id="14_n8rdn"]
 [ext_resource type="Shader" uid="uid://b36tals24q7t4" path="res://Lab/Assets/Shaders/swirl.gdshader" id="244_fk8kb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcdpg"]
@@ -522,11 +522,9 @@ script = ExtResource("10_xard0")
 [node name="Mint" type="Sprite2D" parent="MintContainer"]
 use_parent_material = true
 position = Vector2(21, -10)
-rotation = 1.5707964
-texture = ExtResource("5_22qj5")
-flip_h = true
+texture = ExtResource("14_n8rdn")
 region_enabled = true
-region_rect = Rect2(5, 6, 23, 42)
+region_rect = Rect2(2, 29, 42, 19)
 script = ExtResource("10_xard0")
 
 [node name="Shader" type="ColorRect" parent="."]

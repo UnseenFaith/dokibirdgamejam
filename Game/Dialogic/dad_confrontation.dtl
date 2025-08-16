@@ -1,20 +1,20 @@
 join Doki leftmost
 join Dad (hooded) rightmost
 Dad: Well, well, well... look what the dog dragged in.
-Doki: You again! Who are you? And where have you taken Mint?
-Doki: Wait.. why are you wearing a hood indoors?
+Doki (angry): You again! Who are you? And where have you taken Mint?
+Doki (confuse): Wait.. why are you wearing a hood indoors?
 Dad: Poor little Doki... you've come so far, and yet you still understand so little of this situation you're in.
 Dad: Very well, allow me to reintroduce myself, 'best friend.'
-Doki: WHO ARE YOU?!
+Doki (angry): WHO ARE YOU?!
 Dad: Dokibird...
 Dad: I am your dad.
-Doki: Wait.. Father?
+Doki (confuse): Wait.. Father?
 Dad: NO!
 set {DadName} = "D.A.D"
 update Dad (revealed)
 [signal arg="dog"]
 Dad: D.A.D!!!
-Doki: AMBER?!?!? OH MY DOG!? WTF!?
+Doki (extra_shocked): AMBER?!?!? OH MY DOG!? WTF!?
 Dad: I had it all Doki.
 Dad: The women all loved me. They would pet me. They would scratch me.
 Dad: They would take me on walks. I was so spoiled to death.
@@ -22,3 +22,23 @@ Dad: Until YOU took that all away from me. So now I am taking something precious
 Doki: But why Mint out of everyone you could have?!?!
 Dad: Because... she is a woman, and I love women..
 Dad: And she's in mint condition!
+Doki (angry): Bad dog! It is time to go home.
+Dad: You don't get it do you? There is no going home!
+Dad: You will be stuck here and Mint will be mine forever.
+leave Doki
+leave Dad
+[signal arg="rumble"]
+[wait time="5.5"]
+join Crow (Default) rightmost
+Crow (Default): Doki, Amber went flying through the roof.
+Crow (Default): We've got to follow and stop him. Quick, hop on!
+[signal arg="doki_jump"]
+[wait time="1.0"]
+Crow (dot): ...
+Crow (dot): Did you really just miss jumping onto my back...
+join Doki (cry) leftmost
+Doki (cry): I'm only good at first person shooters.. what do you want from me?
+Crow (closed_eyes): Sigh.. we're so doomed.
+[signal arg="real_jump"]
+[wait time="2.0"]
+[end_timeline]

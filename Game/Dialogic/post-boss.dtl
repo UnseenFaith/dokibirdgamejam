@@ -1,0 +1,33 @@
+join Doki (Default) leftmost
+join Dad (revealed) rightmost
+set {DadName} = "D.A.D"
+if {thirdGameWon} == true && {secondGameWon} == true && {firstGameWon} == true:
+	Dad: ...
+	Dad: You really did it, Maple.
+	Dad: I just had so many dreams...
+	Dad: So many women with D.A.D. issues waiting for a remedy.. It's so rover.
+	Dad: I can't believe I was defea...
+	leave Dad
+	join Mint rightmost
+	Mint: Doki!! Thank you... you really saved me!
+	Doki (Default): Save you? I wouldn't do that, I was just trying to steal your hear—
+	Mint: Oh, right right. But since the start, my heart has been yours. Thank you Doki!
+	[signal arg="kiss_tomato"]
+	join Doki (tomato) leftmost [animation="Instant In" length="0.0"]
+	Mint: Oh... Doki... you blushed so hard you turned completely red.
+	Doki (tomato): Mint... I'm actually a tomato.
+	Mint: You know what they say, Doki... you are what you eat.
+	[end_timeline]
+elif {thirdGameWon} == true && ({secondGame} != true or {firstGame} != true):
+	Dad: Ha... ha... ha... HA... HAH... HAHAHAHAHA!
+	Dad: You might have beat me but without all the pieces of the anti virus you are still trapped in here forever!
+elif {thirdGameWon} == false:
+	Dad: Ha... ha... ha... HA... HAH... HAHAHAHAHA! I have won! Mint is mine! all mine!!
+	Dad: Now you will remain trapped here... pawever.
+Dad: I must give you credit—Your plan might very well have worked.
+Dad: But Doki... the antivirus requires 3 pieces, not {pieces}.
+Doki (cry): Damn it all... Sorry, dragoons. Sorry, Crow... Mint... Did I do good? Did I make you proud?
+leave Dad
+join Mint rightmost
+Mint: Doki.... you were—
+[end_timeline]

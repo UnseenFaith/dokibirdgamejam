@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdj4v68mvmp1u"]
+[gd_scene load_steps=5 format=3 uid="uid://cdj4v68mvmp1u"]
 
 [ext_resource type="Script" uid="uid://b63l3dt33jnx2" path="res://UI/Views/BusVolumeUI.gd" id="1_06fqj"]
 [ext_resource type="LabelSettings" uid="uid://du8wd14pgp8fg" path="res://Assets/Themes/Label/PixelOperatorMono8.tres" id="2_fkql1"]
+[ext_resource type="Texture2D" uid="uid://86iarbrbxuxo" path="res://Lab/Assets/ui_button_back.png" id="3_12r8c"]
+[ext_resource type="Texture2D" uid="uid://c652qwml7iu0i" path="res://Lab/Assets/ui_button_top.png" id="4_km2se"]
 
 [node name="BusVolumeUI" type="GridContainer"]
+anchors_preset = -1
 offset_right = 76.0
 offset_bottom = 16.0
 columns = 4
@@ -27,6 +30,16 @@ focus_neighbor_right = NodePath("../IncreaseButton")
 focus_next = NodePath("../IncreaseButton")
 text = "«"
 
+[node name="Sprite2D2" type="Sprite2D" parent="DecreaseButton"]
+position = Vector2(9, 8)
+texture = ExtResource("3_12r8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="DecreaseButton"]
+position = Vector2(9, 8)
+texture = ExtResource("4_km2se")
+region_enabled = true
+region_rect = Rect2(10, 7, 20, 19)
+
 [node name="VolumeLabel" type="Label" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
@@ -43,6 +56,18 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../DecreaseButton")
 focus_previous = NodePath("../DecreaseButton")
 text = "»"
+
+[node name="Sprite2D2" type="Sprite2D" parent="IncreaseButton"]
+position = Vector2(9, 8)
+texture = ExtResource("3_12r8c")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="IncreaseButton"]
+position = Vector2(9, 8)
+texture = ExtResource("4_km2se")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(10, 7, 20, 19)
 
 [connection signal="pressed" from="DecreaseButton" to="." method="onDecreaseButton_pressed"]
 [connection signal="pressed" from="IncreaseButton" to="." method="onIncreaseButton_pressed"]

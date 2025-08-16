@@ -71,7 +71,6 @@ func start_obstacles() -> void:
 var play_start_time := 0.0
 
 func _process(delta: float) -> void:
-	$Tumbleweed.pitch_scale = randf_range(0.8, 1.2)
 	if audio.playing:
 		var current_time = Time.get_ticks_msec() / 1000.0 - play_start_time
 		var total_time = audio.stream.get_length()
@@ -121,10 +120,12 @@ func onTracker_finished() -> void:
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = false
 	$"Player-Platformer/AnimatedSprite2D".play("idle")
 	$YouWon.visible = true
+	$Enemy/AnimatedSprite2D.pause()
+
 	
 	await get_tree().create_timer(2.0).timeout
-	
 	Dialogic.VAR.firstGameWon = true
+	transition_out()
 	SceneManager.transitionToScene(virusCutscene)
 
 
@@ -136,4 +137,17 @@ func onEnemy_gameOver() -> void:
 	$YouLost.visible = true
 	await get_tree().create_timer(2.0).timeout
 	Dialogic.VAR.firstGameWon = false
+	await transition_out().finished
 	SceneManager.transitionToScene(virusCutscene)
+
+func transition_out() -> Tween:
+	var tv_tween2 := create_tween()
+	tv_tween2.tween_property($"Player-Platformer", "visible", false, 0.0)
+	tv_tween2.tween_property($Crow, "visible", false, 0.0)
+	tv_tween2.tween_property($YouLost, "visible", false, 0.0)
+	tv_tween2.tween_property($YouWon, "visible", false, 0.0)
+	tv_tween2.tween_property($Window, "visible", false, 0.0)
+	tv_tween2.tween_property($TextureRect, "visible", true, 0.0)
+	tv_tween2.chain().tween_property($TextureRect.material, "shader_parameter/progress", 1.0, 0.8)
+	return tv_tween2
+	

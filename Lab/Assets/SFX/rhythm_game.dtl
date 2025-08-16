@@ -1,10 +1,10 @@
-join Crow rightmost
-Doki: OH MY GOD WHAT HAPPENED TO MY NECK???
-Crow: I'm not sure... you look like a Pez dispenser now though
+join Crow (Default) rightmost
+Doki (Default): OH MY GOD WHAT HAPPENED TO MY NECK???
+Crow (Default): I'm not sure... you look like a Pez dispenser now though
 [signal arg="play_mint_voice"]
-Crow: Did you hear that Doki? It sounded like Mint's voice!
-Doki: Hold on.. I think the echo is still making it's way up my neck..
-Crow: That joke was so bad the crowd is throwing tomatoes at us now Doki..
-Crow: Get ready to catch the tomatoes with that long neck!
-Crow: I hope you're hungry.
+Crow (shocked): Did you hear that Doki? It sounded like Mint's voice!
+Doki (Default): Hold on.. I think the echo is still making it's way up my neck..
+Crow (dot): That joke was so bad the crowd is throwing tomatoes at us now Doki..
+Crow (Default): Get ready to catch the tomatoes with that long neck!
+Crow (Default): I hope you're hungry.
 [end_timeline]

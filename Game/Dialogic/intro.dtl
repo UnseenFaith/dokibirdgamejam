@@ -1,6 +1,7 @@
 [signal arg="show_link"]
 [wait time="1.0"]
-join Doki leftmost
-Doki: A message from Mint?!?!?
-Doki: I can't wait to open this link and see what my beloved has sent me!
+join Doki (shocked) leftmost
+Doki (shocked): A message from Mint?!?!?
+Doki (Default): Huh, I could have sworn that wasn't a link five seconds ago...
+Doki (confuse): I wonder if I should press it..
 [end_timeline]

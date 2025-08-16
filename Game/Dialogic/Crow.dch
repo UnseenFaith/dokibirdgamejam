@@ -38,6 +38,51 @@
 "scale": 1,
 "scene": "",
 "sound_mood": "Mood 1"
+},
+"closed_eyes": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/Crowki_closed_eyes.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
+},
+"dot": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/Crowki_dot.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
+},
+"extra_shocked": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/Crowki_extra_shocked.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
+},
+"shocked": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/Crowki_shocked.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
+},
+"tired": {
+"export_overrides": {
+"image": "\"res://Lab/Assets/Expressions/Crowki_tired.png\""
+},
+"mirror": false,
+"offset": Vector2(-225, 0),
+"scale": 1,
+"scene": ""
 }
 },
 &"scale": 1.0

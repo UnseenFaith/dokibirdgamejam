@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d35xwlbb0i5fa" path="res://Lab/Assets/ui_dialogue_box.png" id="3_yfgsv"]
 [ext_resource type="Script" uid="uid://dpv2dfiv5dhmr" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_ma5mw"]
 [ext_resource type="Script" uid="uid://dve1vwse2peji" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="5_40a50"]
-[ext_resource type="Texture2D" uid="uid://b0rpqfg4fhebk" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/next.svg" id="6_uch03"]
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="7_bi7sh"]
+[ext_resource type="Texture2D" uid="uid://dm3udc72xkygi" path="res://Lab/Assets/dialogue_space-export.png" id="7_ku4x7"]
 
 [sub_resource type="Animation" id="Animation_au0a2"]
 length = 0.001
@@ -279,22 +279,21 @@ unique_name_in_owner = true
 script = ExtResource("4_ma5mw")
 play_every_character = 0
 
-[node name="NextIndicator" type="Control" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
+[node name="NextIndicator" type="Control" parent="Anchor/AnimationParent/Sizer/DialogTextPanel/DialogicNode_DialogText/DialogicNode_TypeSounds"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-texture_filter = 2
-anchors_preset = 0
-offset_left = 306.0
-offset_top = 22.0
-offset_right = 306.0
-offset_bottom = 22.0
+texture_filter = 1
+layout_mode = 3
+offset_left = 468.0
+offset_top = 358.0
+offset_right = 468.0
+offset_bottom = 358.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("5_40a50")
 show_on_questions = true
-texture = ExtResource("6_uch03")
+texture = ExtResource("7_ku4x7")
+texture_size = Vector2(96, 96)
 metadata/_edit_layout_mode = 1
 
 [node name="NameLabelRoot" type="Control" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://celt7hx1gstld"]
+[gd_scene load_steps=10 format=3 uid="uid://celt7hx1gstld"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_jd6d7"]
 [ext_resource type="Texture2D" uid="uid://cs3ixlt7auu0l" path="res://Lab/Assets/Dokie_desk_2.png" id="2_mabn4"]
 [ext_resource type="Script" uid="uid://dlj44gyo6xh11" path="res://UI/UINavigationContainer.gd" id="2_y2sis"]
 [ext_resource type="PackedScene" uid="uid://c03r380bqi8cu" path="res://Lab/UI/start.tscn" id="4_jd6d7"]
+[ext_resource type="PackedScene" uid="uid://cysctd14jlutm" path="res://UI/Menus/OptionsUI.tscn" id="5_t25e2"]
 [ext_resource type="Texture2D" uid="uid://da3ql6mpvqrbo" path="res://Lab/Assets/Dokie_monitor_blank.png" id="6_sk5vc"]
 [ext_resource type="PackedScene" uid="uid://mwsrn6l4gw51" path="res://UI/Menus/MainMenuButtons.tscn" id="7_wy4rx"]
 [ext_resource type="AudioStream" uid="uid://ci32t0f588nwd" path="res://Lab/Assets/Music/DokiJam - Start Menu (Fin v1).wav" id="8_jd6d7"]
@@ -32,10 +33,32 @@ offset_bottom = 360.0
 texture = ExtResource("6_sk5vc")
 
 [node name="Start" parent="TextureRect" instance=ExtResource("4_jd6d7")]
-visible = false
 layout_mode = 1
+anchors_preset = -1
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+anchors_preset = -1
+offset_left = 300.0
+offset_top = 143.0
+offset_right = 336.0
+offset_bottom = 159.0
+text = "Back"
+
+[node name="OptionsUI" parent="." instance=ExtResource("5_t25e2")]
+visible = false
+anchors_preset = -1
+offset_left = 238.0
+offset_top = 82.0
+offset_right = 392.0
+offset_bottom = 134.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="UIMarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -111,8 +134,10 @@ stream = ExtResource("8_jd6d7")
 autoplay = true
 bus = &"Music"
 
+[connection signal="button_down" from="TextureRect/Start/start" to="." method="onStartButton_pressed"]
 [connection signal="button_down" from="TextureRect/Start/settings" to="." method="onSettings_buttonDown"]
 [connection signal="button_down" from="TextureRect/Start/credits" to="." method="onMainMenuButtons_credits"]
+[connection signal="button_down" from="BackButton" to="." method="onBackButton_buttonDown"]
 [connection signal="pressed" from="CanvasLayer/Level 1" to="." method="onLevel1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 2" to="." method="onLevel2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 3" to="." method="onLevel3_pressed"]

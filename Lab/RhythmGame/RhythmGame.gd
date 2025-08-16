@@ -30,6 +30,7 @@ var played = false
 
 func _ready():
 	Dialogic.connect("timeline_ended", timeline_ended)
+	Dialogic.connect("signal_event", signal_event)
 	notes = load_notes()
 	total_notes = notes.size()
 	
@@ -53,6 +54,9 @@ func _ready():
 	
 	#midi_player.link_audio_stream_player([asp])
 	#midi_queue.play()
+
+func signal_event(parameter: String) -> void:
+	$Mint.play()
 
 func map_note_to_y(note: int) -> float:
 	var normalized = float(note - min_note) / float(max_note - min_note)
@@ -134,9 +138,9 @@ func onPlayer_noteHit() -> void:
 
 func onAudioStreamPlayer_finished() -> void:
 	$Player/AnimatedSprite2D.animation = "close"
-	$Player.set_phyiscs_process(false)
+	$Player.set_physics_process(false)
 	
-	if float($UI/Accuracy.text) >= 90.00:
+	if float($UI/Accuracy.text) >= 75.00:
 		$YouWon.visible = true
 		Dialogic.VAR.secondGameWon = true
 	else:

@@ -1,25 +1,25 @@
-join Doki leftmost
-Doki: Well... that was anticlimactic. I don't recognize this place.
-Doki: Is this another file? What do you think Mr. Crow?
-join Crow rightmost [length="0.1" wait="true"]
-Crow: It looks like that portal must have transported us into a game file.
-Crow: Well Doki, I've got good news and bad news.
-Crow: The good news is, gamer - we've found ourselves inside a game.
-Crow: Bad news... it's not an FPS.
+join Doki (Default) leftmost
+Doki (Default): Well... that was anticlimactic. I don't recognize this place.
+Doki (confuse): Is this another file? What do you think Mr. Crow?
+join Crow (Default) rightmost [length="0.1" wait="true"]
+Crow (Default): It looks like that application must have transported us into a game file.
+Crow (closed_eyes): Well Doki, I've got good news and bad news.
+Crow (Default): The good news is, gamer - we've found ourselves inside a game.
+Crow (Default): Bad news... it's not an FPS.
 [signal arg="crow_flies_up"]
 [wait time="2.5"]
-Crow: More good news ahead! I think I can see Mint!
-Crow: Uhhh... Doki...
-Crow: MORE BAD NEWS — WE HAVE A BIG BAD DRAGOON INCOMING…
-Crow: Quick, jump over the dragoon!
+Crow (Default): More good news ahead! I think I can see Mint!
+Crow (shocked): Uhhh... Doki...
+Crow (extra_shocked): MORE BAD NEWS — WE HAVE A BIG BAD DRAGOON INCOMING…
+Crow (shocked): Quick, jump over the dragoon!
 [signal arg="cutscene_2"]
 [wait time="2.5"]
-Doki: Phew, that was a close one...
-Crow: I don't think he's done yet.. I'll fly on ahead to Mint!
-Doki: What about me? I'm not a real bird, I can't fly!
-Doki: And what about him over there?
+Doki (relieved): Phew, that was a close one...
+Crow (Default): I don't think he's done yet.. I'll fly on ahead to Mint!
+Doki (Default): What about me? I'm not a real bird, I can't fly!
+Doki (Default): And what about him over there?
 leave Doki
-Crow: I suggest you put them Chicken Little legs to use.
+Crow (Default): I suggest you put them Chicken Little legs to use.
 [signal arg="crow_flies_ahead"]
 [wait time="2.5"]
 [end_timeline]

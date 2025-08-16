@@ -22,9 +22,8 @@ run/main_scene="uid://celt7hx1gstld"
 config/project_settings_override="res://Game/override.cfg"
 config/features=PackedStringArray("4.5")
 run/max_fps=60
-boot_splash/bg_color=Color(0.086, 0.004, 0.2, 1)
-boot_splash/fullsize=false
-boot_splash/image="res://Assets/Logos/ComedotExtraLogo.png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="uid://tgxprqhjkuvi"
 
 [audio]
@@ -65,6 +64,8 @@ directories/dtl_directory={
 "intro": "res://Game/Dialogic/intro.dtl",
 "intro2": "res://Game/Dialogic/intro2.dtl",
 "level1_outro": "res://Game/Dialogic/level1_outro.dtl",
+"post-boss": "res://Game/Dialogic/post-boss.dtl",
+"pre-boss": "res://Game/Dialogic/pre-boss.dtl",
 "rhythm_game": "res://Lab/Assets/SFX/rhythm_game.dtl",
 "timeline": "res://Game/Dialogic/timeline.dtl",
 "virus_desktop_1": "res://Lab/Assets/SFX/virus_desktop_1.dtl",
@@ -113,7 +114,10 @@ layout/default_style="res://Game/Dialogic/DokiStyle.tres"
 variables={
 "DadName": "Hooded Figure",
 "firstGameWon": false,
-"secondGameWon": false
+"pieces": 0,
+"playCredits": false,
+"secondGameWon": false,
+"thirdGameWon": false
 }
 save/autosave=false
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://basipxgs7w7t3" path="res://Lab/BulletHell/UI/PlayerHealthBar.gd" id="1_s3xgw"]
 [ext_resource type="Texture2D" uid="uid://bdov8f57t4ov3" path="res://Lab/Assets/hearts_ui.png" id="2_egeh4"]
 
-[node name="PlayerHealthBar" type="Node"]
+[node name="PlayerHealthBar" type="Node2D"]
 script = ExtResource("1_s3xgw")
 
 [node name="BrokenHeart" type="Sprite2D" parent="."]
@@ -13,31 +13,31 @@ region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Heart" type="Sprite2D" parent="."]
-position = Vector2(27, 23)
+position = Vector2(27, 41)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart2" type="Sprite2D" parent="."]
-position = Vector2(59, 23)
+position = Vector2(59, 41)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart3" type="Sprite2D" parent="."]
-position = Vector2(91, 23)
+position = Vector2(91, 41)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart4" type="Sprite2D" parent="."]
-position = Vector2(123, 23)
+position = Vector2(123, 41)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Heart5" type="Sprite2D" parent="."]
-position = Vector2(155, 24)
+position = Vector2(155, 41)
 texture = ExtResource("2_egeh4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)

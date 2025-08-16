@@ -261,4 +261,4 @@ script = ExtResource("1_btock")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_2ry10")
 sprite_frames = SubResource("SpriteFrames_ey8sr")
-frame = 1
+frame = 2

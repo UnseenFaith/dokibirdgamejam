@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8tq4wvst0r4g"]
+
+[ext_resource type="PackedScene" uid="uid://cs4k1w0si6yik" path="res://Lab/Scenes/Credits.tscn" id="1_jqgc4"]
+[ext_resource type="Texture2D" uid="uid://cs3ixlt7auu0l" path="res://Lab/Assets/Dokie_desk_2.png" id="2_tcn82"]
+
+[node name="ExtraCredits" type="Node2D"]
+
+[node name="Credits" parent="." instance=ExtResource("1_jqgc4")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 179)
+texture = ExtResource("2_tcn82")

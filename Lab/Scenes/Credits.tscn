@@ -60,6 +60,18 @@ color = Color(0, 0, 0, 1)
 
 [node name="Container" type="Node2D" parent="."]
 
+[node name="Name" type="Label" parent="Container"]
+anchors_preset = -1
+offset_left = 21.0
+offset_top = 130.0
+offset_right = 321.0
+offset_bottom = 195.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_o1nrj")
+theme_override_font_sizes/font_size = 80
+text = "amiomoe"
+uppercase = true
+
 [node name="Label" type="Label" parent="Container"]
 anchors_preset = -1
 offset_left = 169.0
@@ -96,25 +108,9 @@ theme_override_fonts/font = ExtResource("2_o1nrj")
 theme_override_font_sizes/font_size = 48
 text = "Programmer"
 
-[node name="Name" type="Label" parent="Container/Design"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 90.0
-offset_right = 298.0
-offset_bottom = 155.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_o1nrj")
-theme_override_font_sizes/font_size = 80
-text = "amiomoe"
-uppercase = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Container/Design"]
-visible = false
-position = Vector2(456, 268)
-scale = Vector2(1, 0.2278481)
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Design"]
+position = Vector2(297, 1716)
 texture = ExtResource("3_gmpgw")
-region_enabled = true
-region_rect = Rect2(128, 34, 90, 158)
 
 [node name="Programmer" type="Label" parent="Container"]
 anchors_preset = -1
@@ -200,5 +196,13 @@ theme_override_fonts/font = ExtResource("2_o1nrj")
 theme_override_font_sizes/font_size = 68
 text = "THANKS FOR PLAYING!"
 autowrap_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Container"]
+visible = false
+position = Vector2(479, 308)
+scale = Vector2(1, 0.2278481)
+texture = ExtResource("3_gmpgw")
+region_enabled = true
+region_rect = Rect2(128, 34, 90, 158)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="onAnimationPlayer_animationFinished"]
