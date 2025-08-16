@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ciot5i76nld4m"]
+[gd_scene load_steps=39 format=3 uid="uid://ciot5i76nld4m"]
 
 [ext_resource type="Script" uid="uid://cq77ijorbele0" path="res://Lab/BulletHell/BossEntity.gd" id="1_bhu65"]
 [ext_resource type="Texture2D" uid="uid://b822f0iko503y" path="res://Lab/Assets/Boss/boss_inside.png" id="2_0bd57"]
@@ -18,6 +18,123 @@
 [ext_resource type="PackedScene" uid="uid://dusjndm5o8ehr" path="res://Components/Combat/GunComponent.tscn" id="10_vejfc"]
 [ext_resource type="PackedScene" uid="uid://cdq0dcwhcrm5p" path="res://Components/Control/InputComponent.tscn" id="12_5vyxp"]
 [ext_resource type="PackedScene" uid="uid://dn7cpj4u7w1jy" path="res://Components/Physics/CharacterBodyComponent.tscn" id="17_v0t4e"]
+
+[sub_resource type="Animation" id="Animation_v0t4e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/FrontPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:current_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bhu65"]
+resource_name = "laser_pair_1"
+length = 2.5
+step = 0.0333333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.0001, 1.5, 1.5001, 2, 2.0001, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [Vector2(0, -100)],
+"method": &"moveTo"
+}, {
+"args": [],
+"method": &"spawn_laser_attack"
+}, {
+"args": [Vector2(0, 100)],
+"method": &"moveTo"
+}, {
+"args": [],
+"method": &"spawn_laser_attack"
+}, {
+"args": [Vector2(0, 100)],
+"method": &"moveTo"
+}, {
+"args": [],
+"method": &"spawn_laser_attack"
+}, {
+"args": [Vector2(0, -100)],
+"method": &"moveTo"
+}, {
+"args": [],
+"method": &"spawn_laser_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ccbw4"]
+resource_name = "missile_attack"
+length = 2.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/FrontPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 14), Vector2(11, 41), Vector2(11, 41), Vector2(11, 14)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"homing_missile_attack"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:current_state")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0t4e"]
+_data = {
+&"RESET": SubResource("Animation_v0t4e"),
+&"laser_pair_1": SubResource("Animation_bhu65"),
+&"missile_attack": SubResource("Animation_ccbw4")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqmj"]
 atlas = ExtResource("9_xlis3")
@@ -112,11 +229,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuf5"]
-size = Vector2(194, 302)
+size = Vector2(148, 741)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alspo"]
 resource_local_to_scene = true
-size = Vector2(96, 220)
+size = Vector2(96, 149)
 
 [sub_resource type="Resource" id="Resource_4qcyh"]
 resource_local_to_scene = true
@@ -131,6 +248,11 @@ displayName = "Health"
 collision_layer = 8
 collision_mask = 126
 script = ExtResource("1_bhu65")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v0t4e")
+}
 
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2(0, -2)
@@ -148,32 +270,42 @@ texture = ExtResource("2_0bd57")
 [node name="Base" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_v6qt5")
 
-[node name="Panels" type="Sprite2D" parent="Sprites"]
-visible = false
+[node name="FrontPanel" type="Sprite2D" parent="Sprites"]
+position = Vector2(11, 14)
 texture = ExtResource("5_7lwut")
+region_enabled = true
+region_rect = Rect2(192, 152, 64, 56)
+
+[node name="SidePanel" type="Sprite2D" parent="Sprites"]
+position = Vector2(79, 12)
+texture = ExtResource("5_7lwut")
+region_enabled = true
+region_rect = Rect2(272, 144, 40, 64)
 
 [node name="Beak" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_mjr86")
 
 [node name="Hat" type="Sprite2D" parent="Sprites"]
-visible = false
 texture = ExtResource("6_lxm5q")
 
 [node name="FrontGun" type="Sprite2D" parent="Sprites"]
+visible = false
 position = Vector2(102, 38)
 texture = ExtResource("7_u1ua6")
 
 [node name="BackGun" type="Sprite2D" parent="Sprites"]
+visible = false
 z_index = -1
 texture_filter = 1
 position = Vector2(-2, 2)
 texture = ExtResource("7_u1ua6")
 
 [node name="Dad" type="Sprite2D" parent="Sprites"]
+visible = false
 texture = ExtResource("8_ka5rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19, -4)
+position = Vector2(42, -22.5)
 shape = SubResource("RectangleShape2D_8iuf5")
 
 [node name="FactionComponent" parent="." instance=ExtResource("3_4faen")]
@@ -185,13 +317,15 @@ bulletEntity = ExtResource("5_g6b7d")
 cooldown = 0.01
 
 [node name="DamageReceivingComponent" parent="." instance=ExtResource("6_c8x7c")]
+visible = false
 position = Vector2(96, 0)
 
 [node name="ReceivingCollisionShape" parent="DamageReceivingComponent" index="0"]
-position = Vector2(-48, 0)
+position = Vector2(-48, -25.5)
 shape = SubResource("RectangleShape2D_alspo")
 
 [node name="DamageComponent" parent="." instance=ExtResource("7_g6b7d")]
+visible = false
 friendlyFire = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_sns8m")]
@@ -200,6 +334,9 @@ health = SubResource("Resource_4qcyh")
 [node name="CharacterBodyComponent" parent="." instance=ExtResource("17_v0t4e")]
 
 [node name="InputComponent" parent="." instance=ExtResource("12_5vyxp")]
+
+[node name="MissileMarker" type="Marker2D" parent="."]
+position = Vector2(10, 21)
 
 [node name="State" type="Label" parent="."]
 anchors_preset = -1

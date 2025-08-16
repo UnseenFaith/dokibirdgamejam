@@ -1,9 +1,8 @@
 extends Button
 
-
 func onMouseEntered() -> void:
-	$"../TextureRect3".z_index = 5
+	$"../TextureRect5".z_index = 5
 	$"../AudioStreamPlayer".play()
 
 func onMouseExited() -> void:
-	$"../TextureRect3".z_index = 0
+	$"../TextureRect5".z_index = 0

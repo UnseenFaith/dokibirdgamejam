@@ -1,6 +1,6 @@
 extends Node2D
 
-var rhythm := preload("res://Lab/RhythmGame/RhythmGame.tscn")
+var throne := preload("res://Lab/Scenes/ThroneRoom.tscn")
 
 func _ready() -> void:
 	var tv_tween := create_tween()
@@ -34,7 +34,7 @@ func dialogic_signal(param: String) -> void:
 
 func timeline_ended() -> void:
 	$AnimationPlayer.play("chase_hooded_figure")
-	pass
+	await $AnimationPlayer.animation_finished
 	
-	#SceneManager.transitionToScene(rhythm)
+	SceneManager.transitionToScene(throne)
 	

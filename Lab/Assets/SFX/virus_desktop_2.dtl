@@ -1,6 +1,5 @@
 join Crow rightmost
 join Doki leftmost
-Crow: <Empty Text Event>
 if {secondGameWon} == true:
 	Crow: Good job Doki! Looks like we got another piece of the antivirus.
 	Crow: We'll be out of here at no at this rate!

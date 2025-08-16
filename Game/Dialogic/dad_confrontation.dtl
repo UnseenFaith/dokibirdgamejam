@@ -1,0 +1,22 @@
+join Doki leftmost
+join Dad (hooded) rightmost
+Dad: Well, well, well... look what the dog dragged in.
+Doki: You again! Who are you? And where have you taken Mint?
+Doki: Wait.. why are you wearing a hood indoors?
+Dad: Poor little Doki... you've come so far, and yet you still understand so little of this situation you're in.
+Dad: Very well, allow me to reintroduce myself, 'best friend.'
+Doki: WHO ARE YOU?!
+Dad: Dokibird...
+Dad: I am your dad.
+Doki: Wait.. Father?
+Dad: NO!
+set {DadName} = "D.A.D"
+update Dad (revealed)
+Dad: D.A.D!!!
+Doki: AMBER?!?!? OH MY DOG!? WTF!?
+Dad: I had it all Doki.
+Dad: The women all loved me. They would pet me. They would scratch me.
+Dad: They would take me on walks. I was so spoiled to death.
+Dad: Until YOU took that all away from me. So now I am taking something precious of yours.
+Doki: But why Mint out of everyone you could have?!?!
+Dad: Because... she's mint condition.

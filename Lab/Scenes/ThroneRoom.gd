@@ -12,5 +12,7 @@ func _ready() -> void:
 	await crow_tween.finished
 	
 	$AnimationPlayer.play("intro")
+	await $AnimationPlayer.animation_finished
 	
-	
+	Dialogic.start("dad_confrontation")
+	await Dialogic.timeline_ended

@@ -120,6 +120,8 @@ func onTracker_finished() -> void:
 	gameEnded = true
 	$"Player-Platformer/InputComponent".isEnabled = false
 	$ObstacleTimer.stop()
+	
+	get_tree().call_group("obstacles", "queue_free")
 	var tween = create_tween()
 	$Crow.position = Vector2(459, 120)
 	tween.tween_property($Enemy, "position", Vector2(-50, 220), 2.0)

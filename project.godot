@@ -55,11 +55,13 @@ gdscript/warnings/untyped_declaration=1
 
 directories/dch_directory={
 "Crow": "res://Game/Dialogic/Crow.dch",
+"Dad": "res://Game/Dialogic/Dad.dch",
 "Doki": "res://Game/Dialogic/Doki.dch",
 "Mint": "res://Game/Dialogic/Mint.dch",
 "Narrator": "res://Game/Dialogic/Narrator.dch"
 }
 directories/dtl_directory={
+"dad_confrontation": "res://Game/Dialogic/dad_confrontation.dtl",
 "intro": "res://Game/Dialogic/intro.dtl",
 "intro2": "res://Game/Dialogic/intro2.dtl",
 "level1_outro": "res://Game/Dialogic/level1_outro.dtl",
@@ -109,6 +111,7 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://Game/Dialogic/DokiStyle.tres"]
 layout/default_style="res://Game/Dialogic/DokiStyle.tres"
 variables={
+"DadName": "Hooded Figure",
 "firstGameWon": false,
 "secondGameWon": false
 }

@@ -96,6 +96,7 @@ size = Vector2(15, 15)
 
 [sub_resource type="Resource" id="Resource_peug6"]
 script = ExtResource("10_wh2cs")
+speed = 150.0
 shouldApplyAcceleration = false
 metadata/_custom_type_script = "uid://g6spk2uwn3kv"
 

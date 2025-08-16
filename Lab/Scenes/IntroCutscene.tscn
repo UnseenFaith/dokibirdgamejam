@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bq0isbqrxtkc7" path="res://Lab/Scenes/IntroCutscene.gd" id="1_nfyn4"]
 [ext_resource type="Texture2D" uid="uid://bf0atxj8bav85" path="res://Lab/Assets/Dokie_desk_3.png" id="2_2juf3"]
-[ext_resource type="Texture2D" uid="uid://da3ql6mpvqrbo" path="res://Lab/Assets/Dokie_monitor_blank.png" id="2_ab6fe"]
 [ext_resource type="Script" uid="uid://bua5etfqyhbja" path="res://Lab/Scenes/Intro/Link.gd" id="3_pcdpg"]
+[ext_resource type="Texture2D" uid="uid://dgffovaktt8qq" path="res://Lab/Assets/Dokie_desk_discord.png" id="3_wasx7"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="4_vqjbu"]
 [ext_resource type="Texture2D" uid="uid://b1qcdqyf2nxtk" path="res://Lab/Assets/sprites.png" id="5_22qj5"]
 [ext_resource type="AudioStream" uid="uid://dmaymbi4qoytr" path="res://Lab/Assets/Music/DokiJam - Desktop Menu.wav" id="5_fcxna"]
@@ -1264,7 +1264,7 @@ texture = ExtResource("2_2juf3")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
-texture = ExtResource("2_ab6fe")
+texture = ExtResource("3_wasx7")
 
 [node name="X" type="Button" parent="."]
 anchors_preset = -1
@@ -1276,10 +1276,10 @@ text = "X"
 
 [node name="Link" type="Label" parent="."]
 anchors_preset = -1
-offset_left = 264.0
-offset_top = 107.0
-offset_right = 367.0
-offset_bottom = 130.0
+offset_left = 250.0
+offset_top = 161.0
+offset_right = 353.0
+offset_bottom = 184.0
 mouse_filter = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_pcdpg")
 text = "Test Message"

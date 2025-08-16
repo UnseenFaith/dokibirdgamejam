@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c03r380bqi8cu"]
+[gd_scene load_steps=8 format=3 uid="uid://c03r380bqi8cu"]
 
 [ext_resource type="Texture2D" uid="uid://b6mq3jn4k8cju" path="res://Assets/Images/Dokie_monitor_white_text.png" id="1_knjtl"]
 [ext_resource type="Texture2D" uid="uid://dx7ni2at6x2jj" path="res://Assets/Images/Dokie_monitor_text.png" id="2_njdkn"]
 [ext_resource type="Texture2D" uid="uid://85i43qrkl3lm" path="res://Assets/Images/Dokie_monitor_icot.png" id="3_ij6bk"]
 [ext_resource type="Script" uid="uid://esiemvrbf8gy" path="res://Lab/UI/Start.gd" id="4_njdkn"]
 [ext_resource type="AudioStream" uid="uid://hjjvmyws6pdy" path="res://Lab/Assets/SFX/Mouse Click.wav" id="5_ij6bk"]
+[ext_resource type="Script" uid="uid://bvu1dbbex3y0v" path="res://Lab/UI/Settings.gd" id="6_0ak5g"]
+[ext_resource type="Script" uid="uid://dxrgwvmcd6k6a" path="res://Lab/UI/Credits.gd" id="7_acbi8"]
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -14,13 +16,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ij6bk")
+bus = &"SFX"
+
 [node name="TextureRect3" type="Sprite2D" parent="."]
-z_index = 1
 z_as_relative = false
-position = Vector2(315, 6.5)
+position = Vector2(315, 60.5)
 texture = ExtResource("1_knjtl")
 region_enabled = true
 region_rect = Rect2(294, 37, 42, 47)
+
+[node name="TextureRect4" type="Sprite2D" parent="."]
+z_as_relative = false
+position = Vector2(315.5, 117)
+texture = ExtResource("1_knjtl")
+region_enabled = true
+region_rect = Rect2(278.9393, 93.99037, 73.202545, 46.142303)
+
+[node name="TextureRect5" type="Sprite2D" parent="."]
+z_as_relative = false
+position = Vector2(315.5, 172)
+texture = ExtResource("1_knjtl")
+region_enabled = true
+region_rect = Rect2(284.9112, 152, 61.129517, 40.0764)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
@@ -43,16 +62,14 @@ offset_right = 336.0
 offset_bottom = 84.0
 script = ExtResource("4_njdkn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="start"]
-stream = ExtResource("5_ij6bk")
-bus = &"SFX"
-
 [node name="settings" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 279.0
 offset_top = 94.0
 offset_right = 352.0
 offset_bottom = 140.0
+script = ExtResource("6_0ak5g")
 
 [node name="credits" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -61,6 +78,11 @@ offset_left = 285.0
 offset_top = 152.0
 offset_right = 346.0
 offset_bottom = 192.0
+script = ExtResource("7_acbi8")
 
 [connection signal="mouse_entered" from="start" to="start" method="onMouseEntered"]
 [connection signal="mouse_exited" from="start" to="start" method="onMouseExited"]
+[connection signal="mouse_entered" from="settings" to="settings" method="onMouseEntered"]
+[connection signal="mouse_exited" from="settings" to="settings" method="onMouseExited"]
+[connection signal="mouse_entered" from="credits" to="credits" method="onMouseEntered"]
+[connection signal="mouse_exited" from="credits" to="credits" method="onMouseExited"]

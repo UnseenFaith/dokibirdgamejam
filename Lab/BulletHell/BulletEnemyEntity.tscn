@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bb84q0leewc3"]
 
 [ext_resource type="Script" uid="uid://b3tgnb1y0hgk1" path="res://Entities/Entity.gd" id="1_b234b"]
-[ext_resource type="Texture2D" uid="uid://cxq0ri0ydsc3l" path="res://Assets/Images/Solid4.png" id="2_eic2b"]
+[ext_resource type="Texture2D" uid="uid://c7lmjbua4641b" path="res://Lab/Assets/Boss/boss_attacks.png" id="2_i1ynw"]
 [ext_resource type="PackedScene" uid="uid://5tvqunkoa4l7" path="res://Components/Combat/FactionComponent.tscn" id="3_jgp8o"]
 [ext_resource type="PackedScene" uid="uid://cpklu2uieedw7" path="res://Components/Combat/DamageComponent.tscn" id="4_rr7gf"]
 [ext_resource type="PackedScene" uid="uid://frr2yhuof6v5" path="res://Components/Movement/LinearMotionComponent.tscn" id="5_5rs5r"]
@@ -14,7 +14,7 @@ size = Vector2(4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u74jj"]
 resource_local_to_scene = true
-size = Vector2(4, 4)
+size = Vector2(5, 5)
 
 [node name="Bullet" type="Area2D" groups=["entities"]]
 collision_layer = 1032
@@ -24,8 +24,9 @@ isLoggingEnabled = false
 metadata/_edit_group_ = true
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-texture = ExtResource("2_eic2b")
+texture = ExtResource("2_i1ynw")
+region_enabled = true
+region_rect = Rect2(128, 40, 8, 8)
 
 [node name="NonDamageCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lt4cn")
@@ -40,6 +41,7 @@ collision_mask = 6
 removeEntityOnApplyingDamage = true
 
 [node name="DamageCollisionShape" parent="DamageComponent" index="0"]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_u74jj")
 
 [node name="LinearMotionComponent" parent="." instance=ExtResource("5_5rs5r")]

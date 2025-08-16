@@ -32,10 +32,10 @@ offset_bottom = 360.0
 texture = ExtResource("6_sk5vc")
 
 [node name="Start" parent="TextureRect" instance=ExtResource("4_jd6d7")]
+visible = false
 layout_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UIMarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -111,7 +111,6 @@ stream = ExtResource("8_jd6d7")
 autoplay = true
 bus = &"Music"
 
-[connection signal="button_down" from="TextureRect/Start/TextureRect3/start" to="." method="onStart_buttonDown"]
 [connection signal="button_down" from="TextureRect/Start/settings" to="." method="onSettings_buttonDown"]
 [connection signal="button_down" from="TextureRect/Start/credits" to="." method="onMainMenuButtons_credits"]
 [connection signal="pressed" from="CanvasLayer/Level 1" to="." method="onLevel1_pressed"]

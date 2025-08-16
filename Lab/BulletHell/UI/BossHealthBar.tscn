@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjcrjhth3ieg7"]
+[gd_scene load_steps=8 format=3 uid="uid://bjcrjhth3ieg7"]
 
 [ext_resource type="Script" uid="uid://b3eg4dimcufl6" path="res://Lab/BulletHell/UI/BossHealthBar.gd" id="1_6tjnx"]
+[ext_resource type="Texture2D" uid="uid://ca60capk8vnht" path="res://Lab/Assets/Boss/Mech_Health_bar_top.png" id="2_b0poc"]
+[ext_resource type="Texture2D" uid="uid://c7l8h67hg1dq" path="res://Lab/Assets/Boss/Mech_Name_.png" id="3_bjsmb"]
+[ext_resource type="Texture2D" uid="uid://xjswnlwpb34c" path="res://Lab/Assets/Boss/Mech_Health_bar_middle.png" id="4_0gctu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vcqv"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.28627452, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tjnx"]
 bg_color = Color(0.69822943, 0.11028901, 0.24394761, 1)
@@ -23,16 +26,8 @@ grow_vertical = 0
 size_flags_vertical = 8
 script = ExtResource("1_6tjnx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Background" type="TextureProgressBar" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -44,6 +39,25 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_vh5ea")
-max_value = 1000.0
-step = 1.0
-show_percentage = false
+texture_under = ExtResource("2_b0poc")
+texture_over = ExtResource("3_bjsmb")
+texture_progress = ExtResource("4_0gctu")
+
+[node name="Foreground" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 1.0
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -260.0
+offset_right = 53.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_vh5ea")
+texture_under = ExtResource("2_b0poc")
+texture_over = ExtResource("3_bjsmb")
+texture_progress = ExtResource("4_0gctu")
