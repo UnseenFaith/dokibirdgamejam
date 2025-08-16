@@ -1,0 +1,15 @@
+TextureProgressBar
+Marker2D
+Sprite2D
+AnimationPlayer
+AnimatedSprite2D
+Camera2D
+CameraComponent
+Node2D
+ColorRect
+Label
+Control
+Node
+CameraFollowingLabel
+AudioStreamPlayer
+AudioListener3D
