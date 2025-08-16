@@ -206,3 +206,11 @@ func onMainMenuButtons_credits() -> void:
 
 func onAudioStreamPlayer_finished() -> void:
 	$AudioStreamPlayer.play()
+
+
+func onStart_buttonDown() -> void:
+	GameState.startMainScene() 
+
+
+func onSettings_buttonDown() -> void:
+	pass # Replace with function body.

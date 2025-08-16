@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://celt7hx1gstld"]
+[gd_scene load_steps=9 format=3 uid="uid://celt7hx1gstld"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_jd6d7"]
 [ext_resource type="Texture2D" uid="uid://cs3ixlt7auu0l" path="res://Lab/Assets/Dokie_desk_2.png" id="2_mabn4"]
 [ext_resource type="Script" uid="uid://dlj44gyo6xh11" path="res://UI/UINavigationContainer.gd" id="2_y2sis"]
+[ext_resource type="PackedScene" uid="uid://c03r380bqi8cu" path="res://Lab/UI/start.tscn" id="4_jd6d7"]
 [ext_resource type="Texture2D" uid="uid://da3ql6mpvqrbo" path="res://Lab/Assets/Dokie_monitor_blank.png" id="6_sk5vc"]
 [ext_resource type="PackedScene" uid="uid://mwsrn6l4gw51" path="res://UI/Menus/MainMenuButtons.tscn" id="7_wy4rx"]
 [ext_resource type="AudioStream" uid="uid://ci32t0f588nwd" path="res://Lab/Assets/Music/DokiJam - Start Menu (Fin v1).wav" id="8_jd6d7"]
@@ -30,7 +31,11 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("6_sk5vc")
 
+[node name="Start" parent="TextureRect" instance=ExtResource("4_jd6d7")]
+layout_mode = 1
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="UIMarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -106,8 +111,13 @@ stream = ExtResource("8_jd6d7")
 autoplay = true
 bus = &"Music"
 
+[connection signal="button_down" from="TextureRect/Start/TextureRect3/start" to="." method="onStart_buttonDown"]
+[connection signal="button_down" from="TextureRect/Start/settings" to="." method="onSettings_buttonDown"]
+[connection signal="button_down" from="TextureRect/Start/credits" to="." method="onMainMenuButtons_credits"]
 [connection signal="pressed" from="CanvasLayer/Level 1" to="." method="onLevel1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 2" to="." method="onLevel2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Level 3" to="." method="onLevel3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Credits" to="." method="onMainMenuButtons_credits"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="onAudioStreamPlayer_finished"]
+
+[editable path="TextureRect/Start"]
