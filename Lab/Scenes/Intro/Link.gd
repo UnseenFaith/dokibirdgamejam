@@ -1,10 +1,10 @@
 extends Label
 
-@export var message := "Hello, test message!"
+@export var message := "Doki.. help.. me.."
 @export var typing_speed := 0.05
-@export var gibberish_time := 1.5
-@export var gibberish_length := 12
-@export var morph_speed := 0.03
+@export var gibberish_time := 0.5
+@export var gibberish_length := 9
+@export var morph_speed := 0.01
 
 signal morph_done()
 
@@ -18,7 +18,7 @@ var _current_chars := []
 
 func _ready() -> void:
 	text = ""
-	add_theme_color_override("font_color", Color(0, 0, 0))
+	add_theme_color_override("font_color", Color(255, 255, 255, 255))
 
 func _process(delta: float) -> void:
 	_timer += delta
@@ -62,11 +62,11 @@ func morph_step() -> void:
 
 	# When fully morphed, style it like a link
 	if "".join(_current_chars) == _target_text:
-		add_theme_color_override("font_color", Color(0, 0, 1))
+		add_theme_color_override("font_color", Color(255, 255, 255, 255))
 		var style := StyleBoxFlat.new()
-		style.border_color = Color(0, 0, 1)
+		#style.border_color = Color(0, 0, 1)
 		style.bg_color = Color(0, 0, 0, 0)
-		style.border_width_bottom = 1
+		#style.border_width_bottom = 1
 		set("theme_override_styles/normal", style)
 		morph_done.emit()
 		set_process(false)

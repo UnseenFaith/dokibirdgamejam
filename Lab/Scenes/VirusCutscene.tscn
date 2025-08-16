@@ -1,56 +1,15 @@
-[gd_scene load_steps=45 format=3 uid="uid://c4nep15dbvksn"]
+[gd_scene load_steps=50 format=3 uid="uid://c4nep15dbvksn"]
 
 [ext_resource type="Script" uid="uid://bg4an1lhphcmj" path="res://Lab/Scenes/VirusCutscene.gd" id="1_fpq3s"]
 [ext_resource type="Texture2D" uid="uid://clejrk0xj88iw" path="res://Lab/Assets/virus_background.png" id="2_p7816"]
 [ext_resource type="Texture2D" uid="uid://bhhqtn8uorens" path="res://Lab/Assets/Doki_holding_anti_virus.png" id="3_c0tpy"]
 [ext_resource type="Texture2D" uid="uid://dbc6j32v7gorp" path="res://Game/dokibird.png" id="3_infm0"]
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="4_1mywm"]
+[ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="4_5ca6j"]
 [ext_resource type="Texture2D" uid="uid://5o31svvaggch" path="res://Game/doki_run.png" id="5_4qhvd"]
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="5_u6erb"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="6_cqtfp"]
-
-[sub_resource type="Animation" id="Animation_cqtfp"]
-resource_name = "intro"
-length = 2.0
-step = 0.0333333
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VirusPiece")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [Vector2(344, -69), 0.5, 100.0],
-"method": &"throw_to"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Doki:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Doki:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"holding", &"idle"]
-}
+[ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="7_yw8a5"]
 
 [sub_resource type="Animation" id="Animation_u6erb"]
 length = 0.001
@@ -101,6 +60,49 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(386, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_cqtfp"]
+resource_name = "intro"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VirusPiece")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(344, -69), 0.5, 100.0],
+"method": &"throw_to"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Doki:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Doki:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"holding", &"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_4qhvd"]
@@ -197,6 +199,17 @@ _data = {
 &"intro": SubResource("Animation_cqtfp"),
 &"outro": SubResource("Animation_4qhvd")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f7c3"]
+shader = ExtResource("7_yw8a5")
+shader_parameter/progress = 1.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/glow_strength = 1.0
+shader_parameter/static_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yw8a5"]
+shader = ExtResource("4_5ca6j")
+shader_parameter/progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5afdg"]
 atlas = ExtResource("3_c0tpy")
@@ -384,6 +397,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ca6j"]
+shader = ExtResource("4_5ca6j")
+shader_parameter/progress = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kin84"]
 atlas = ExtResource("4_1mywm")
 region = Rect2(0, 0, 48, 32)
@@ -448,16 +465,19 @@ offset = Vector2(195, -40)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5f7c3")
 position = Vector2(196, -41)
 texture = ExtResource("2_p7816")
 
 [node name="Doki" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_yw8a5")
 position = Vector2(356, 34)
 sprite_frames = SubResource("SpriteFrames_kin84")
 animation = &"holding"
 script = ExtResource("5_u6erb")
 
 [node name="Crow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5ca6j")
 position = Vector2(386, 7)
 sprite_frames = SubResource("SpriteFrames_auk2n")
 autoplay = "default"

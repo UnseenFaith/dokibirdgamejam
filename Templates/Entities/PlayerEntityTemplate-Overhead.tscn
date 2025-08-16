@@ -130,7 +130,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sg2kd"]
 resource_local_to_scene = true
-size = Vector2(15, 15)
+size = Vector2(10, 13)
 
 [node name="Player-Overhead" type="CharacterBody2D" node_paths=PackedStringArray("body") groups=["entities", "players"]]
 editor_description = "A template for the player character in an \"overhead\" or \"top-down\" view game."
@@ -156,6 +156,7 @@ autoplay = "default"
 frame_progress = 0.08544663
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_sg2kd")
 
 [node name="CameraComponent" parent="." instance=ExtResource("3_2ybp4")]

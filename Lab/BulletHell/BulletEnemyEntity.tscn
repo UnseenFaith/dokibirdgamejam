@@ -24,6 +24,7 @@ isLoggingEnabled = false
 metadata/_edit_group_ = true
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
+rotation = 3.1415927
 texture = ExtResource("2_i1ynw")
 region_enabled = true
 region_rect = Rect2(128, 40, 8, 8)

@@ -1,63 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjcrjhth3ieg7"]
+[gd_scene load_steps=6 format=3 uid="uid://bjcrjhth3ieg7"]
 
 [ext_resource type="Script" uid="uid://b3eg4dimcufl6" path="res://Lab/BulletHell/UI/BossHealthBar.gd" id="1_6tjnx"]
 [ext_resource type="Texture2D" uid="uid://ca60capk8vnht" path="res://Lab/Assets/Boss/Mech_Health_bar_top.png" id="2_b0poc"]
+[ext_resource type="Texture2D" uid="uid://c88fpwv2y1nmf" path="res://Lab/Assets/Boss/Mech_Health_bar_back.png" id="2_bjsmb"]
 [ext_resource type="Texture2D" uid="uid://c7l8h67hg1dq" path="res://Lab/Assets/Boss/Mech_Name_.png" id="3_bjsmb"]
-[ext_resource type="Texture2D" uid="uid://xjswnlwpb34c" path="res://Lab/Assets/Boss/Mech_Health_bar_middle.png" id="4_0gctu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vcqv"]
-bg_color = Color(0.28627452, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tjnx"]
-bg_color = Color(0.69822943, 0.11028901, 0.24394761, 1)
-
-[sub_resource type="Theme" id="Theme_vh5ea"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_6vcqv")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_6tjnx")
+[ext_resource type="Texture2D" uid="uid://b6d4uet6leeur" path="res://Lab/Assets/Boss/boss_health_middle.png" id="6_0gctu"]
 
 [node name="BossHealthBar" type="Control"]
 layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_vertical = 8
+mouse_filter = 2
 script = ExtResource("1_6tjnx")
 
-[node name="Background" type="TextureProgressBar" parent="."]
-visible = false
+[node name="BossName" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.75
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -30.0
-offset_bottom = -20.0
+offset_left = -213.0
+offset_top = -240.0
+offset_right = 213.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_vh5ea")
-texture_under = ExtResource("2_b0poc")
-texture_over = ExtResource("3_bjsmb")
-texture_progress = ExtResource("4_0gctu")
+mouse_filter = 2
+texture = ExtResource("3_bjsmb")
 
 [node name="Foreground" type="TextureProgressBar" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.75
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -53.0
-offset_top = -260.0
-offset_right = 53.0
-offset_bottom = -20.0
+offset_left = -213.0
+offset_top = -240.0
+offset_right = 213.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_vh5ea")
-texture_under = ExtResource("2_b0poc")
-texture_over = ExtResource("3_bjsmb")
-texture_progress = ExtResource("4_0gctu")
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("2_bjsmb")
+texture_over = ExtResource("2_b0poc")
+texture_progress = ExtResource("6_0gctu")
+texture_progress_offset = Vector2(53, 226)

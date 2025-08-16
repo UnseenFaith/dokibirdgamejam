@@ -1,12 +1,17 @@
-[gd_scene load_steps=39 format=3 uid="uid://cd12cwmgxb70i"]
+[gd_scene load_steps=41 format=3 uid="uid://cd12cwmgxb70i"]
 
 [ext_resource type="Script" uid="uid://c5tr5bjbxq3a0" path="res://Lab/Scenes/VirusPiece.gd" id="1_btock"]
 [ext_resource type="Texture2D" uid="uid://dseaoxca8bba3" path="res://Lab/Assets/Anti_virus_1_normal.png" id="2_6fugq"]
+[ext_resource type="Shader" uid="uid://d2k174ifn138h" path="res://Lab/Assets/Shaders/BayerFade.gdshader" id="2_pvn3n"]
 [ext_resource type="Texture2D" uid="uid://c4k7wam4kbh5d" path="res://Lab/Assets/Anti_virus_1_disintegrate.png" id="3_4s6b7"]
 [ext_resource type="Texture2D" uid="uid://db2hwcvvcrmih" path="res://Lab/Assets/Anti_virus_2_normal.png" id="3_pvn3n"]
 [ext_resource type="Texture2D" uid="uid://bew0hqvxweoki" path="res://Lab/Assets/Anti_virus_3_normal.png" id="4_2ry10"]
 [ext_resource type="Texture2D" uid="uid://bpctp0arnl1pl" path="res://Lab/Assets/Anti_virus_3_disintegrate.png" id="4_uy3sn"]
 [ext_resource type="Texture2D" uid="uid://bbqdv6st533sq" path="res://Lab/Assets/Anti_virus_2_disintegrate.png" id="5_6fugq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ry10"]
+shader = ExtResource("2_pvn3n")
+shader_parameter/progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s6b7"]
 atlas = ExtResource("3_4s6b7")
@@ -254,5 +259,6 @@ animations = [{
 script = ExtResource("1_btock")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_2ry10")
 sprite_frames = SubResource("SpriteFrames_ey8sr")
 frame = 1

@@ -6,9 +6,11 @@ Doki: .. this looks familiar.. This is my Desktop!
 Doki: Wait... Crowki, is that you?
 join Crow rightmost
 Crow: Of all the days to be a mod sigh...
+leave Doki
+[wait time="1.0"]
 [signal arg="show_mint"]
-[wait time="3.0"]
 Crow: HEY STREAMER! ISN’T THAT MINT?
+join Doki leftmost
 leave Crow
 join Mint rightmost
 Mint: WHERE ARE YOU TAKING ME?!?!?
@@ -18,8 +20,15 @@ join Crow rightmost
 Crow: I don’t know how to tell you this, Doki… but your fans… have been turned against you…
 Crow: I really don't think you should have clicked that suspicious link.
 Crow: It looks like it was a virus that’ll stop at nothing until your whole digital identity is corrupted.
-Crow: The dragoons have already fallen to the virus… 
+Crow: The dragoons have already fallen to the virus…
 Crow: It’s only a matter of time before Mint and the others do too.
 Doki: Jokes on you virus, I’ve waited years to steal Mint’s heart…
 Doki: and now’s my chance!
+leave Doki
+[signal arg="hooded_jump"]
+[wait time="3.0"]
+Crow: They seemed to have jumped into that folder.
+Crow: I reckon we could probably do the same
+[signal arg="doki_jump"]
+[wait time="2.5"]
 [end_timeline]

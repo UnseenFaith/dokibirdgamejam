@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dfgxtqaog3gav"]
+[gd_scene load_steps=67 format=3 uid="uid://dfgxtqaog3gav"]
 
 [ext_resource type="Script" uid="uid://crln80g6dp32" path="res://Lab/Scenes/VirusCutscene2.gd" id="1_uxfr2"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_b5cyv"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="8_0vltq"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="10_0vltq"]
 [ext_resource type="Texture2D" uid="uid://dwvs0ddd4r7sk" path="res://Lab/Assets/anti_virus_pieces.png" id="10_eu70x"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5cyv"]
 
 [sub_resource type="Animation" id="Animation_opy3l"]
 length = 0.001
@@ -522,7 +520,6 @@ animations = [{
 }]
 
 [node name="VirusCutscene2" type="Node2D"]
-material = SubResource("ShaderMaterial_b5cyv")
 script = ExtResource("1_uxfr2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -562,6 +559,7 @@ script = ExtResource("8_0vltq")
 material = SubResource("ShaderMaterial_ejuss")
 position = Vector2(0, 34)
 sprite_frames = SubResource("SpriteFrames_opy3l")
+autoplay = "default"
 frame = 1
 frame_progress = 0.5799542
 script = ExtResource("8_0vltq")

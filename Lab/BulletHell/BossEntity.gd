@@ -81,11 +81,12 @@ func choose_attack_phase1() -> void:
 	pass
 
 func choose_attack_phase2():
-	#var attacks = [laser_attack, ring_attack, homing_missile_attack]
-	#var attacks = [spread_shot_attack, needle, ring, homing_missile_attack]
-	#var attack = attacks.pick_random()
-	#attack.call()
-	pass
+	current_state = State.IDLE
+	var attacks := [laser_attack, missile_attack, ring_attack] #laser_attack, missile_attack
+	var attack := attacks.pick_random() as Callable
+	current_state = State.ATTACKING
+	await attack.call()
+	current_state = State.IDLE
 #endregion 
 
 #region BOSS ATTACKS
@@ -109,7 +110,7 @@ func laser_attack() -> Signal:
 	return sequence.finished
 
 func missile_attack() -> Signal:
-	var missile_count := 5
+	var missile_count := 3
 	var sequence := create_tween()
 	var panel_pos = $Sprites/FrontPanel.position
 	

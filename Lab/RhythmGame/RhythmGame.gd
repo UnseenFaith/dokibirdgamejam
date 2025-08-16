@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var midi_player := $MidiPlayer
-@onready var midi_queue := $MidiQueue
 @onready var asp := $AudioStreamPlayer
 
 var note_scene := preload("res://Lab/RhythmGame/Note.tscn")
@@ -36,9 +34,9 @@ func _ready():
 	total_notes = notes.size()
 	
 	set_process(false)
-	$Player.set_process(false)
+	$Player.set_physics_process(false)
 	$AnimationPlayer.play("intro")
-	
+
 	#var min_note = INF
 	#var max_note = -INF
 
@@ -78,6 +76,7 @@ func _process(delta) -> void:
 	if delta_sum >= lead_time and not asp.playing and not finished and not played:
 		asp.play()
 		played = true
+		start_disc_rotation()
 		#midi_player.play()
 		
 	#var song_time = midi_player.get_current_time()
@@ -86,6 +85,10 @@ func _process(delta) -> void:
 		if note.hit_time <= delta_sum + lead_time:
 			spawn_note(note)
 			notes.remove_at(i)
+func start_disc_rotation() -> void:
+	var tween = create_tween().set_loops()
+	tween.tween_property($Disc, "rotation", TAU, 5) # TAU = 2*PI radians
+	tween.tween_property($Disc, "rotation", 0, 0)   # snap back instantly
 
 func spawn_note(data) -> void:
 	var note := note_scene.instantiate()
@@ -100,7 +103,7 @@ func note_missed() -> void:
 	missed_notes += 1
 	$UI/HealthTracker.value -= 1
 	if $UI/HealthTracker.value == 0:
-		$Player.set_process(false)
+		$Player.set_physics_process(false)
 		set_process(false)
 		$YouLose.visible = true
 		await get_tree().create_timer(1.0).timeout
@@ -131,9 +134,9 @@ func onPlayer_noteHit() -> void:
 
 func onAudioStreamPlayer_finished() -> void:
 	$Player/AnimatedSprite2D.animation = "close"
-	$Player.set_process(false)
+	$Player.set_phyiscs_process(false)
 	
-	if float($UI/Accuracy.text) >= 95.00:
+	if float($UI/Accuracy.text) >= 90.00:
 		$YouWon.visible = true
 		Dialogic.VAR.secondGameWon = true
 	else:
@@ -156,5 +159,5 @@ func onAnimationPlayer_animationFinished(anim_name: StringName) -> void:
 func timeline_ended() -> void:
 	var tween = create_tween()
 	tween.tween_property($Crow, "position", Vector2(300, -10), 1.0)
-	$Player.set_process(true)
+	$Player.set_physics_process(true)
 	$AnimationPlayer.play("tutorial")

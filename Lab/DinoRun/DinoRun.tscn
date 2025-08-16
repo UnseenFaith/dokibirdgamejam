@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=4 uid="uid://coypgt0d6bj26"]
+[gd_scene load_steps=45 format=4 uid="uid://coypgt0d6bj26"]
 
 [ext_resource type="Script" uid="uid://dkvb08t5i4b8a" path="res://Lab/DinoRun/DinoRun.gd" id="1_tqvxc"]
+[ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_775sv"]
 [ext_resource type="Texture2D" uid="uid://dcccd425g3fq7" path="res://Lab/DinoRun/Assets/Lvl 1 background 1.png" id="4_i4ny8"]
 [ext_resource type="Texture2D" uid="uid://k7d4a50qqesu" path="res://Lab/DinoRun/Assets/Lvl 1 background 2.png" id="5_qa2xo"]
 [ext_resource type="Texture2D" uid="uid://dtuox116ll0i" path="res://Lab/DinoRun/Assets/Lvl 1 background 3.png" id="6_atp7r"]
@@ -18,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="16_2hxwx"]
 [ext_resource type="Texture2D" uid="uid://d18c6pjwp5dnj" path="res://Lab/Assets/You_Won.png" id="16_7t2nu"]
 [ext_resource type="Texture2D" uid="uid://bxypj13ycgfow" path="res://Lab/Assets/Doki_run_tab.png" id="16_cxfay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_775sv"]
 
 [sub_resource type="Animation" id="Animation_4gmof"]
 length = 0.001
@@ -414,6 +417,13 @@ _data = {
 &"tv_fade_out": SubResource("Animation_0b7fl")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b7fl"]
+shader = ExtResource("2_775sv")
+shader_parameter/progress = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/glow_strength = 1.0
+shader_parameter/static_strength = 0.15
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gmof"]
 resource_local_to_scene = true
 size = Vector2(12, 40)
@@ -505,6 +515,7 @@ tags = {
 }
 
 [node name="DinoRun" type="Node2D"]
+material = SubResource("ShaderMaterial_775sv")
 script = ExtResource("1_tqvxc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -522,12 +533,14 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Background" type="Node2D" parent="."]
 process_mode = 4
+material = SubResource("ShaderMaterial_0b7fl")
 position = Vector2(237, 222)
 scale = Vector2(0.75, 0.75)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="1" type="Sprite2D" parent="Background"]
+use_parent_material = true
 position = Vector2(0, -11.999756)
 texture = ExtResource("4_i4ny8")
 
@@ -693,13 +706,13 @@ texture = ExtResource("16_cxfay")
 
 [node name="YouLost" type="Sprite2D" parent="."]
 visible = false
-z_index = 5
+z_index = 11
 position = Vector2(219, 208)
 texture = ExtResource("16_2hxwx")
 
 [node name="YouWon" type="Sprite2D" parent="."]
 visible = false
-z_index = 5
+z_index = 11
 position = Vector2(219, 208)
 texture = ExtResource("16_7t2nu")
 

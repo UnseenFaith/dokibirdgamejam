@@ -15,4 +15,32 @@ func _ready() -> void:
 	await $AnimationPlayer.animation_finished
 	
 	Dialogic.start("dad_confrontation")
+	await Dialogic.signal_event
+	$HoodedFigure.play("dog")
 	await Dialogic.timeline_ended
+	rumble_shake()
+
+func rumble_shake(intensity: float = 8.0, duration: float = 0.6, interval: float = 0.05) -> void:
+	var tween := create_tween()
+	var elapsed := 0.0
+	var original = $PlayerCamera.offset
+
+	tween.set_loops()  # keep looping until we stop it
+
+	tween.tween_method(
+		func(_t):
+			# Random jitter each interval
+			$PlayerCamera.offset = original + Vector2(
+				randf_range(-intensity, intensity),
+				randf_range(-intensity, intensity)
+			), 
+		0.0, 1.0, interval
+	)
+
+	# Stop after duration
+	await get_tree().create_timer(duration).timeout
+	tween.kill()
+
+	# Smoothly reset to neutral
+	var reset := create_tween()
+	reset.tween_property($PlayerCamera, "offset", original, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

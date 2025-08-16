@@ -1,20 +1,31 @@
 [gd_scene load_steps=18 format=4 uid="uid://d2r4a8x46c7pa"]
 
 [ext_resource type="Script" uid="uid://dw6w3lvrh2ggp" path="res://Scripts/Start.gd" id="1_5pdtg"]
-[ext_resource type="Texture2D" uid="uid://o834wpmisl15" path="res://Lab/BulletHell/Assets/parralax/sky.png" id="1_hjm5k"]
 [ext_resource type="PackedScene" uid="uid://ciot5i76nld4m" path="res://Lab/BulletHell/BossEntity.tscn" id="2_a8yow"]
-[ext_resource type="Texture2D" uid="uid://dkhgb5nyohsxr" path="res://Lab/BulletHell/Assets/parralax/clouds_1.png" id="2_bfofc"]
 [ext_resource type="Script" uid="uid://dif3dj8k5ixfw" path="res://Resources/Stats/Stat.gd" id="2_wlkfx"]
+[ext_resource type="Texture2D" uid="uid://bdl0txgpmv2a1" path="res://Lab/BulletHell/Assets/Sky_1.png" id="3_2tr6k"]
 [ext_resource type="PackedScene" uid="uid://uhpryrs6kicb" path="res://Lab/BulletHell/BulletHellPlayerEntity.tscn" id="3_a8yow"]
-[ext_resource type="Texture2D" uid="uid://pnpgsfn73gyv" path="res://Lab/BulletHell/Assets/parralax/clouds_2.png" id="3_vgy2x"]
-[ext_resource type="Texture2D" uid="uid://u7vid3tfk8ml" path="res://Lab/BulletHell/Assets/parralax/clouds_3.png" id="4_3wmyt"]
-[ext_resource type="Texture2D" uid="uid://c53ccn02i74x7" path="res://Lab/BulletHell/Assets/parralax/rocks_2.png" id="4_j8prc"]
-[ext_resource type="Texture2D" uid="uid://cmu0qnlsanhoc" path="res://Lab/BulletHell/Assets/parralax/rocks_1.png" id="6_01jtn"]
-[ext_resource type="Texture2D" uid="uid://cqkf5vhb4kd2e" path="res://Lab/BulletHell/Assets/parralax/rocks_3.png" id="6_pn6yh"]
+[ext_resource type="Texture2D" uid="uid://ib3libn6i4vw" path="res://Lab/BulletHell/Assets/Sky_2.png" id="4_2tr6k"]
+[ext_resource type="Texture2D" uid="uid://ba0j14q245l6c" path="res://Lab/BulletHell/Assets/Sky_3.png" id="5_4ravr"]
+[ext_resource type="Texture2D" uid="uid://c4u3e6a5srhm7" path="res://Lab/BulletHell/Assets/Sky_4.png" id="6_l1ws4"]
+[ext_resource type="Texture2D" uid="uid://cvoxmlsekdpgy" path="res://Lab/BulletHell/Assets/Sky_5.png" id="7_wc2j2"]
 [ext_resource type="TileSet" uid="uid://6386asadi854" path="res://Assets/Tiles/Kenney1Bit-Monochrome-Transparent-Physics.tres" id="11_pn6yh"]
 [ext_resource type="PackedScene" uid="uid://cohfff8gqb3dc" path="res://Lab/BulletHell/UI/PlayerHealthBar.tscn" id="13_2tr6k"]
 [ext_resource type="PackedScene" uid="uid://bjcrjhth3ieg7" path="res://Lab/BulletHell/UI/BossHealthBar.tscn" id="13_q34lf"]
 [ext_resource type="AudioStream" uid="uid://c02d7gj5c3lsr" path="res://Lab/Assets/Music/DokiJam - Fight Theme (Fin v1).wav" id="14_eaick"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q34lf"]
+resource_local_to_scene = true
+size = Vector2(96, 149)
+
+[sub_resource type="Resource" id="Resource_4qcyh"]
+resource_local_to_scene = true
+resource_name = "health"
+script = ExtResource("2_wlkfx")
+max = 100
+value = 100
+name = &"health"
+displayName = "Health"
 
 [sub_resource type="Resource" id="Resource_1id7j"]
 resource_local_to_scene = true
@@ -46,68 +57,59 @@ scale = Vector2(1, 1.001)
 metadata/_edit_lock_ = true
 
 [node name="ScaleNode" type="Node2D" parent="BackgroundSize"]
-scale = Vector2(0.333, 0.333)
 
 [node name="BG" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-repeat_size = Vector2(1920, 0)
+scroll_offset = Vector2(0, -1.9980011)
+repeat_size = Vector2(640, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/BG"]
-texture = ExtResource("1_hjm5k")
+texture = ExtResource("3_2tr6k")
 
 [node name="Cloud1" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-25, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Cloud1"]
-texture = ExtResource("2_bfofc")
+position = Vector2(0, -71.92807)
+texture = ExtResource("4_2tr6k")
 
 [node name="Cloud2" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-50, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Cloud2"]
-texture = ExtResource("3_vgy2x")
+texture = ExtResource("5_4ravr")
 
 [node name="Cloud3" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
 scale = Vector2(1, 0.99999976)
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-75, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Cloud3"]
-texture = ExtResource("4_3wmyt")
+texture = ExtResource("6_l1ws4")
 
 [node name="Mountain1" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-repeat_size = Vector2(1920, 0)
+scroll_offset = Vector2(0, -1.9980011)
+repeat_size = Vector2(640, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Mountain1"]
-texture = ExtResource("4_j8prc")
-
-[node name="Mountain3" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-scale = Vector2(1, 0.9999998)
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Mountain3"]
-texture = ExtResource("6_pn6yh")
-
-[node name="Mountain2" type="Parallax2D" parent="BackgroundSize/ScaleNode"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundSize/ScaleNode/Mountain2"]
-texture = ExtResource("6_01jtn")
+texture = ExtResource("7_wc2j2")
 
 [node name="BossEntity" parent="." instance=ExtResource("2_a8yow")]
 position = Vector2(319, 174)
+
+[node name="ReceivingCollisionShape" parent="BossEntity/DamageReceivingComponent" index="0"]
+shape = SubResource("RectangleShape2D_q34lf")
+
+[node name="HealthComponent" parent="BossEntity" index="7"]
+health = SubResource("Resource_4qcyh")
 
 [node name="Player-OverheadCombat" parent="." instance=ExtResource("3_a8yow")]
 position = Vector2(35, 208.00002)
@@ -131,6 +133,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="Player-OverheadCombat" index="9"]
 visible = false
+position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_2tr6k")
 
 [node name="Bullets" type="Node2D" parent="."]
@@ -159,5 +162,8 @@ bus = &"Music"
 
 [connection signal="healthDidDecrease" from="Player-OverheadCombat/HealthComponent" to="CanvasLayer/PlayerHealthBar" method="onHealthComponent_healthDidDecrease"]
 
+[editable path="BossEntity"]
+[editable path="BossEntity/GunComponent"]
+[editable path="BossEntity/DamageReceivingComponent"]
 [editable path="Player-OverheadCombat"]
 [editable path="Player-OverheadCombat/GunComponent"]

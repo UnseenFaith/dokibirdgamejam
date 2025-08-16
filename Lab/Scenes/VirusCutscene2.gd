@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 	var tween := create_tween()
 	tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 1.0)
+	tween.parallel().tween_property($VirusPiece/AnimatedSprite2D.material, "shader_parameter/progress", 1.0, 1.0)
 	tween.tween_property($Crow.material, "shader_parameter/progress", 1.0, 1.0)
 	await tween.finished
 

@@ -29,18 +29,12 @@ var cutscenePlayed = Settings.get('firstCutscenePlayed')
 var cutscene := ""
 var gameEnded := false
 
-var playback_latency := 0.0
 func _ready() -> void:
 	$"Player-Platformer/InputComponent".isEnabled = false
 	$AnimationPlayer.play("cutscene")
 	Dialogic.connect("signal_event", _dialog_event)
 	Dialogic.connect("timeline_ended", timeline_ended)
-	
-	# Estimate output latency
-	if OS.has_feature("web"):
-		playback_latency = 3.0 # ~3000ms
-	else:
-		playback_latency = 0.0
+
 
 func _dialog_event(parameter: String) -> void:
 	$AnimationPlayer.play(parameter)
@@ -52,11 +46,6 @@ func timeline_ended() -> void:
 	if not gameEnded:
 		$AnimationPlayer.stop()
 		_start_game()
-	else:
-		if cutscene == "level1_outro":
-			#$AnimationPlayer.play("tv_fade_out")
-			Dialogic.VAR.firstGameWon = true
-			SceneManager.transitionToScene(virusCutscene)
 
 func _start_game() -> void:
 	$Floor/Dirt.autoscroll.x = - CURRENT_SPEED
@@ -115,20 +104,15 @@ func onObstacleTimer_timeout() -> void:
 		player.velocity.x += 100
 
 
-func onTracker_finished() -> void:	
+func onTracker_finished() -> void:
 	game_won = true
 	gameEnded = true
 	$"Player-Platformer/InputComponent".isEnabled = false
 	$ObstacleTimer.stop()
 	
-	get_tree().call_group("obstacles", "queue_free")
-	var tween = create_tween()
-	$Crow.position = Vector2(459, 120)
-	tween.tween_property($Enemy, "position", Vector2(-50, 220), 2.0)
-	tween.parallel().tween_property($"Player-Platformer", "position", $Midpoint.position - Vector2(100, 0), 1.0)
-	tween.parallel().tween_property($Crow, "position", Vector2(195, 120), 2.0)
-	tween.parallel().tween_property($Crow, "visible", true, 0.2)
-	await get_tree().create_timer(3.0).timeout
+	## Idk If we need this..
+	process_mode = Node.PROCESS_MODE_DISABLED
+	#get_tree().call_group("obstacles", "queue_free")
 	
 	$Floor/Dirt.autoscroll.x = 0
 	$Floor/Tumble.visible = false
@@ -137,8 +121,12 @@ func onTracker_finished() -> void:
 	$"Player-Platformer/DokiAnimationComponent".isEnabled = false
 	$"Player-Platformer/AnimatedSprite2D".play("idle")
 	$YouWon.visible = true
-	cutscene = "level1_outro"
-	Dialogic.start("level1_outro")
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	Dialogic.VAR.firstGameWon = true
+	SceneManager.transitionToScene(virusCutscene)
+
 
 
 func onEnemy_gameOver() -> void:
@@ -146,6 +134,6 @@ func onEnemy_gameOver() -> void:
 	GlobalInput.isPauseShortcutAllowed = false
 	GameState.removePlayer($"Player-Platformer")
 	$YouLost.visible = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	Dialogic.VAR.firstGameWon = false
 	SceneManager.transitionToScene(virusCutscene)

@@ -12,6 +12,7 @@ Doki: Wait.. Father?
 Dad: NO!
 set {DadName} = "D.A.D"
 update Dad (revealed)
+[signal arg="dog"]
 Dad: D.A.D!!!
 Doki: AMBER?!?!? OH MY DOG!? WTF!?
 Dad: I had it all Doki.
@@ -19,4 +20,5 @@ Dad: The women all loved me. They would pet me. They would scratch me.
 Dad: They would take me on walks. I was so spoiled to death.
 Dad: Until YOU took that all away from me. So now I am taking something precious of yours.
 Doki: But why Mint out of everyone you could have?!?!
-Dad: Because... she's mint condition.
+Dad: Because... she is a woman, and I love women..
+Dad: And she's in mint condition!

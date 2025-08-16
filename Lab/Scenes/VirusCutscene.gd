@@ -3,7 +3,16 @@ extends Node2D
 var rhythm := preload("res://Lab/RhythmGame/RhythmGame.tscn")
 
 func _ready() -> void:
-	await get_tree().create_timer(1.5).timeout
+	var tv_tween := create_tween()
+	tv_tween.tween_property($Background.material, "shader_parameter/progress", 0, 1.0)
+	await tv_tween.finished
+	
+	var tween := create_tween()
+	tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 1.0)
+	tween.parallel().tween_property($VirusPiece/AnimatedSprite2D.material, "shader_parameter/progress", 1.0, 1.0)
+	tween.tween_property($Crow.material, "shader_parameter/progress", 1.0, 1.0)
+	await tween.finished
+	
 	Dialogic.start("virus_desktop_1")
 	Dialogic.connect("timeline_ended", timeline_ended)
 	Dialogic.connect("signal_event", dialogic_signal)
