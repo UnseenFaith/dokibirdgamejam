@@ -46,6 +46,34 @@ static func fadeOut(node: CanvasItem, duration: float = 0.5) -> Tween:
 	return tween
 
 
+## Doesn't work, unsure if I can even do something like this
+static func tv_fadeIn(node: TextureRect, duration: float = 0.5) -> Tween:
+	var tween := node.create_tween()
+	var shader := load("res://Lab/Assets/Shaders/TV.gdshader")
+	var shader_mat := ShaderMaterial.new()
+	shader_mat.shader = shader
+	node.material = shader_mat
+	tween.tween_method(
+		func(value: float) -> void: shader_mat.set_shader_parameter("progress", value),
+		0.0, 1.0, duration
+	)
+	return tween
+
+static func tv_fadeOut(node: TextureRect, duration: float = 0.5) -> Tween:
+	var tween := node.create_tween()
+	var shader := load("res://Lab/Assets/Shaders/TV.gdshader")
+	var shader_mat := ShaderMaterial.new()
+	shader_mat.shader = shader
+	node.material = shader_mat
+	shader_mat.set_shader_parameter("static_strength", 0)
+	tween.tween_method(
+		func(value: float) -> void: shader_mat.set_shader_parameter("progress", value),
+		1.0, 0.0, duration
+	)
+	return tween
+
+
+
 ## Toggles the [member CanvasItem.visible] flag from the INITIAL state (at the time of calling this function) to the opposite.
 ## NOTE: If [param initialVisibility] is not specified, the animation ends at the initial visibility state, which may NOT always be visible.
 static func blink(node: CanvasItem, loops: int = 3, duration: float = 0.1, initialVisibility: bool = node.visible) -> Tween:

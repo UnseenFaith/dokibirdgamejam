@@ -132,45 +132,45 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 	# Debugging, before any other actions are handled.
 
-	if Input.is_action_just_released(Actions.debugBreak):
-		Debug.printDebug("Debug Breakpoint Input Received")
-		breakpoint # TBD: Use `breakpoint` or `assert(false)`? `assert` also adds a message but only runs in debug builds.
-		# assert(false, "Debug Breakpoint Input Received")
-		isHandled = true
-	elif Input.is_action_just_released(Actions.debugWindow):
-		Debug.toggleDebugWindow()
-		isHandled = true
+	#if Input.is_action_just_released(Actions.debugBreak):
+	#	Debug.printDebug("Debug Breakpoint Input Received")
+	#	breakpoint # TBD: Use `breakpoint` or `assert(false)`? `assert` also adds a message but only runs in debug builds.
+	#	# assert(false, "Debug Breakpoint Input Received")
+	#	isHandled = true
+	#elif Input.is_action_just_released(Actions.debugWindow):
+	#	Debug.toggleDebugWindow()
+	#	isHandled = true
 
 	# Window
 
-	if Input.is_action_just_released(Actions.windowToggleAlwaysOnTop):
-		var isAlwaysOnTop: bool = DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP)
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, not isAlwaysOnTop) # `not` because it's a toggle.
-		GlobalUI.createTemporaryLabel(str("Window Always on Top: ", not isAlwaysOnTop))
-		get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
-		isHandled = true
+	#if Input.is_action_just_released(Actions.windowToggleAlwaysOnTop):
+	#	var isAlwaysOnTop: bool = DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP)
+	#	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, not isAlwaysOnTop) # `not` because it's a toggle.
+	#	GlobalUI.createTemporaryLabel(str("Window Always on Top: ", not isAlwaysOnTop))
+	#	get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
+	#	isHandled = true
 
-	if Input.is_action_just_released(Actions.windowResizeTo720):
-		GlobalUI.setWindowSize(1280, 720)
-		get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
-		isHandled = true
-	elif Input.is_action_just_released(Actions.windowResizeTo1080):
-		GlobalUI.setWindowSize(1920, 1080)
-		get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
-		isHandled = true
+	#if Input.is_action_just_released(Actions.windowResizeTo720):
+	#	GlobalUI.setWindowSize(1280, 720)
+	#	get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
+	#	isHandled = true
+	#elif Input.is_action_just_released(Actions.windowResizeTo1080):
+	#	GlobalUI.setWindowSize(1920, 1080)
+	#	get_viewport().set_input_as_handled() # TBD: Should we let these shortcuts affect other things?
+	#	isHandled = true
 
 	# Save & Load
 
-	if event.is_action_released(GlobalInput.Actions.screenshot):
-		Global.screenshot()
-		isHandled = true
+	#if event.is_action_released(GlobalInput.Actions.screenshot):
+	#	Global.screenshot()
+	#	isHandled = true
 
-	if event.is_action_released(GlobalInput.Actions.quickLoad): # TBD: Should Loading take precedence over Saving?
-		GameState.loadGame()
-		isHandled = true
-	elif event.is_action_released(GlobalInput.Actions.quickSave):
-		GameState.saveGame()
-		isHandled = true
+	#if event.is_action_released(GlobalInput.Actions.quickLoad): # TBD: Should Loading take precedence over Saving?
+	#	GameState.loadGame()
+	#	isHandled = true
+	#elif event.is_action_released(GlobalInput.Actions.quickSave):
+	#	GameState.saveGame()
+	#	isHandled = true
 
 	if isHandled: self.get_viewport().set_input_as_handled()
 

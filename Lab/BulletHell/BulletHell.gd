@@ -31,7 +31,18 @@ func _ready() -> void:
 	$"Player-OverheadCombat/InputComponent".isEnabled = true
 
 
-func onBossEntity_preDelete() -> void:
+func onHealthComponent_healthDidZero() -> void:
+	$BossEntity.set_process(false)
+	$"Player-OverheadCombat/InputComponent".isEnabled = false
+	$YouLost.visible = true
+	Dialogic.VAR.thirdGameWon = false
+	await get_tree().create_timer(2.0).timeout
+	
+	SceneManager.transitionToScene(virus3)
+	pass # Replace with function body.
+
+
+func onHealthComponent_healthDidZero2() -> void:
 	$BossEntity.set_process(false)
 	$"Player-OverheadCombat/InputComponent".isEnabled = false
 	$YouWon.visible = true

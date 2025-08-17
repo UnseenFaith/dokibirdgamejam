@@ -137,10 +137,10 @@ func onEnemy_gameOver() -> void:
 	$YouLost.visible = true
 	await get_tree().create_timer(2.0).timeout
 	Dialogic.VAR.firstGameWon = false
-	await transition_out().finished
+	transition_out()
 	SceneManager.transitionToScene(virusCutscene)
 
-func transition_out() -> Tween:
+func transition_out() -> void:
 	var tv_tween2 := create_tween()
 	tv_tween2.tween_property($"Player-Platformer", "visible", false, 0.0)
 	tv_tween2.tween_property($Crow, "visible", false, 0.0)
@@ -149,5 +149,4 @@ func transition_out() -> Tween:
 	tv_tween2.tween_property($Window, "visible", false, 0.0)
 	tv_tween2.tween_property($TextureRect, "visible", true, 0.0)
 	tv_tween2.chain().tween_property($TextureRect.material, "shader_parameter/progress", 1.0, 0.8)
-	return tv_tween2
-	
+	await tv_tween2.finished

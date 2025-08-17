@@ -256,19 +256,6 @@ func moveTo(toPosition: Vector2) -> void:
 	await tween.finished
 #endregion
 
-	
-
-
-
-
-
-
-	
-
-
-
-
-
 
 func rapid_fire() -> void:
 	pass

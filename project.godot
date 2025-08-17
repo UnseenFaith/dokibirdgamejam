@@ -115,8 +115,8 @@ variables={
 "DadName": "Hooded Figure",
 "firstGameWon": true,
 "pieces": 0,
-"secondGameWon": true,
-"thirdGameWon": true
+"secondGameWon": false,
+"thirdGameWon": false
 }
 save/autosave=false
 

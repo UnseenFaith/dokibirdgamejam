@@ -92,10 +92,10 @@ func screenshot(titleSuffix: String = "") -> void:  # NOTE: Cannot be `static` b
 
 	var screenshotPath: String = "user://" + "Comedot Screenshot " + date + " " + time
 	if not titleSuffix.is_empty(): screenshotPath += " " + titleSuffix
-	screenshotPath += ".jpeg"
+	screenshotPath += ".png"
 
 	var screenshotImage: Image = self.get_viewport().get_texture().get_image() # Capture what the player sees
-	screenshotImage.save_jpg(screenshotPath)
+	screenshotImage.save_png(screenshotPath)
 
 	GlobalUI.createTemporaryLabel(str("Screenshot ", time + " " + titleSuffix))
 

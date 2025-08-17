@@ -1,6 +1,6 @@
 extends Node2D
 
-var throne := preload("res://Lab/Scenes/ThroneRoom.tscn")
+var credits := preload("res://Lab/Scenes/Intro/ExtraCredits.tscn")
 
 func _ready() -> void:
 	if Dialogic.VAR.firstGameWon:
@@ -39,19 +39,23 @@ func _ready() -> void:
 		await get_tree().create_timer(1.0).timeout
 	Dialogic.start("post-boss")
 	
-	await Dialogic.signal_event
-	$Doki.play("tomato")
-	
+	if Dialogic.VAR.pieces == 3:
+		await Dialogic.signal_event
+		$Doki.play("tomato")
+
 	await Dialogic.timeline_ended
 	
 	var tv_tween2 := create_tween()
 	tv_tween2.tween_property($Doki, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Crow, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Minty, "visible", false, 0.0)
-	tv_tween2.tween_property($Virus1, "visible", false, 0.0)
+	tv_tween2.chain().tween_property($HoodedFigure, "visible", false, 0.0)
+	tv_tween2.chain().tween_property($Virus1, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Virus2, "visible", false, 0.0)
-	tv_tween2.chain().tween_property($VirusPiece, "visible", false, 0.0)
+	#tv_tween2.chain().tween_property($VirusPiece, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Background.material, "shader_parameter/progress", 1.0, 1.0)
 	await tv_tween2.finished
+	
+	SceneManager.transitionToScene(credits)
 	
 	
