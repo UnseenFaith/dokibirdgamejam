@@ -7,6 +7,8 @@ func _ready() -> void:
 	tv_tween.tween_property($Background.material, "shader_parameter/progress", 0, 1.0)
 	await tv_tween.finished
 	
+	$AudioStreamPlayer.play()
+	
 	if Dialogic.VAR.firstGameWon:
 		$Virus1.visible = true
 	

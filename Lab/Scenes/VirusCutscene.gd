@@ -7,6 +7,8 @@ func _ready() -> void:
 	tv_tween.tween_property($Background.material, "shader_parameter/progress", 0, 1.0)
 	await tv_tween.finished
 	
+	$AudioStreamPlayer.play()
+	
 	var tween := create_tween()
 	tween.tween_property($Doki.material, "shader_parameter/progress", 1.0, 1.0)
 	tween.parallel().tween_property($VirusPiece/AnimatedSprite2D.material, "shader_parameter/progress", 1.0, 1.0)

@@ -286,6 +286,7 @@ region_rect = Rect2(272, 144, 40, 64)
 texture = ExtResource("3_mjr86")
 
 [node name="Hat" type="Sprite2D" parent="Sprites"]
+visible = false
 texture = ExtResource("6_lxm5q")
 
 [node name="FrontGun" type="Sprite2D" parent="Sprites"]
@@ -301,7 +302,7 @@ position = Vector2(-2, 2)
 texture = ExtResource("7_u1ua6")
 
 [node name="Dad" type="Sprite2D" parent="Sprites"]
-visible = false
+position = Vector2(0, -2)
 texture = ExtResource("8_ka5rd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]

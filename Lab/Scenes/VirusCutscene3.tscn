@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://boy3oxxgqc8xq"]
+[gd_scene load_steps=86 format=3 uid="uid://boy3oxxgqc8xq"]
 
 [ext_resource type="Script" uid="uid://damwei6dsebvy" path="res://Lab/Scenes/VirusCutscene3.gd" id="1_67cuq"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="2_5ikpl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://y7a76a6wixx6" path="res://Lab/Assets/Mint_idle.png" id="11_bpulx"]
 [ext_resource type="Texture2D" uid="uid://db2hwcvvcrmih" path="res://Lab/Assets/Anti_virus_2_normal.png" id="12_5ikpl"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="12_lse54"]
+[ext_resource type="AudioStream" uid="uid://dmaymbi4qoytr" path="res://Lab/Assets/Music/DokiJam - Desktop Menu.wav" id="16_5e18s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i8hch"]
 shader = ExtResource("2_5ikpl")
@@ -575,3 +576,8 @@ piece = 3
 
 [node name="NextGame" type="Marker2D" parent="."]
 position = Vector2(109, 26)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_5e18s")
+autoplay = true
+bus = &"Music"

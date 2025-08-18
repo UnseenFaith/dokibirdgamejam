@@ -113,7 +113,7 @@ layout/style_list=["res://Game/Dialogic/DokiStyle.tres"]
 layout/default_style="res://Game/Dialogic/DokiStyle.tres"
 variables={
 "DadName": "Hooded Figure",
-"firstGameWon": true,
+"firstGameWon": false,
 "pieces": 0,
 "secondGameWon": false,
 "thirdGameWon": false

@@ -131,7 +131,7 @@ func missile_attack() -> Signal:
 func ring_attack() -> Signal:
 	var sequence := create_tween()
 	var waves := 10       
-	var step := 10
+	var step := 20
 	var wave_delay := 0.5
 	var offset_step := deg_to_rad(7)
 	

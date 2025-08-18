@@ -10,7 +10,7 @@ if {thirdGameWon} == true && {secondGameWon} == true && {firstGameWon} == true:
 	leave Dad
 	join Mint rightmost
 	Mint: Doki!! Thank you... you really saved me!
-	Doki (Default): Save you? I wouldn't do that, I was just trying to steal your hear—
+	Doki (blush): Save you? I wouldn't do that, I was just trying to steal your hear—
 	Mint (Group/smooch): Oh, right right. But since the start, my heart has been yours. Thank you Doki!
 	[signal arg="kiss_tomato"]
 	[wait time="0.5"]

@@ -7,7 +7,7 @@ var virus_2 := preload("res://Lab/Scenes/VirusCutscene2.tscn")
 
 var hit_zone := 56
 var spawn_x := 600
-var lead_time := 1.5
+var lead_time := 5.0
 
 var total_notes := 0.0
 var missed_notes := 0.0
@@ -86,7 +86,7 @@ func _process(delta) -> void:
 	#var song_time = midi_player.get_current_time()
 	for i in range(notes.size()-1, -1, -1):
 		var note = notes[i]
-		if note.hit_time <= delta_sum + lead_time:
+		if note.hit_time + 3.5 <= delta_sum + lead_time:
 			spawn_note(note)
 			notes.remove_at(i)
 func start_disc_rotation() -> void:
@@ -144,7 +144,7 @@ func onAudioStreamPlayer_finished() -> void:
 		$YouWon.visible = true
 		Dialogic.VAR.secondGameWon = true
 	else:
-		$YouLose.visible = false
+		$YouLose.visible = true
 		Dialogic.VAR.secondGameWon = false
 	
 	transitionToNextLevel()

@@ -197,7 +197,7 @@ func onMainMenuButtons_credits() -> void:
 	scene.z_index = -1
 	scene.scale.x = 0.5
 	scene.scale.y = 0.5
-	scene.position = Vector2(160, 25)
+	scene.position = Vector2(165, 25)
 	add_child(scene)
 	scene.connect('cutscene_quit', credit_quit)
 	#$CanvasLayer.visible = false

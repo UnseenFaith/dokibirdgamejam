@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c4nep15dbvksn"]
+[gd_scene load_steps=51 format=3 uid="uid://c4nep15dbvksn"]
 
 [ext_resource type="Script" uid="uid://bg4an1lhphcmj" path="res://Lab/Scenes/VirusCutscene.gd" id="1_fpq3s"]
 [ext_resource type="Texture2D" uid="uid://clejrk0xj88iw" path="res://Lab/Assets/virus_background.png" id="2_p7816"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dkdxcyeutesdd" path="res://Lab/Scenes/HoodedFigure.gd" id="5_u6erb"]
 [ext_resource type="PackedScene" uid="uid://cd12cwmgxb70i" path="res://Lab/Scenes/VirusPiece.tscn" id="6_cqtfp"]
 [ext_resource type="Shader" uid="uid://db33u1wpiyhi8" path="res://Lab/Assets/Shaders/TV.gdshader" id="7_yw8a5"]
+[ext_resource type="AudioStream" uid="uid://dmaymbi4qoytr" path="res://Lab/Assets/Music/DokiJam - Desktop Menu.wav" id="11_5f7c3"]
 
 [sub_resource type="Animation" id="Animation_u6erb"]
 length = 0.001
@@ -489,3 +490,7 @@ position = Vector2(361, -4)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(108, -13)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5f7c3")
+bus = &"Music"

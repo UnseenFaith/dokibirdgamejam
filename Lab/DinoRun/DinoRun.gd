@@ -25,7 +25,6 @@ var virusCutscene := preload("res://Lab/Scenes/VirusCutscene.tscn")
 var game_won := false
 var CURRENT_SPEED := 200
 
-var cutscenePlayed = Settings.get('firstCutscenePlayed')
 var cutscene := ""
 var gameEnded := false
 

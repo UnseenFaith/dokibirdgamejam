@@ -17,10 +17,12 @@ func _ready() -> void:
 	Dialogic.start("pre-boss")
 	await Dialogic.timeline_ended
 	
-	$Tutorial.visible = true
+	$BossEntity/DamageReceivingComponent/ReceivingCollisionShape.disabled = true
+	$"Player-OverheadCombat/InputComponent".isEnabled = true
 	var tut_tween := create_tween()
 	tut_tween.tween_property($Tutorial, "visible", true, 0.0)
-	tut_tween.chain().tween_property($Tutorial, "modulate", Color(255, 255, 255, 0), 1.0).set_delay(1.0)
+	tut_tween.chain().tween_property($Tutorial, "modulate", Color(0, 0, 0, 0.0), 2.0).set_delay(8.0)
+	tut_tween.chain().tween_property($Tutorial, "visible", false, 0.0)
 	await tut_tween.finished
 	
 	
@@ -28,8 +30,7 @@ func _ready() -> void:
 	$CanvasLayer.visible = true
 	$AudioStreamPlayer.play()
 	$BossEntity.set_process(true)
-	$"Player-OverheadCombat/InputComponent".isEnabled = true
-
+	$BossEntity/DamageReceivingComponent/ReceivingCollisionShape.disabled = false
 
 func onHealthComponent_healthDidZero() -> void:
 	$BossEntity.set_process(false)

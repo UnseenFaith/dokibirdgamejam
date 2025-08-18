@@ -52,7 +52,7 @@ func _ready() -> void:
 	tv_tween2.chain().tween_property($HoodedFigure, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Virus1, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Virus2, "visible", false, 0.0)
-	#tv_tween2.chain().tween_property($VirusPiece, "visible", false, 0.0)
+	tv_tween2.chain().tween_property($VirusPiece, "visible", false, 0.0)
 	tv_tween2.chain().tween_property($Background.material, "shader_parameter/progress", 1.0, 1.0)
 	await tv_tween2.finished
 	

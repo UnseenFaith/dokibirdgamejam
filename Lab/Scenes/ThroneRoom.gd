@@ -24,10 +24,10 @@ func _ready() -> void:
 	var flash_tween := create_tween()
 	flash_tween.tween_property($Flash, "self_modulate", Color(255, 255, 255, 1), 3)
 	flash_tween.chain().tween_property($Throne, "visible", true, 0.1)
-	flash_tween.chain().tween_property($Throne1, "visible", false, 0.1)
 	flash_tween.chain().tween_property($HoodedFigure, "visible", false, 0.1)
 	flash_tween.chain().tween_property($Doki, "position", $Doki.position + Vector2(-20, 0), 0.1)
 	flash_tween.chain().tween_property($Crow, "position", $Crow.position + Vector2(-20, 0), 0.1)
+	flash_tween.chain().tween_property($Throne1, "visible", false, 0.1)
 	flash_tween.chain().tween_property($Flash, "self_modulate", Color(255, 255, 255, 0), 2)
 	await flash_tween.finished
 	
