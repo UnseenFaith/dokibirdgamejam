@@ -7,7 +7,7 @@ var reset_delay := 2.0    # seconds before restart after finishing
 var finished := false
 
 func _ready():
-	# Start at top of scroll
+	# Start at top of scroll		
 	scroll_container.scroll_vertical = 0
 
 func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ic7pden1fgfl"]
+[gd_scene load_steps=28 format=3 uid="uid://ic7pden1fgfl"]
 
 [ext_resource type="Script" uid="uid://b58b84lten2sp" path="res://Lab/RhythmGame/RhythmGame.gd" id="1_vd6rt"]
 [ext_resource type="AudioStream" uid="uid://ccxxwufkbbvj2" path="res://Lab/RhythmGame/Assets/DokiJam - Rhythm (Fin v3).wav" id="3_pe4iu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://gp7h07llwrww" path="res://Lab/Assets/Crowki_flying.png" id="6_1ayhs"]
 [ext_resource type="Texture2D" uid="uid://ct2dvye8iwxtd" path="res://Lab/Assets/Lvl_2_progress_front.png" id="6_ofk0y"]
 [ext_resource type="Texture2D" uid="uid://juveu3yx3gd3" path="res://Lab/Assets/Lvl_2_health_front.png" id="6_uqejw"]
+[ext_resource type="Texture2D" uid="uid://vm5qml41fd8j" path="res://Lab/Assets/progress_bar_name.png" id="6_xdt8q"]
 [ext_resource type="Texture2D" uid="uid://d18c6pjwp5dnj" path="res://Lab/Assets/You_Won.png" id="7_tp5ut"]
 [ext_resource type="Texture2D" uid="uid://i6eolljtfvkx" path="res://Lab/Assets/You_lose.png" id="8_cto7o"]
 [ext_resource type="Texture2D" uid="uid://dialmulobkl3b" path="res://Lab/Assets/Tomato_catch.png" id="8_kgcan"]
@@ -303,6 +304,15 @@ offset_right = 418.0
 offset_bottom = 167.0
 text = "200x"
 
+[node name="LevelLabel" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 290.0
+offset_right = 149.0
+offset_bottom = 330.0
+texture = ExtResource("6_xdt8q")
+stretch_mode = 2
+
 [node name="LevelTracker" type="TextureProgressBar" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -310,8 +320,10 @@ offset_left = 13.0
 offset_top = 99.0
 offset_right = 439.0
 offset_bottom = 339.0
+value = 100.0
 texture_under = ExtResource("5_1e11r")
 texture_progress = ExtResource("6_ofk0y")
+texture_progress_offset = Vector2(97, 211)
 
 [node name="HealthTracker" type="TextureProgressBar" parent="UI"]
 z_index = 8
@@ -325,6 +337,7 @@ max_value = 10.0
 value = 10.0
 texture_under = ExtResource("5_pe4iu")
 texture_progress = ExtResource("6_uqejw")
+texture_progress_offset = Vector2(132, 21)
 
 [node name="Shoulders" type="Sprite2D" parent="."]
 position = Vector2(48.5, 311)
@@ -338,15 +351,18 @@ autoplay = "default"
 
 [node name="YouWon" type="Sprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(219, 208)
 texture = ExtResource("7_tp5ut")
 
 [node name="YouLose" type="Sprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(219, 208)
 texture = ExtResource("8_cto7o")
 
 [node name="Window" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(219, 207.8)
 scale = Vector2(1.002, 1.002)
 texture = ExtResource("8_kgcan")

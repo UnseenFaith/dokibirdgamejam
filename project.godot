@@ -119,6 +119,7 @@ variables={
 "thirdGameWon": false
 }
 save/autosave=false
+audio/type_sound_bus="SFX"
 
 [display]
 

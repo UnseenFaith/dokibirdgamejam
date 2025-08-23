@@ -3,7 +3,11 @@ extends Node2D
 var gameframe = preload("res://Scenes/Launch/GameFrame.tscn")
 
 func _ready() -> void:
-	var img: Image = load("res://Lab/Scenes/image.png").get_image()
+	var img: Image
+	if Dialogic.VAR.pieces == 3:
+		img = load("res://Lab/Scenes/image.png").get_image()
+	else:
+		img = load("res://Lab/Scenes/Intro/scene.png").get_image()
 	img.resize(640, 360, Image.INTERPOLATE_NEAREST)
 	$TextureRect.texture = ImageTexture.create_from_image(img)
 
@@ -12,7 +16,12 @@ func _ready() -> void:
 	await tv_tween.finished
 	
 	$TextureRect.visible = false
-	$Sprite2D.visible = true
+	
+	if Dialogic.VAR.pieces == 3:
+		$Sprite2D.visible = true
+	else:
+		$Sprite2D2.visible = true
+
 	$AudioStreamPlayer.play()
 
 func onCredits_cutsceneQuit() -> void:
